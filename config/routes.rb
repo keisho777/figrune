@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :figures, only: [:index]
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: "users/registrations"
+  }
   root "static_pages#top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

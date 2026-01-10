@@ -19,6 +19,23 @@
 
   <body>
     <%= render 'shared/header' %>
+
+    <% flash.each do |key, message| %>
+      <% if key == 'notice' %>
+        <div role="alert" class="border-2 bg-green-100 p-4 text-green-500">
+          <div class="flex items-start gap-3">    
+            <div class="block flex-1 leading-tight font-semibold <%= key %>"><%= message %></div>
+          </div>
+        </div>
+      <% else %>
+        <div role="alert" class="border-2 bg-red-100 p-4 text-red-500">
+          <div class="flex items-start gap-3">    
+            <div class="block flex-1 leading-tight font-semibold <%= key %>"><%= message %></div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>

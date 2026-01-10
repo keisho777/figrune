@@ -1,0 +1,15 @@
+# Additional translations at https://github.com/heartcombo/devise/wiki/I18n
+
+ja:
+  devise:
+    registrations:
+      new:
+        title: アカウント登録
+        password_hint: "※%{min}文字以上"
+        submit: 登録する
+        already_have_account: すでにアカウントをお持ちの方はこちら
+    sessions:
+      new:
+        title: ログイン
+        submit: ログイン
+        dont_have_account: まだアカウントをお持ちでない方はこちら

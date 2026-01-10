@@ -42,7 +42,6 @@
           class: "w-full rounded-lg border border-gray-300 bg-white px-3 py-2
                   hover:border-gray-400
                   focus:border-indigo-500 focus:ring-indigo-500 focus:bg-white" %>
-
       </div>
 
       <!-- 登録ボタン -->
@@ -52,7 +51,7 @@
       </div>
     <% end %>
 
-    <!-- ログインリンク -->
+    <!-- 「すでにアカウントをお持ちの方はこちら」のリンク -->
     <div class="mt-6 text-center text-sm text-gray-600">
       <%= link_to t(".already_have_account"), new_session_path(resource_name),
         class: "text-blue-500 hover:underline font-medium" %>

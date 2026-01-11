@@ -15,8 +15,7 @@
           autofocus: true ,
           autocomplete: "email",
           class: "w-full rounded-lg border border-gray-300 bg-white px-3 py-2
-                  hover:border-gray-400
-                  focus:border-indigo-500 focus:ring-indigo-500 focus:bg-white" %>
+                  hover:border-gray-400" %>
       </div>
 
       <!-- パスワード -->
@@ -29,11 +28,10 @@
         <% end %>
         <%= f.password_field :password,
           autocomplete: "new-password",
-          class: "w-full rounded-lg border border-gray-300 bg-white px-3 py-2
-                  hover:border-gray-400
-                  focus:border-indigo-500 focus:ring-indigo-500 focus:bg-white" %>
+          class: "w-full rounded-lg border border-gray-300 bg-white px-3 py-2 hover:border-gray-400" %>
       </div>
     
+      <!-- 「ログインを記憶する」のチェックボックス -->
       <% if devise_mapping.rememberable? %>
         <div class="field">
           <%= f.check_box :remember_me %>
@@ -41,12 +39,18 @@
         </div>
       <% end %>
 
-      <!-- 登録ボタン -->
+      <!-- ログインボタン -->
       <div>
         <%= f.submit t(".submit"),
           class: "w-full py-2.5 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition" %>
       </div>
     <% end %>
+
+    <!-- 「パスワードをお忘れの方はこちら」のリンク -->
+    <div class="mt-6 text-center text-sm text-gray-600">
+      <%= link_to t(".forgot_password"), new_password_path(resource_name),
+        class: "text-blue-500 hover:underline font-medium" %>
+    </div>
 
     <!-- ログインリンク -->
     <div class="mt-6 text-center text-sm text-gray-600">

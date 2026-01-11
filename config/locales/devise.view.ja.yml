@@ -13,3 +13,10 @@ ja:
         title: ログイン
         submit: ログイン
         dont_have_account: まだアカウントをお持ちでない方はこちら
+        forgot_password: パスワードをお忘れの方はこちら
+    passwords:
+      new:
+        title: パスワード再設定
+        describe_html: 会員登録をしたメールアドレスを入力し、「送信する」ボタンをクリックしてください。<br>入力されたメールアドレスに確認メールを送信します。
+        submit: 送信する
+        back_to_login: 戻る

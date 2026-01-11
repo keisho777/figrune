@@ -15,8 +15,7 @@
           autofocus: true ,
           autocomplete: "email",
           class: "w-full rounded-lg border border-gray-300 bg-white px-3 py-2
-                  hover:border-gray-400
-                  focus:border-indigo-500 focus:ring-indigo-500 focus:bg-white" %>
+                  hover:border-gray-400" %>
       </div>
 
       <!-- パスワード -->
@@ -29,12 +28,10 @@
         <% end %>
         <%= f.password_field :password,
           autocomplete: "new-password",
-          class: "w-full rounded-lg border border-gray-300 bg-white px-3 py-2
-                  hover:border-gray-400
-                  focus:border-indigo-500 focus:ring-indigo-500 focus:bg-white" %>
+          class: "w-full rounded-lg border border-gray-300 bg-white px-3 py-2 hover:border-gray-400" %>
       </div>
     
-      <!-- ろぐいん -->
+      <!-- 「ログインを記憶する」のチェックボックス -->
       <% if devise_mapping.rememberable? %>
         <div class="field">
           <%= f.check_box :remember_me %>

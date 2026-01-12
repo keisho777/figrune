@@ -16,4 +16,8 @@ class Figure < ApplicationRecord
 
   # 大きさの単位：0:全高、1:全長
   enum size_type: { overall_height: 0, overall_length: 1 }
+
+  def self.ransackable_attributes(auth_object = nil)
+      ["name"]
+  end
 end

@@ -1,0 +1,6 @@
+ja:
+  defaults:
+    search_word: 検索内容を入力
+  figures:
+    index:
+      title: ホーム

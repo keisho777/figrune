@@ -3,12 +3,10 @@
     <div class="w-full max-w-6xl rounded-2xl">
       <%= render 'search', q: @q, url: figures_path %>
     </div>
-    <div class="w-full rounded-lg border border-gray-500 px-3 py-2 hover:border-gray-400">
-    <div>
-    aaa
-    </div>
-    <div>
-    aaa
-    </div>
-    </div>
+      <% if @figures.present? %>
+        <%= render @figures %>
+      <% else %>
+        <%= render 'figure' %>
+        <div>登録済みフィギュアがありません</div>
+      <% end %>
   </div>

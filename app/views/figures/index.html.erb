@@ -1,2 +1,11 @@
-<h1>Figures#index</h1>
-<p>Find me in app/views/figures/index.html.erb</p>
+<% content_for(:title, t('.title')) %>
+  <div class="flex flex-col max-w-6xl mx-auto items-center p-4">
+    <div class="w-full max-w-6xl rounded-2xl">
+      <%= render 'search', q: @q, url: figures_path %>
+    </div>
+      <% if @figures.present? %>
+        <%= render @figures %>
+      <% else %>
+        <div>登録済みフィギュアがありません</div>
+      <% end %>
+  </div>

@@ -1,0 +1,23 @@
+<div class="flex flex-col gap-1 w-full rounded-lg border border-gray-500 px-3 py-2 hover:border-gray-400">
+  <div class="flex justify-between">
+    <div>
+      <%= l(figure.release_month, format: :default) %>
+      <%= t("defaults.scheduled_for_release") %>
+    </div>
+    <div>
+      <%= figure.payment_status_i18n %>
+    </div>
+  </div>
+  <div class="text-xl font-bold hover:underline">
+    <%= link_to figure.name, '#' %>
+  </div>
+  <div>
+    <span>
+      <%= "¥#{number_with_delimiter(figure.price)}" %>
+      <%= "× #{figure.quantity}個 ⇒" %>
+      <span class="text-xl font-bold">
+        <%= "¥#{number_with_delimiter(figure.price * figure.quantity)}" %>
+      </span>  
+    </span>
+  </div>
+</div>

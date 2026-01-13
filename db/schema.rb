@@ -10,9 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_01_07_085240) do
+ActiveRecord::Schema[7.2].define(version: 2026_01_11_172820) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "figures", force: :cascade do |t|
+    t.string "name", null: false
+    t.date "release_month", null: false
+    t.integer "quantity", null: false
+    t.integer "price", null: false
+    t.integer "payment_status", null: false
+    t.integer "size_type"
+    t.integer "size_mm"
+    t.text "note"
+    t.bigint "user_id"
+    t.bigint "manufacture_id"
+    t.bigint "work_id"
+    t.bigint "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manufacture_id"], name: "index_figures_on_manufacture_id"
+    t.index ["shop_id"], name: "index_figures_on_shop_id"
+    t.index ["user_id"], name: "index_figures_on_user_id"
+    t.index ["work_id"], name: "index_figures_on_work_id"
+  end
+
+  create_table "manufactures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,4 +63,15 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_07_085240) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  create_table "works", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "figures", "manufactures"
+  add_foreign_key "figures", "shops"
+  add_foreign_key "figures", "users"
+  add_foreign_key "figures", "works"
 end

@@ -1,0 +1,12 @@
+ja:
+  date:
+    formats:
+      default: "%Y年%m月"
+  defaults:
+    search_word: 検索内容を入力
+    scheduled_for_release: 発売予定
+  figures:
+    index:
+      title: ホーム
+      no_data_available: 表示できるデータがありません。
+      

@@ -18,6 +18,6 @@ class Figure < ApplicationRecord
   enum size_type: { overall_height: 0, overall_length: 1 }
 
   def self.ransackable_attributes(auth_object = nil)
-      ["name"]
+      [ "name" ]
   end
 end

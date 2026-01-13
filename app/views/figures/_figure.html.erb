@@ -1,34 +1,23 @@
-<div class="w-full rounded-lg border border-gray-500 px-3 py-2 hover:border-gray-400">
-  <div class="flex justify-between">
-    <div>
-    2026年12月販売予定
-    </div>
-    <div>
-    未払い
-    </div>
-    </div>
-    <div class="font-bold">
-    ねんどろいど シロコ＊テラー (フィギュア)
-    </div>
-    <div>
-    ￥6,000 × 3個 ⇒ ￥18,000
-  </div>
-</div>
-<div class="w-full rounded-lg border border-gray-500 px-3 py-2 hover:border-gray-400">
+<div class="flex flex-col gap-1 w-full rounded-lg border border-gray-500 px-3 py-2 hover:border-gray-400">
   <div class="flex justify-between">
     <div>
       <%= l(figure.release_month, format: :default) %>
       <%= t("defaults.scheduled_for_release") %>
     </div>
     <div>
-      <%= t("activerecord.enums.figure.payment_status.#{figure.payment_status}") %>
-      <%= figure.payment_status %>
+      <%= figure.payment_status_i18n %>
     </div>
   </div>
-  <div class="font-bold">
+  <div class="text-xl font-bold hover:underline">
     <%= link_to figure.name, '#' %>
   </div>
   <div>
-    ￥6,000 × 3個 ⇒ ￥18,000
+    <span>
+      <%= "¥#{number_with_delimiter(figure.price)}" %>
+      <%= "× #{figure.quantity}個 ⇒" %>
+      <span class="text-xl font-bold">
+        <%= "¥#{number_with_delimiter(figure.price * figure.quantity)}" %>
+      </span>  
+    </span>
   </div>
 </div>

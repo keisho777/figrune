@@ -8,4 +8,5 @@ ja:
   figures:
     index:
       title: ホーム
+      no_data_available: 表示できるデータがありません。
       

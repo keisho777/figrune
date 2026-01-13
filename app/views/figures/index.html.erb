@@ -6,6 +6,6 @@
       <% if @figures.present? %>
         <%= render @figures %>
       <% else %>
-        <div>登録済みフィギュアがありません</div>
+        <span><%= t(".no_data_available") %></span>
       <% end %>
   </div>

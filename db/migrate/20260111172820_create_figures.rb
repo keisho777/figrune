@@ -13,7 +13,7 @@ class CreateFigures < ActiveRecord::Migration[7.2]
       t.references :manufacture, foreign_key: true
       t.references :work, foreign_key: true
       t.references :shop, foreign_key: true
-      
+
       t.timestamps
     end
   end

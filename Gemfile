@@ -62,6 +62,6 @@ gem "devise"
 
 gem "devise-i18n"
 
-gem 'ransack'
+gem "ransack"
 
-gem 'enum_help'
+gem "enum_help"

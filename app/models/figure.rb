@@ -10,7 +10,7 @@ class Figure < ApplicationRecord
   belongs_to :manufacture, optional: true
   belongs_to :work, optional: true
   belongs_to :shop, optional: true
-  
+
   # 支払いステータス：0:未払い、1:支払い済み
   enum payment_status: { unpaid: 0, paid: 1 }
 

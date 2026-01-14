@@ -1,9 +1,10 @@
 class Figure < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
   validates :release_month, presence: true
-  validates :quantity, presence: true
-  validates :price, presence: true
+  validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 1 }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 1 }
   validates :payment_status, presence: true
+  validates :size_mm, numericality: { greater_than_or_equal_to: 1 }
   validates :note, length: { maximum: 65_535 }
 
   belongs_to :user

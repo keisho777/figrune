@@ -22,7 +22,7 @@ ja:
     figure:
       payment_status:
         unpaid: 未払い
-        paid: 支払い済
+        paid: 支払い済み
       size_type:
         overall_height: 全高
         overall_length: 全長

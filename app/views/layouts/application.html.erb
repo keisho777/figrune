@@ -21,7 +21,7 @@
     <%= render 'shared/header' %>
 
     <% flash.each do |key, message| %>
-      <% if key == 'notice' %>
+      <% if key == 'notice' || key == 'success' %>
         <div role="alert" class="border-2 bg-green-100 p-4 text-green-500">
           <div class="flex items-start gap-3">    
             <div class="block flex-1 leading-tight font-semibold <%= key %>"><%= message %></div>

@@ -1,11 +1,11 @@
 <% content_for(:title, t('.title')) %>
   <div class="flex flex-col max-w-6xl mx-auto items-center p-4">
-    <div class="w-full max-w-6xl rounded-2xl">
+    <div class="w-full rounded-2xl">
       <%= render 'search', q: @q, url: figures_path %>
     </div>
-      <% if @figures.present? %>
-        <%= render @figures %>
-      <% else %>
-        <span><%= t(".no_data_available") %></span>
-      <% end %>
+    <% if @figures.present? %>
+      <%= render @figures %>
+    <% else %>
+      <span><%= t(".no_data_available") %></span>
+    <% end %>
   </div>

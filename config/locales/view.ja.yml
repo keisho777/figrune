@@ -5,8 +5,22 @@ ja:
   defaults:
     search_word: 検索内容を入力
     scheduled_for_release: 発売予定
+    optional_details: 詳細情報を入力（任意）
+    please_select: 選択してください
+    flash_message:
+      created: 登録しました
+      not_created: 登録できませんでした
+  helpers:
+    submit:
+      create: 登録する
+      submit: 保存
+      update: 更新
+  header:
+    create: 登録
   figures:
     index:
       title: ホーム
       no_data_available: 表示できるデータがありません。
+    new:
+      title: 登録
       

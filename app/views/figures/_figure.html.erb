@@ -1,23 +1,26 @@
-<div class="flex flex-col gap-1 w-full rounded-lg border border-gray-500 px-3 py-2 hover:border-gray-400">
+<!-- 一覧画面で表示されるカード -->
+<div class="flex flex-col gap-1 w-full rounded-lg border border-gray-500 px-3 py-2">
   <div class="flex justify-between">
-    <div>
+    <!-- XXXX年XX月 発売予定 -->
+    <span>
       <%= l(figure.release_month, format: :default) %>
       <%= t("defaults.scheduled_for_release") %>
-    </div>
-    <div>
+    </span>
+    <!-- 支払いステータス -->
+    <span>
       <%= figure.payment_status_i18n %>
-    </div>
+    </span>
   </div>
+  <!-- 商品名（クリックで詳細画面へ） -->
   <div class="text-xl font-bold hover:underline">
     <%= link_to figure.name, '#' %>
   </div>
+  <!-- 金額（1個あたり）× 個数 ⇒ 合計（合計はDBに保存していない） -->
   <div>
-    <span>
-      <%= "¥#{number_with_delimiter(figure.price)}" %>
-      <%= "× #{figure.quantity}個 ⇒" %>
-      <span class="text-xl font-bold">
-        <%= "¥#{number_with_delimiter(figure.price * figure.quantity)}" %>
-      </span>  
-    </span>
+    <%= "¥#{number_with_delimiter(figure.price)}" %>
+    <%= "× #{figure.quantity}個 ⇒" %>
+    <span class="text-xl font-bold">
+      <%= "¥#{number_with_delimiter(figure.price * figure.quantity)}" %>
+    </span>  
   </div>
 </div>

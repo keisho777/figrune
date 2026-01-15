@@ -1,0 +1,94 @@
+<%= form_with model: figure do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="flex flex-col gap-3">
+    <!-- 商品名 -->
+    <div>
+      <%= f.label :name, class: "font-bold" %>
+      <%= f.text_field :name,
+            autofocus: true ,
+            class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+    </div>
+    <!-- 発売月 -->
+    <div>
+      <%= f.label :release_month, class: "font-bold"  %>
+      <%= f.month_field :release_month, min: Time.current,
+            class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+    </div>
+    <!-- 個数 -->
+    <div>
+      <%= f.label :quantity, class: "font-bold"  %>
+      <%= f.number_field :quantity, min: 1,
+            class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+    </div>
+    <!-- 金額 -->
+    <div>
+      <%= f.label :price, class: "font-bold"  %>
+      <%= f.number_field :price, min: 1,
+            class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+    </div>
+    <!-- 支払いステータス -->
+    <div>
+      <%= f.label :payment_status, class: "font-bold"  %>
+      <%= f.select :payment_status, Figure.payment_statuses_i18n.map { |k, v| [v, k] },
+          {}, class: "mb-3 w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+    </div>
+    <!-- 詳細情報を入力（任意）ディスクロージャー -->
+    <details class="flex flex-col gap-3 group">
+      <summary class="cursor-pointer text-sm text-gray-700 flex items-center gap-2">
+        <span class="flex-1 border-t border-solid border-gray-300"></span>
+        <span class="group-open:hidden">＋</span>
+        <span class="hidden group-open:inline">−</span>
+          <%= t("defaults.optional_details") %>
+        <span class="flex-1 border-t border-solid border-gray-300"></span>
+      </summary>
+      <div class="flex flex-col gap-3">
+        <!-- サイズ -->
+        <%= f.label :size, class: "font-bold"  %>
+        <div class="flex gap-4">
+          <!-- サイズ種別 -->
+          <div class="w-full">
+              <%= f.label :size_type , class: "text-sm" %>
+              <%= f.select :size_type, Figure.size_types_i18n.map { |k, v| [v, k] },
+                  { include_blank: t("defaults.please_select") },
+                  class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+          </div>
+          <!-- サイズ（mm） -->
+          <div class="w-full">
+              <%= f.label :size_mm, class: "text-sm" %>
+              <%= f.number_field :size_mm, min: 1,
+                  class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+          </div>
+        </div>
+        <!-- 作品名 -->
+        <div>
+          <%= f.label :work, class: "font-bold"  %>
+          <%= f.text_field :work_name,
+              class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+        </div>
+        <!-- 予約/購入店舗 -->
+        <div>
+          <%= f.label :shop, class: "font-bold"  %>
+          <%= f.text_field :shop_name,
+              class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+        </div>
+        <!-- メーカー -->
+        <div>
+          <%= f.label :manufacture, class: "font-bold"  %>
+          <%= f.text_field :manufacture_name,
+              class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+        </div>
+        <!-- 備考 -->
+        <div>
+          <%= f.label :note, class: "font-bold"  %>
+          <%= f.text_area :note,
+              class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+        </div>
+      </div>
+    </details>
+    <!-- 登録するボタン -->
+    <div class="flex justify-center">
+      <%= f.submit nil,
+            class: "mt-3 mb-16 px-18 py-2 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition" %>
+    </div>
+  </div>
+<% end %>

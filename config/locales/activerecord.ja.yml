@@ -5,11 +5,24 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード（確認）"
+      figure:
+        name: 商品名
+        release_month: 発売月
+        quantity: 個数
+        price: 金額（1個あたり）
+        payment_status: 支払いステータス
+        size: サイズ
+        size_type: サイズ種別
+        size_mm: サイズ（mm）
+        work: 作品名
+        shop: 予約/購入店舗
+        manufacture: メーカー
+        note: 備考
   enums:
     figure:
       payment_status:
         unpaid: 未払い
-        paid: 支払い済
+        paid: 支払い済み
       size_type:
         overall_height: 全高
         overall_length: 全長

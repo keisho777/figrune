@@ -55,7 +55,7 @@
           <!-- サイズ（mm） -->
           <div class="w-full">
               <%= f.label :size_mm, class: "text-sm" %>
-              <%= f.number_field :size_mm,
+              <%= f.number_field :size_mm, min: 1,
                   class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
           </div>
         </div>

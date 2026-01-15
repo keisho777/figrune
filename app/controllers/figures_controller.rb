@@ -20,9 +20,9 @@ class FiguresController < ApplicationController
      @figure.assign_shop_by_name(@figure.shop_name)
      @figure.assign_manufacture_by_name(@figure.manufacture_name)
     if @figure.save
-      redirect_to figures_path, success: t("defaults.flash_message.created")
+      redirect_to figures_path, notice: t("defaults.flash_message.created")
     else
-      flash.now[:danger] = t("defaults.flash_message.not_created")
+      flash.now[:alert] = t("defaults.flash_message.not_created")
       render :new, status: :unprocessable_entity
     end
   end

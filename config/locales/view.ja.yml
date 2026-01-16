@@ -23,4 +23,21 @@ ja:
       no_data_available: 表示できるデータがありません。
     new:
       title: 登録
+    show:
+      basic_information: 基本情報
+      optional_information: 詳細情報
+      name: 商品名
+      release_month: 発売月
+      quantity: 個数
+      price: 金額（1個あたり）
+      total_price: 合計金額
+      payment_status: 支払いステータス
+      size: サイズ
+      work: 作品名
+      shop: 予約/購入店舗
+      manufacture: メーカー
+      note: 備考
+      edit: 編集する
+      back: 戻る
+
       

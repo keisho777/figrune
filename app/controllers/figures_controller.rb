@@ -27,6 +27,10 @@ class FiguresController < ApplicationController
     end
   end
 
+  def show
+    @figure = Figure.find(params[:id])
+  end
+
   private
 
   def figure_params

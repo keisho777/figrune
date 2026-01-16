@@ -45,4 +45,8 @@ class Figure < ApplicationRecord
     return if name.blank?
     self.manufacture = Manufacture.find_or_create_by(name: name)
   end
+
+  def total_price
+    quantity * price
+  end
 end

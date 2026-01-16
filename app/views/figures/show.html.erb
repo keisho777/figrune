@@ -1,63 +1,78 @@
 <% content_for(:title, @figure.name) %>
 <div class="max-w-4xl mx-auto p-4">
+  <!-- 商品名 -->
   <h2 class="text-xl font-bold text-center"><%= @figure.name %></h2>
+  <!-- 基本情報 -->
   <h3 class="text-xl font-bold border-b-2 pb-1 mt-3">
     <%= t(".basic_information") %>
   </h3>
   <dl class="my-3 divide-y divide-gray-400">
+    <!-- 支払いステータス -->
     <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
       <dt class="font-bold"><%= t(".payment_status") %></dt>
       <dd class="text-gray-700 sm:col-span-2"><%= @figure.payment_status_i18n %></dd>
-    </div>      
+    </div>
+    <!-- 発売月 -->
     <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
       <dt class="font-bold"><%= t(".release_month") %></dt>
       <dd class="text-gray-700 sm:col-span-2"><%= l(@figure.release_month, format: :default) %></dd>
     </div>
+    <!-- 個数-->
     <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
       <dt class="font-bold"><%= t(".quantity") %></dt>
       <dd class="text-gray-700 sm:col-span-2"><%= @figure.quantity %></dd>
     </div>
+    <!-- 金額（1個あたり） -->
     <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
       <dt class="font-bold"><%= t(".price") %></dt>
       <dd class="text-gray-700 sm:col-span-2"><%= number_to_currency(@figure.price, unit: "¥", format: "%u%n") %></dd>
     </div>
+    <!-- 合計金額 -->
     <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
       <dt class="font-bold"><%= t(".total_price") %></dt>
       <dd class="text-gray-700 sm:col-span-2"><%= number_to_currency(@figure.total_price, unit: "¥", format: "%u%n") %></dd>
     </div>
   </dl>
+  <!-- 任意入力の項目で1つでも入力されているものがあれば、詳細情報を表示する -->
   <% if @figure.size_type.present? || @figure.size_mm.present? ||@figure.shop.present? || @figure.manufacture.present? ||
         @figure.work.present? || @figure.note.present? %>
     <div class="mt-6">
+      <!-- 詳細情報 -->
       <h3 class="text-xl font-bold border-b-2 pb-1 mt-16">
         <%= t(".optional_information") %>
       </h3>
+      <!-- 以下のif処理は値が空白でなければ、項目と値を表示する -->
       <dl class="my-3 divide-y divide-gray-400">
         <% if @figure.work.present? %>
+          <!-- 作品名 -->
           <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
             <dt class="font-bold"><%= t(".work") %></dt>
             <dd class="text-gray-700 sm:col-span-2"><%= @figure.work.name %></dd>
           </div>
         <% end %>
         <% if @figure.shop.present? %>
+          <!-- 予約/購入店舗 -->
           <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
             <dt class="font-bold"><%= t(".shop") %></dt>
             <dd class="text-gray-700 sm:col-span-2"><%= @figure.shop.name %></dd>
           </div>
         <% end %>
         <% if @figure.manufacture.present? %>
+          <!-- メーカー -->
           <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
             <dt class="font-bold"><%= t(".manufacture") %></dt>
             <dd class="text-gray-700 sm:col-span-2"><%= @figure.manufacture.name %></dd>
           </div>
         <% end %>
         <% if @figure.size_type? %>
+          <!-- サイズ -->
           <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
             <dt class="font-bold"><%= t(".size") %></dt>
             <dd class="text-gray-700 sm:col-span-2"><%= @figure.size_type_i18n %><%= "：約#{@figure.size_mm}mm" %></dd>
           </div>
         <% end %>
         <% if @figure.note? %>
+          <!-- 備考 -->
           <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
             <dt class="font-bold"><%= t(".note") %></dt>
             <dd class="text-gray-700 sm:col-span-2"><%= @figure.note %></dd>
@@ -67,8 +82,10 @@
     </div>
   <% end %>
   <div class="max-w-sm mx-auto flex flex-col">
+    <!-- 編集するボタン -->
     <%= link_to t(".edit"), '#',
         class: "mt-3 mb-3 px-18 py-2 text-center rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition" %>
+    <!-- 戻るボタン -->
     <%= link_to t(".back"), figures_path,
         class: "mt-3 mb-10 px-18 py-2 text-center rounded-lg bg-gray-500 text-white font-semibold hover:bg-gray-600 transition" %>
   </div>

@@ -8,13 +8,13 @@ class Figure < ApplicationRecord
   validates :note, length: { maximum: 65_535 }
 
   belongs_to :user
-  belongs_to :manufacture, optional: true
+  belongs_to :manufacturer, optional: true
   belongs_to :work, optional: true
   belongs_to :shop, optional: true
 
   attr_accessor :work_name
   attr_accessor :shop_name
-  attr_accessor :manufacture_name
+  attr_accessor :manufacturer_name
 
   # 支払いステータス：0:未払い、1:支払い済み
   enum payment_status: { unpaid: 0, paid: 1 }
@@ -45,9 +45,9 @@ class Figure < ApplicationRecord
     self.shop = Shop.find_or_create_by(name: name)
   end
 
-  def assign_manufacture_by_name(name)
+  def assign_manufacturer_by_name(name)
     return if name.blank?
-    self.manufacture = Manufacture.find_or_create_by(name: name)
+    self.manufacturer = Manufacturer.find_or_create_by(name: name)
   end
   
   # 合計金額計算用のメソッド

@@ -18,7 +18,7 @@ class FiguresController < ApplicationController
      # フォームで入力された名称をもとに、各関連モデルを取得（なければ作成）して Figure に紐付ける
      @figure.assign_work_by_name(@figure.work_name)
      @figure.assign_shop_by_name(@figure.shop_name)
-     @figure.assign_manufacture_by_name(@figure.manufacture_name)
+     @figure.assign_manufacturer_by_name(@figure.manufacturer_name)
     if @figure.save
       redirect_to figures_path, notice: t("defaults.flash_message.created")
     else
@@ -34,6 +34,6 @@ class FiguresController < ApplicationController
   private
 
   def figure_params
-    params.require(:figure).permit(:name, :release_month, :quantity, :price, :payment_status, :size_type, :size_mm, :work_name, :shop_name, :manufacture_name, :note)
+    params.require(:figure).permit(:name, :release_month, :quantity, :price, :payment_status, :size_type, :size_mm, :work_name, :shop_name, :manufacturer_name, :note)
   end
 end

@@ -16,7 +16,7 @@ ja:
         size_mm: サイズ（mm）
         work: 作品名
         shop: 予約/購入店舗
-        manufacture: メーカー
+        manufacturer: メーカー
         note: 備考
   enums:
     figure:

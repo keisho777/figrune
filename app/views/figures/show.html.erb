@@ -34,7 +34,7 @@
     </div>
   </dl>
   <!-- 任意入力の項目で1つでも入力されているものがあれば、詳細情報を表示する -->
-  <% if @figure.size_type.present? || @figure.size_mm.present? ||@figure.shop.present? || @figure.manufacture.present? ||
+  <% if @figure.size_type.present? || @figure.size_mm.present? ||@figure.shop.present? || @figure.manufacturer.present? ||
         @figure.work.present? || @figure.note.present? %>
     <div class="mt-6">
       <!-- 詳細情報 -->
@@ -57,11 +57,11 @@
             <dd class="text-gray-700 sm:col-span-2"><%= @figure.shop.name %></dd>
           </div>
         <% end %>
-        <% if @figure.manufacture.present? %>
+        <% if @figure.manufacturer.present? %>
           <!-- メーカー -->
           <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
-            <dt class="font-bold"><%= t(".manufacture") %></dt>
-            <dd class="text-gray-700 sm:col-span-2"><%= @figure.manufacture.name %></dd>
+            <dt class="font-bold"><%= t(".manufacturer") %></dt>
+            <dd class="text-gray-700 sm:col-span-2"><%= @figure.manufacturer.name %></dd>
           </div>
         <% end %>
         <% if @figure.size_type? %>

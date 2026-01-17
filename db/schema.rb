@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_01_17_044048) do
+ActiveRecord::Schema[7.2].define(version: 2026_01_17_045103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,12 +24,12 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_17_044048) do
     t.integer "size_mm"
     t.text "note"
     t.bigint "user_id"
-    t.bigint "manufacture_id"
+    t.bigint "manufacturer_id"
     t.bigint "work_id"
     t.bigint "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["manufacture_id"], name: "index_figures_on_manufacture_id"
+    t.index ["manufacturer_id"], name: "index_figures_on_manufacturer_id"
     t.index ["shop_id"], name: "index_figures_on_shop_id"
     t.index ["user_id"], name: "index_figures_on_user_id"
     t.index ["work_id"], name: "index_figures_on_work_id"
@@ -70,7 +70,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_17_044048) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "figures", "manufacturers", column: "manufacture_id"
+  add_foreign_key "figures", "manufacturers"
   add_foreign_key "figures", "shops"
   add_foreign_key "figures", "users"
   add_foreign_key "figures", "works"

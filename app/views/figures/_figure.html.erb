@@ -13,7 +13,7 @@
   </div>
   <!-- 商品名（クリックで詳細画面へ） -->
   <div class="text-xl font-bold hover:underline">
-    <%= link_to figure.name, '#' %>
+    <%= link_to figure.name, figure_path(figure) %>
   </div>
   <!-- 金額（1個あたり）× 個数 ⇒ 合計（合計はDBに保存していない） -->
   <div>

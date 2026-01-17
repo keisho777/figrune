@@ -22,15 +22,19 @@ class Figure < ApplicationRecord
   # 大きさの単位：0:全高、1:全長
   enum size_type: { overall_height: 0, overall_length: 1 }
 
+  # Ransack で検索を許可するカラム一覧
   def self.ransackable_attributes(auth_object = nil)
       [ "name" ]
   end
+
   # release_monthがXXXX-XXの形式だと保存できないためXXXX-XX-01にして回避するためのカスタムセッター
   # Xは数値です
   def release_month=(value)
     super(value + "-01")
   end
 
+  # 以下3点のassign_テーブル名_by_nameについて
+  # フォームで入力された名称をもとに、各関連モデルを取得（なければ作成）して Figure に紐付ける
   def assign_work_by_name(name)
     return if name.blank?
     self.work = Work.find_or_create_by(name: name)
@@ -44,5 +48,10 @@ class Figure < ApplicationRecord
   def assign_manufacture_by_name(name)
     return if name.blank?
     self.manufacture = Manufacture.find_or_create_by(name: name)
+  end
+  
+  # 合計金額計算用のメソッド
+  def total_price
+    quantity * price
   end
 end

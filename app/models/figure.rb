@@ -14,7 +14,7 @@ class Figure < ApplicationRecord
 
   attr_accessor :work_name
   attr_accessor :shop_name
-  attr_accessor :manufacture_name
+  attr_accessor :manufacturer_name
 
   # 支払いステータス：0:未払い、1:支払い済み
   enum payment_status: { unpaid: 0, paid: 1 }
@@ -45,7 +45,7 @@ class Figure < ApplicationRecord
     self.shop = Shop.find_or_create_by(name: name)
   end
 
-  def assign_manufacture_by_name(name)
+  def assign_manufacturer_by_name(name)
     return if name.blank?
     self.manufacturer = Manufacturer.find_or_create_by(name: name)
   end

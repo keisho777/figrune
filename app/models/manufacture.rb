@@ -1,3 +1,3 @@
-class Manufacture < ApplicationRecord
+class r < ApplicationRecord
   has_many :figures
 end

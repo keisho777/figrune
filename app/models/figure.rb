@@ -33,25 +33,62 @@ class Figure < ApplicationRecord
     super(value + "-01")
   end
 
-  # 以下3点のassign_テーブル名_by_nameについて
+  # 以下3点の　assign_テーブル名_by_name　について
   # フォームで入力された名称をもとに、各関連モデルを取得（なければ作成）して Figure に紐付ける
   def assign_work_by_name(name)
-    return if name.blank?
+    if name.blank?
+      self.work = nil
+      return
+    end
     self.work = Work.find_or_create_by(name: name)
   end
 
   def assign_shop_by_name(name)
-    return if name.blank?
+    if name.blank?
+      self.shop = nil
+      return
+    end
     self.shop = Shop.find_or_create_by(name: name)
   end
 
   def assign_manufacturer_by_name(name)
-    return if name.blank?
+    if name.blank?
+      self.manufacturer = nil
+      return
+    end
     self.manufacturer = Manufacturer.find_or_create_by(name: name)
   end
-  
+
   # 合計金額計算用のメソッド
   def total_price
     quantity * price
+  end
+
+  # 以下3点の　set_仮想カラム名_from_テーブル名　について
+  # 編集画面を表示するとき、外部キーが設定されていれば、関連先テーブルのnameを取得して
+  # 仮想カラムにセットする
+  def set_work_name_from_work
+    return if self.work_id.blank?
+    self.work_name = Work.find_by(id: self.work_id).name
+  end
+
+  def set_shop_name_from_shop
+    return if self.shop_id.blank?
+    self.shop_name = Shop.find_by(id: self.shop_id).name
+  end
+
+  def set_manufacturer_name_from_manufacturer
+    return if self.manufacturer_id.blank?
+    self.manufacturer_name = Manufacturer.find_by(id: self.manufacturer_id).name
+  end
+
+  # 任意項目が入力されているか
+  def optional_fields_filled?
+    size_type.present? ||
+    size_mm.present? ||
+    work_name.present? ||
+    shop_name.present? ||
+    manufacturer_name.present? ||
+    note.present?
   end
 end

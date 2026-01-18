@@ -10,11 +10,13 @@ ja:
     flash_message:
       created: 登録しました
       not_created: 登録できませんでした
+      updated: 更新しました
+      not_updated: 更新できませんでした
   helpers:
     submit:
       create: 登録する
       submit: 保存
-      update: 更新
+      update: 更新する
   header:
     create: 登録
   figures:
@@ -39,5 +41,8 @@ ja:
       note: 備考
       edit: 編集する
       back: 戻る
+    edit:
+      title: 編集
+      delete: 削除する
 
       

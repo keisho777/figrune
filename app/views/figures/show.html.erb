@@ -83,7 +83,7 @@
   <% end %>
   <div class="max-w-sm mx-auto flex flex-col">
     <!-- 編集するボタン -->
-    <%= link_to t(".edit"), '#',
+    <%= link_to t(".edit"), edit_figure_path(@figure),
         class: "mt-3 mb-3 px-18 py-2 text-center rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition" %>
     <!-- 戻るボタン -->
     <%= link_to t(".back"), figures_path,

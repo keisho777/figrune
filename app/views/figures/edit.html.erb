@@ -1,0 +1,14 @@
+<% content_for(:title, t('.title')) %>
+  <div class="flex flex-col max-w-4xl mx-auto items-center p-4">
+    <h2 class="text-xl font-bold">
+      <%= t(".title") %>
+    </h2>
+    <div class="w-full">
+      <%= render 'form', figure: @figure %>
+    </div>
+    <div class="w-full max-w-sm mx-auto flex flex-col">
+        <!-- 削除するボタン -->
+        <%= link_to t(".delete"), '#',
+            class: "-mt-4 mb-10 px-18 py-2 text-center rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 transition" %>
+    </div>
+  </div>

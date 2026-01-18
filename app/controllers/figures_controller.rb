@@ -31,6 +31,32 @@ class FiguresController < ApplicationController
     @figure = Figure.find(params[:id])
   end
 
+  def edit
+    @figure = current_user.figures.find(params[:id])
+    # 以下3点の　set_仮想カラム名_from_テーブル名　について
+    # 編集画面を表示するとき、外部キーが設定されていれば、関連先テーブルのnameを取得して
+    # 仮想カラムにセットする
+    @figure.set_work_name_from_work
+    @figure.set_shop_name_from_shop
+    @figure.set_manufacturer_name_from_manufacturer
+  end
+
+  def update
+    @figure = current_user.figures.find(params[:id])
+    @figure.assign_attributes(figure_params)
+    # 以下3点のassign_テーブル名_by_nameについて
+    # フォームで入力された名称をもとに、各関連モデルを取得（なければ作成）して Figure に紐付ける
+    @figure.assign_work_by_name(@figure.work_name)
+    @figure.assign_shop_by_name(@figure.shop_name)
+    @figure.assign_manufacturer_by_name(@figure.manufacturer_name)
+    if @figure.save
+      redirect_to figure_path(@figure), notice: t("defaults.flash_message.updated")
+    else
+      flash.now[:alert] = t("defaults.flash_message.not_updated")
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def figure_params

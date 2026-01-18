@@ -57,6 +57,12 @@ class FiguresController < ApplicationController
     end
   end
 
+  def destroy
+    figure = current_user.figures.find(params[:id])
+    figure.destroy!
+    redirect_to figures_path, notice: t("defaults.flash_message.deleted"), status: :see_other
+  end
+
   private
 
   def figure_params

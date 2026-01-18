@@ -7,11 +7,13 @@ ja:
     scheduled_for_release: 発売予定
     optional_details: 詳細情報を入力（任意）
     please_select: 選択してください
+    delete_confirm: 本当に削除してよろしいですか？
     flash_message:
       created: 登録しました
       not_created: 登録できませんでした
       updated: 更新しました
       not_updated: 更新できませんでした
+      deleted: 削除しました
   helpers:
     submit:
       create: 登録する

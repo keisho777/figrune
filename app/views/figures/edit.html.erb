@@ -7,8 +7,8 @@
       <%= render 'form', figure: @figure %>
     </div>
     <div class="w-full max-w-sm mx-auto flex flex-col">
-        <!-- 削除するボタン -->
-        <%= link_to t(".delete"), '#',
-            class: "-mt-4 mb-10 px-18 py-2 text-center rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 transition" %>
+      <!-- 削除するボタン -->
+      <%= link_to t(".delete"), figure_path(@figure), data: { turbo_method: :delete, turbo_confirm: t("defaults.delete_confirm") },
+          class: "-mt-4 mb-10 px-18 py-2 text-center rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 transition" %>
     </div>
   </div>

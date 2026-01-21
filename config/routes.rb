@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :figures, only: [ :index, :new, :create, :show, :edit, :update, :destroy ]
+  resource :account_setting, only: [ :show ]
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }

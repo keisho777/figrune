@@ -21,6 +21,38 @@ ja:
       update: 更新する
   header:
     create: 登録
+  static_pages:
+    top:
+      hero:
+        title: 予約したフィギュア、ちゃんと把握できていますか？
+        description: 将来の支払い・発売時期・購入数を可視化して、計画的にフィギュアを管理するためのアプリです。
+      problems:
+        title: こんな不安、ありませんか？
+        payment:
+          title: 支払いタイミングが不安
+          description: 購入から半年〜1年後に決済されることもあり、いつ・いくら請求されるのか分からなくなる。
+        forget:
+          title: 予約した内容を忘れる
+          description: 時間が経つと、何を、どの店舗で予約したのか分からなくなってしまう。
+        storage:
+          title: 置き場所・保管問題
+          description: フィギュアや箱が増え、気づいたら保管スペースが限界に。
+      solution:
+        title: このアプリでできること
+        visualize:
+          title: 発売・支払いを可視化
+          description: 発売時期から決済タイミングを把握し、先の出費を予測できます。
+        manage:
+          title: 予約商品を管理
+          description: 予約済みのフィギュアを整理し、詳細情報を見える化します。
+        plan:
+          title: 計画的なコレクション
+          description: 無理のない購入計画を立て、後悔のないフィギュア趣味を続けられます。
+      cta:
+        title: フィギュア購入を、もっと安心に
+        description: 将来の支払いとコレクションを、今から管理しませんか？
+        create: 無料で始める
+        login: ログイン
   figures:
     index:
       title: ホーム

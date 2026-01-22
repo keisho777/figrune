@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV.fetch("MAIL_FROM")
+  default from: Rails.env.production? ? ENV.fetch("MAIL_FROM") : ENV.fetch("MAIL_FROM", "no-reply@example.com")
   layout "mailer"
 end

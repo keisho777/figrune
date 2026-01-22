@@ -101,4 +101,8 @@ Rails.application.configure do
   config.hosts << "figrune.onrender.com"
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # mail settings
+  config.action_mailer.delivery_method = :resend
+  config.action_mailer.default_url_options = { host: "figrune-app.com", protocol: "https" }
 end

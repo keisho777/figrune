@@ -65,3 +65,5 @@ gem "devise-i18n"
 gem "ransack"
 
 gem "enum_help"
+
+gem "resend"

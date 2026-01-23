@@ -15,8 +15,13 @@ ja:
         dont_have_account: まだアカウントをお持ちでない方はこちら
         forgot_password: パスワードをお忘れの方はこちら
     passwords:
+      no_token: パスワード再設定リンクが無効か期限切れです。新しいメールを送信してください。
       new:
         title: パスワード再設定
         describe_html: 会員登録をしたメールアドレスを入力し、「送信する」ボタンをクリックしてください。<br>入力されたメールアドレスに確認メールを送信します。
         submit: 送信する
         back_to_login: 戻る
+      edit:
+        title: パスワード再設定
+        password_hint: "※%{min}文字以上"
+        submit: 変更する

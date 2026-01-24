@@ -4,14 +4,15 @@ class AccountSettingsController < ApplicationController
 
   def edit_email; 
     @user = current_user
+    @user.email = ""
   end
 
   def update_email
     @user = current_user
     if @user.update_without_password(email_params)
-      redirect_to account_setting_path, notice: "確認メールを送信しました"
+      redirect_to account_setting_path, notice: t("defaults.flash_message.account_setting.updated")
     else
-      flash.now[:alert] = "失敗"
+      flash.now[:alert] = t("defaults.flash_message.account_setting.not_updated")
       render :edit_email, status: :unprocessable_entity
     end
   end

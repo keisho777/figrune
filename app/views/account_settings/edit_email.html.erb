@@ -1,4 +1,4 @@
-<%= form_with model: @user, url: update_email_account_setting_path, method: :put do |f| %>
+<%= form_with model: @user, url: update_email_account_setting_path, method: :patch do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
   <%= f.label :email %>
   <%= f.email_field :email %>

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   resources :figures, only: [ :index, :new, :create, :show, :edit, :update, :destroy ]
-  resource :account_setting, only: [ :show ]
+  resource :account_setting, only: [ :show ] do
+    get   :edit_email
+    patch :update_email
+  end
   devise_for :users, controllers: {
-    registrations: "users/registrations"
+    registrations: "users/registrations",
+    confirmations: "users/confirmations"
   }
   root "static_pages#top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

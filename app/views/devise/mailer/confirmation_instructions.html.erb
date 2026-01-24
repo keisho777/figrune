@@ -1,5 +1,11 @@
-<p>Welcome <%= @email %>!</p>
+<p>Figruneをご利用いただきありがとうございます。</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>メールアドレス変更のリクエストを受け付けました。</p>
+<p>以下のリンクをクリックすると、メールアドレスの変更が完了します。</p>
+<p><%= confirmation_url(@resource, confirmation_token: @token) %></p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>※このリンクの有効期限は24時間です。</p>
+<p>※この操作に心当たりがない場合は、本メールを破棄してください。</p>
+<p>※本メールを受信しただけでは、メールアドレスの変更は完了しません。</p>
+
+<p>Figrune</p>

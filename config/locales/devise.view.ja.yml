@@ -2,6 +2,8 @@
 
 ja:
   devise:
+    mailer:
+      subject: メールアドレス変更手続きのお知らせ
     registrations:
       new:
         title: アカウント登録

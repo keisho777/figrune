@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :figures, only: [ :index, :new, :create, :show, :edit, :update, :destroy ]
-  resource :account_setting, only: [ :show ]
+  resource :account_setting, only: [ :show ] do
+    get   :edit_email
+    put :update_email
+    #put "email", to: "users/registrations#update"
+  end
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }

@@ -3,11 +3,10 @@ Rails.application.routes.draw do
   resource :account_setting, only: [ :show ] do
     get   :edit_email
     patch :update_email
-    #put "email", to: "users/registrations#update"
   end
   devise_for :users, controllers: {
     registrations: "users/registrations",
-    confirmations: 'users/confirmations'
+    confirmations: "users/confirmations"
   }
   root "static_pages#top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

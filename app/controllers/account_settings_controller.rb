@@ -1,8 +1,7 @@
 class AccountSettingsController < ApplicationController
-
   def show; end
 
-  def edit_email; 
+  def edit_email
     @user = current_user
     @user.email = ""
   end

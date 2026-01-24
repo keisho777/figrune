@@ -6,6 +6,10 @@ class AccountSettingsController < ApplicationController
     @user.email = ""
   end
 
+  def edit_password
+    
+  end
+
   def update_email
     @user = current_user
     if @user.update_without_password(email_params)

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resource :account_setting, only: [ :show ] do
     get   :edit_email
     patch :update_email
+    get   :edit_password
+    patch :update_password
   end
   devise_for :users, controllers: {
     registrations: "users/registrations",

@@ -1,0 +1,15 @@
+<%= turbo_frame_tag "email_notification" do %>
+  <%= form_with model: @user, 
+                url: update_email_notification_timing_account_setting_path, 
+                method: :patch,
+                data: { controller: "auto-submit" } do |f| %>
+    
+    <div class="form-group">
+      <%= f.select :email_notification_timing,
+                   User.email_notification_timings_i18n.map { |k, v| [v, k] },
+                   {}, 
+                   class: "p-1 border",
+                   data: { action: "change->auto-submit#submit" } %>
+    </div>
+  <% end %>
+<% end %>

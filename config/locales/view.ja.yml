@@ -17,6 +17,7 @@ ja:
       account_setting:
         not_updated: 変更できませんでした
         updated: 確認メールを送信しました
+        password_updated: パスワードを変更しました
   helpers:
     submit:
       create: 登録する
@@ -96,6 +97,12 @@ ja:
       current_email: 現在のメールアドレス
       new_email: 新しいメールアドレス
       description: 入力したメールアドレス宛に確認メールを送信します。メール内のURLをクリックすると、メールアドレスの変更が完了します。
+      submit: 変更する
+    edit_password:
+      title: パスワード変更
+      new_password: 新しいパスワード
+      new_password_confirmation: 新しいパスワード（確認）
+      password_hint: "※%{min}文字以上"
       submit: 変更する
 
       

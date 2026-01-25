@@ -8,6 +8,7 @@
       <%= f.select :email_notification_timing,
                    User.email_notification_timings_i18n.map { |k, v| [v, k] },
                    {}, 
+                   class: "p-1 border",
                    data: { action: "change->auto-submit#submit" } %>
     </div>
   <% end %>

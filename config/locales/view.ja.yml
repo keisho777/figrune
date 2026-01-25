@@ -17,6 +17,7 @@ ja:
       account_setting:
         not_updated: 変更できませんでした
         updated: 確認メールを送信しました
+        password_updated: パスワードを変更しました
   helpers:
     submit:
       create: 登録する

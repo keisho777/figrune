@@ -34,7 +34,7 @@ class AccountSettingsController < ApplicationController
 
     if @user.update_with_password(password_params)
       bypass_sign_in(@user)
-      redirect_to account_setting_path, notice: t("defaults.flash_message.account_setting.updated")
+      redirect_to account_setting_path, notice: t("defaults.flash_message.account_setting.password_updated")
     else
       flash.now[:alert] = t("defaults.flash_message.account_setting.not_updated")
       render :edit_password, status: :unprocessable_entity

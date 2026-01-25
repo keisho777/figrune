@@ -1,5 +1,5 @@
 class AccountSettingsController < ApplicationController
-  def show; 
+  def show
     @user = current_user
   end
 

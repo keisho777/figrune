@@ -8,12 +8,12 @@
   </h3>
   <dl class="my-3 divide-y divide-gray-400">
     <!-- メールアドレス変更 -->
-    <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
+    <div class="grid grid-cols-2 py-3 sm:grid-cols-3">
       <dt class="font-bold"><%= t(".change_email") %></dt>
       <dd class="text-gray-700 sm:col-span-2"><%= link_to t('.change'), edit_email_account_setting_path, class: "text-blue-500 hover:underline font-medium"%></dd>
     </div>
     <!-- パスワード変更 -->
-    <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
+    <div class="grid grid-cols-2 py-3 sm:grid-cols-3">
       <dt class="font-bold"><%= t(".change_password") %></dt>
       <dd class="text-gray-700 sm:col-span-2"><%= link_to t('.change'), edit_password_account_setting_path, class: "text-blue-500 hover:underline font-medium"%></dd>
     </div>
@@ -24,10 +24,12 @@
   </h3>
   <dl class="my-3 divide-y divide-gray-400">
     <!-- メール通知 -->
-    <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
+    <div class="grid grid-cols-2 py-3 items-center sm:grid-cols-3">
       <dt class="font-bold"><%= t(".email_notification") %></dt>
       <!-- ↓はセレクトボックスの予定 -->
-      <dd class="text-gray-700 sm:col-span-2"><%= '通知なし' %></dd>
+      <dd class="text-gray-700 sm:col-span-2">
+        <%= render 'account_settings/email_notification_form' %>
+      </dd>
     </div>
   </dl>
   <div class="max-w-sm mx-auto flex flex-col">

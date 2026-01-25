@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     patch :update_email
     get   :edit_password
     patch :update_password
+    patch :update_email_notification_timing
   end
   devise_for :users, controllers: {
     registrations: "users/registrations",

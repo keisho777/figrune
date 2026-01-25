@@ -1,5 +1,7 @@
 class AccountSettingsController < ApplicationController
-  def show; end
+  def show; 
+    @user = current_user
+  end
 
   def edit_email
     @user = current_user
@@ -41,6 +43,16 @@ class AccountSettingsController < ApplicationController
     end
   end
 
+  def update_email_notification_timing
+    @user = current_user
+    if @user.update(email_notification_timing_params)
+      render :show
+    else
+      flash.now[:alert] = t("defaults.flash_message.account_setting.not_updated")
+      render :show, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def email_params
@@ -49,5 +61,9 @@ class AccountSettingsController < ApplicationController
 
   def password_params
     params.require(:user).permit(:current_password, :password, :password_confirmation)
+  end
+
+  def email_notification_timing_params
+    params.require(:user).permit(:email_notification_timing)
   end
 end

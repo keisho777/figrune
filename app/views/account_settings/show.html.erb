@@ -27,7 +27,9 @@
     <div class="grid grid-cols-1 py-3 sm:grid-cols-3">
       <dt class="font-bold"><%= t(".email_notification") %></dt>
       <!-- ↓はセレクトボックスの予定 -->
-      <dd class="text-gray-700 sm:col-span-2"><%= '通知なし' %></dd>
+      <dd class="text-gray-700 sm:col-span-2">
+        <%= render 'account_settings/email_notification_form' %>
+      </dd>
     </div>
   </dl>
   <div class="max-w-sm mx-auto flex flex-col">

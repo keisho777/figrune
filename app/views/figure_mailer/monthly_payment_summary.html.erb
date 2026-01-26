@@ -1,0 +1,17 @@
+<p><%= @user.email %> さん</p>
+
+<p>
+  <%= @month_date.strftime("%Y年%-m月") %> に発売予定のフィギュアがあります。
+</p>
+
+<ul>
+  <% @figures.each do |figure| %>
+    <li>
+      <%= figure.name %>：<%= number_to_currency(figure.price) %>
+    </li>
+  <% end %>
+</ul>
+
+<p>
+  合計金額：<strong><%= number_to_currency(@total_price) %></strong>
+</p>

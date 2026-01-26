@@ -1,17 +1,17 @@
-<p><%= @user.email %> さん</p>
+<p>Figruneをいつもご利用いただきありがとうございます。</p>
 
-<p>
-  <%= @month_date.strftime("%Y年%-m月") %> に発売予定のフィギュアがあります。
-</p>
+<p><%= @month_date.strftime("%Y年%-m月") %> 発売予定のフィギュアのお知らせです。</p>
 
-<ul>
-  <% @figures.each do |figure| %>
-    <li>
-      <%= figure.name %>：<%= number_to_currency(figure.price) %>
-    </li>
+<% @figures.each do |figure| %>
+  <% if figure.payment_status == 'unpaid' %>
+    <p>・<%= figure.name %>（<%= figure.payment_status_i18n %>）：<%= number_to_currency(figure.price) %> × <%= figure.quantity %>個</p>
+  <% else %>
+    <p>・<%= figure.name %>（<%= figure.payment_status_i18n %>）：<%= number_to_currency(figure.price) %> × <%= figure.quantity %>個</p>
   <% end %>
-</ul>
+<% end %>
 
-<p>
-  合計金額：<strong><%= number_to_currency(@total_price) %></strong>
-</p>
+<p>お支払い予定の合計金額：<strong><%= number_to_currency(@total_price) %></strong></p>
+
+<p>※ 支払い済みのフィギュアの金額は合計金額に含まれていません。</p>
+
+<p>Figrune</p>

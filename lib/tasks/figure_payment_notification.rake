@@ -15,7 +15,6 @@ namespace :reminders do
         unpaid_figures = figures.select(&:unpaid?)
         # 未払いのフィギュアの金額合計
         total_price = unpaid_figures.sum { |figure| figure.price * figure.quantity }
-        puts "MAIL SEND START"
         FigureMailer.monthly_payment_summary(user, figures, release_month, total_price).deliver_now
       end
     end

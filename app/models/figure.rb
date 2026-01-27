@@ -24,7 +24,7 @@ class Figure < ApplicationRecord
 
   # Ransack で検索を許可するカラム一覧
   def self.ransackable_attributes(auth_object = nil)
-      [ "name", "release_month", "created_at" ]
+      [ "name", "release_month", "created_at", "total_price" ]
   end
 
   # release_monthがXXXX-XXの形式だと保存できないためXXXX-XX-01にして回避するためのカスタムセッター

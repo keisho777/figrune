@@ -1,0 +1,24 @@
+<%= search_form_for q, url: url do |f| %>
+  <!-- 既存の検索条件を保持 -->
+  <%= f.hidden_field :name_cont %>
+  
+  <div class="flex items-center gap-2">
+    <label><%= t('.sort') %></label>
+    <%= f.select :s, 
+      [
+        [t('figures.sort.created_at_desc'), 'created_at desc'],
+        [t('figures.sort.created_at_asc'), 'created_at asc'],
+        [t('figures.sort.release_month_asc'), 'release_month asc'],
+        [t('figures.sort.release_month_desc'), 'release_month desc'],
+        [t('figures.sort.total_price_asc'), 'total_price asc'],
+        [t('figures.sort.total_price_desc'), 'total_price desc']
+      ],
+      # セレクトボックスで選択した値を保持する
+      { selected: params.dig(:q, :s) || 'created_at desc' },
+      {
+        class: "rounded-lg border border-gray-500 px-3 py-2 hover:border-gray-400",
+        onchange: "this.form.submit();"
+      }
+    %>
+  </div>
+<% end %>

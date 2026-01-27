@@ -34,4 +34,4 @@ jobs:
 
       # rakeタスクの実行   
       - name: Run Rake Task
-        run: bundle exec rake fetch:events
+        run: bundle exec rake reminders:figure_payment_notification

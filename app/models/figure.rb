@@ -24,7 +24,7 @@ class Figure < ApplicationRecord
 
   # Ransack で検索を許可するカラム一覧
   def self.ransackable_attributes(auth_object = nil)
-      [ "name" ]
+      [ "name", "release_month", "created_at", "total_price" ]
   end
 
   # release_monthがXXXX-XXの形式だと保存できないためXXXX-XX-01にして回避するためのカスタムセッター
@@ -57,6 +57,11 @@ class Figure < ApplicationRecord
       return
     end
     self.manufacturer = Manufacturer.find_or_create_by(name: name)
+  end
+
+  def calculate_total_price
+    return if self.price.blank? || self.quantity.blank?
+    self.total_price = self.price * self.quantity
   end
 
   # 合計金額計算用のメソッド

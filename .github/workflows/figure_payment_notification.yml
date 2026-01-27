@@ -15,6 +15,7 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
       MAIL_FROM: ${{ secrets.MAIL_FROM }}
+      SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
     
     steps:
       # GithubActionsの仮想環境用のディレクトリにリポジトリのクローン

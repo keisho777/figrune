@@ -14,6 +14,7 @@ class FiguresController < ApplicationController
 
   def create
      @figure = current_user.figures.build(figure_params)
+     @figure.calculate_total_price
      # 以下3点のassign_テーブル名_by_nameについて
      # フォームで入力された名称をもとに、各関連モデルを取得（なければ作成）して Figure に紐付ける
      @figure.assign_work_by_name(@figure.work_name)
@@ -44,6 +45,7 @@ class FiguresController < ApplicationController
   def update
     @figure = current_user.figures.find(params[:id])
     @figure.assign_attributes(figure_params)
+    @figure.calculate_total_price
     # 以下3点のassign_テーブル名_by_nameについて
     # フォームで入力された名称をもとに、各関連モデルを取得（なければ作成）して Figure に紐付ける
     @figure.assign_work_by_name(@figure.work_name)

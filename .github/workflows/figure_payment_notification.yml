@@ -1,0 +1,37 @@
+name: figure_payment_notification
+
+on:
+  schedule:
+    # 毎日9:00に実行（UTC時間のため0 0に設定）
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 手動実行も可能
+
+jobs:
+  run-rake-task:
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_ENV: production
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      MAIL_FROM: ${{ secrets.MAIL_FROM }}
+    
+    steps:
+      # GithubActionsの仮想環境用のディレクトリにリポジトリのクローン
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Rubyのセットアップ
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.10'
+          bundler-cache: true
+
+      # gemのインストール
+      - name: Install dependencies
+        run: bundle install
+
+      # rakeタスクの実行   
+      - name: Run Rake Task
+        run: bundle exec rake reminders:figure_payment_notification

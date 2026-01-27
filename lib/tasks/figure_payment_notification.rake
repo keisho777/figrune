@@ -1,5 +1,5 @@
 namespace :reminders do
-  desc 'フィギュアの月別支払い合計額をメール通知'
+  desc "フィギュアの月別支払い合計額をメール通知"
   task figure_payment_notification: :environment do
     today = Date.current
 

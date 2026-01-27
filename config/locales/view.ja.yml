@@ -84,12 +84,12 @@ ja:
       delete: 削除する
     sort:
       sort: 並び替え
-      created_at_desc: "登録日（新しい順）"
-      created_at_asc: "登録日（古い順）"
-      release_month_asc: "発売月（早い順）"
-      release_month_desc: "発売月（遅い順）"
-      total_price_asc: "合計金額（安い順）"
-      total_price_desc: "合計金額（高い順）"
+      created_at_desc: 登録日（新しい順）
+      created_at_asc: 登録日（古い順）
+      release_month_asc: 発売月（早い順）
+      release_month_desc: 発売月（遅い順）
+      total_price_asc: 合計金額（安い順）
+      total_price_desc: 合計金額（高い順）
   account_settings:
     show:
       title: アカウント設定

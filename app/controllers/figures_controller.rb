@@ -65,6 +65,34 @@ class FiguresController < ApplicationController
     redirect_to figures_path, notice: t("defaults.flash_message.deleted"), status: :see_other
   end
 
+  def autocomplete
+    @figures = current_user.figures.select(:name).distinct.where("name like ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def autocomplete_work
+    @works = Work.joins(:figures).where(figures: { user_id: current_user.id }).where("works.name LIKE ?", "%#{params[:q]}%").distinct
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def autocomplete_shop
+    @shops = Shop.joins(:figures).where(figures: { user_id: current_user.id }).where("shops.name LIKE ?", "%#{params[:q]}%").distinct
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def autocomplete_manufacturer
+    @manufacturers = Manufacturer.joins(:figures).where(figures: { user_id: current_user.id }).where("manufacturers.name LIKE ?", "%#{params[:q]}%").distinct
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def figure_params

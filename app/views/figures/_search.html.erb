@@ -1,10 +1,18 @@
 <%= search_form_for q, url: url do |f| %>
   <div class="flex mt-3 mb-6">
-    <!-- 検索バー -->
-    <%= f.search_field :name_cont, class: "w-full rounded-lg border border-gray-500 px-3 py-2
-      hover:border-gray-400", placeholder: t('defaults.search_word') %>
+    <div class="w-full" data-controller="autocomplete" data-autocomplete-url-value="/figures/autocomplete" role="combobox">
+      <!-- 検索バー -->
+      <%= f.search_field :name_cont,
+        data: { autocomplete_target: 'input' },
+        class: "w-full rounded-lg border border-gray-500 px-3 py-2 hover:border-gray-400", 
+        placeholder: t('defaults.search_word')%>
+      <%= f.hidden_field :name, data: { autocomplete_target: 'hidden' } %>
+      <!-- オートコンプリート候補 -->
+      <div class="relative flex">
+        <ul class="list-group absolute w-full rounded-md border divide-y divide-gray-400 bg-white empty:hidden overflow-hidden" data-autocomplete-target="results"></ul>
+      </div>
+    </div>
     <!-- 検索ボタン -->
-    <%= f.submit class: "rounded-lg border border-gray-500 px-6 py-2 
-      hover:bg-gray-200" %>
+    <%= f.submit class: "rounded-lg border border-gray-500 px-6 py-2 hover:bg-gray-200" %>
   </div>
 <% end %>

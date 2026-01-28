@@ -1,0 +1,6 @@
+<% @works.each do |work| %>
+  <li class="py-2 px-3 hover:bg-blue-200 aria-selected:bg-blue-200"
+      role="option" data-autocomplete-value="<%= work.id %>" data-autocomplete-label="<%= work.name %>">
+    <%= work.name %>
+  </li>
+<% end %>

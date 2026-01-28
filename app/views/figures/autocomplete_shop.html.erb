@@ -1,0 +1,6 @@
+<% @shops.each do |shop| %>
+  <li class="py-2 px-3 hover:bg-blue-200 aria-selected:bg-blue-200"
+      role="option" data-autocomplete-value="<%= shop.id %>" data-autocomplete-label="<%= shop.name %>">
+    <%= shop.name %>
+  </li>
+<% end %>

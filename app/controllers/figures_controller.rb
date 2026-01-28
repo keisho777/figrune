@@ -79,6 +79,13 @@ class FiguresController < ApplicationController
     end
   end
 
+  def autocomplete_shop
+    @shops = Shop.joins(:figures).where(figures: { user_id: current_user.id }).where("shops.name LIKE ?", "%#{params[:q]}%").distinct
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def figure_params

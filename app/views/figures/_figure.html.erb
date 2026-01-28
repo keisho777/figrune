@@ -1,4 +1,4 @@
-<!-- 一覧画面で表示されるカード -->
+<!-- 一覧画面で表示されるフィギュア -->
 <div class="flex flex-col gap-1 w-full px-3 py-2">
   <div class="flex justify-between">
     <!-- XXXX年XX月 発売予定 -->
@@ -15,12 +15,12 @@
   <div class="text-xl font-bold hover:underline">
     <%= link_to figure.name, figure_path(figure) %>
   </div>
-  <!-- 金額（1個あたり）× 個数 ⇒ 合計（合計はDBに保存していない） -->
+  <!-- 金額（1個あたり）× 個数 ⇒ 合計金額 -->
   <div>
-    <%= "¥#{number_with_delimiter(figure.price)}" %>
+    <%= number_to_currency(figure.price, unit: "¥", format: "%u%n") %>
     <%= "× #{figure.quantity}個 ⇒" %>
     <span class="text-xl font-bold">
-      <%= "¥#{number_with_delimiter(figure.price * figure.quantity)}" %>
+      <%= number_to_currency(figure.total_price, unit: "¥", format: "%u%n") %>
     </span>  
   </div>
 </div>

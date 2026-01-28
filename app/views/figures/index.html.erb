@@ -7,9 +7,7 @@
       <div class="flex w-full justify-end pb-3">
         <%= render 'sort', q: @q, url: figures_path %>
       </div>
-      <div class="w-full border rounded-lg divide-y">
-        <%= render @figures %>
-      </div>
+      <%= render @figures %>
     <% else %>
       <span><%= t(".no_data_available") %></span>
     <% end %>

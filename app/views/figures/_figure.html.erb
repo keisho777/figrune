@@ -19,8 +19,6 @@
   <div>
     <%= number_to_currency(figure.price, unit: "¥", format: "%u%n") %>
     <%= "× #{figure.quantity}個 ⇒" %>
-    <span class="text-xl font-bold">
-      <%= number_to_currency(figure.total_price, unit: "¥", format: "%u%n") %>
-    </span>  
+    <%= display_total_price(figure) %>
   </div>
 </div>

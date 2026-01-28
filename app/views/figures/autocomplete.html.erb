@@ -1,0 +1,6 @@
+<% @figures.each do |figure| %>
+  <li class="py-2 px-3 hover:bg-blue-200 aria-selected:bg-blue-200"
+      role="option" data-autocomplete-value="<%= figure.id %>" data-autocomplete-label="<%= figure.name %>">
+    <%= figure.name %>
+  </li>
+<% end %>

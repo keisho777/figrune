@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :figures, only: [ :index, :new, :create, :show, :edit, :update, :destroy ]
+  resources :figures, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
+    get :autocomplete, on: :collection
+  end
   resource :account_setting, only: [ :show ] do
     get   :edit_email
     patch :update_email

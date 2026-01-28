@@ -65,6 +65,13 @@ class FiguresController < ApplicationController
     redirect_to figures_path, notice: t("defaults.flash_message.deleted"), status: :see_other
   end
 
+  def autocomplete
+    @figures = current_user.figures.select(:name).distinct.where("name like ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def figure_params

@@ -59,14 +59,10 @@ class Figure < ApplicationRecord
     self.manufacturer = Manufacturer.find_or_create_by(name: name)
   end
 
+  # 合計金額を保存するための計算メソッド
   def calculate_total_price
     return if self.price.blank? || self.quantity.blank?
     self.total_price = self.price * self.quantity
-  end
-
-  # 合計金額計算用のメソッド
-  def total_price
-    quantity * price
   end
 
   # 以下3点の　set_仮想カラム名_from_テーブル名　について

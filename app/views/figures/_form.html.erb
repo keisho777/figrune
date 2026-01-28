@@ -87,10 +87,17 @@
           </div>
         </div>
         <!-- メーカー -->
-        <div>
+        <div data-controller="autocomplete" data-autocomplete-url-value="/figures/autocomplete_manufacturer" role="combobox">
           <%= f.label :manufacturer, class: "font-bold"  %>
           <%= f.text_field :manufacturer_name,
+              data: { autocomplete_target: 'input' },
               class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
+          <%= f.hidden_field :manufacturer_id, data: { autocomplete_target: 'hidden' } %>
+          <!-- オートコンプリート候補 -->
+          <div class="relative flex">
+            <ul class="list-group absolute w-full rounded-md border divide-y divide-gray-400 bg-white empty:hidden overflow-hidden"
+                data-autocomplete-target="results"></ul>
+          </div>
         </div>
         <!-- 備考 -->
         <div>

@@ -1,0 +1,6 @@
+<% @manufacturers.each do |manufacturer| %>
+  <li class="py-2 px-3 hover:bg-blue-200 aria-selected:bg-blue-200"
+      role="option" data-autocomplete-value="<%= manufacturer.id %>" data-autocomplete-label="<%= manufacturer.name %>">
+    <%= manufacturer.name %>
+  </li>
+<% end %>

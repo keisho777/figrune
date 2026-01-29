@@ -1,14 +1,15 @@
-
-<footer>
-  <nav class="bg-gray-100">
-
-    <!-- ページ遷移ナビゲーション -->
-    <div class="container mx-auto px-4 py-4">
-      <ul class="flex justify-center space-x-10 text-gray-700">
-        <li><%= link_to "利用規約", '#' %></li>
-        <li><%= link_to "プライバシーポリシー", '#' %></li>
-        <li><%= link_to "お問い合わせ", '#' %></li>
+<footer  class="bg-gray-100  py-6">
+  <!-- ページ遷移ナビゲーション -->
+  <nav>
+    <div class="px-4 pb-6">
+      <ul class="flex justify-center space-x-6 text-gray-600 text-sm">
+        <li><%= link_to t("hooter.terms_of_service"), '#', class: "hover:underline" %></li>
+        <li><%= link_to t("hooter.privacy_policy"), '#', class: "hover:underline" %></li>
+        <li><%= link_to t("hooter.contact"), '#',class: "hover:underline" %></li>
       </ul>
     </div>
   </nav>
+  <div class=" text-center text-xs text-gray-500">
+    <%= t("hooter.copyright") %>
+  </div>
 </footer>

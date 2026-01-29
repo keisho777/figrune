@@ -25,6 +25,11 @@ ja:
       update: 更新する
   header:
     create: 登録
+  hooter:
+    terms_of_service: 利用規約
+    privacy_policy: プライバシーポリシー
+    contact: お問い合わせ
+    copyright: © 2026 figrune
   static_pages:
     top:
       hero:

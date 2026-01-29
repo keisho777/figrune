@@ -46,7 +46,7 @@ class AccountSettingsController < ApplicationController
   def update_email_notification_timing
     @user = current_user
     if @user.update(email_notification_timing_params)
-      render :show
+      redirect_to account_setting_path
     else
       flash.now[:alert] = t("defaults.flash_message.account_setting.not_updated")
       render :show, status: :unprocessable_entity

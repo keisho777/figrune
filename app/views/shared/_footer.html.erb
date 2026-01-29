@@ -3,13 +3,13 @@
   <nav>
     <div class="px-4 pb-6">
       <ul class="flex justify-center space-x-6 text-gray-600 text-sm">
-        <li><%= link_to "利用規約", '#', class: "hover:underline" %></li>
-        <li><%= link_to "プライバシーポリシー", '#', class: "hover:underline" %></li>
-        <li><%= link_to "お問い合わせ", '#',class: "hover:underline" %></li>
+        <li><%= link_to t("hooter.terms_of_service"), '#', class: "hover:underline" %></li>
+        <li><%= link_to t("hooter.privacy_policy"), '#', class: "hover:underline" %></li>
+        <li><%= link_to t("hooter.contact"), '#',class: "hover:underline" %></li>
       </ul>
     </div>
   </nav>
   <div class=" text-center text-xs text-gray-500">
-    © 2026 figrune
+    <%= t("hooter.copyright") %>
   </div>
 </footer>

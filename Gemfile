@@ -69,4 +69,3 @@ gem "enum_help"
 gem "resend"
 
 gem "kaminari"
-

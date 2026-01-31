@@ -2,6 +2,13 @@ ja:
   date:
     formats:
       default: "%Y年%m月"
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
   defaults:
     search_word: 検索内容を入力
     scheduled_for_release: 発売予定
@@ -123,5 +130,3 @@ ja:
       new_password_confirmation: 新しいパスワード（確認）
       password_hint: "※%{min}文字以上"
       submit: 変更する
-
-      

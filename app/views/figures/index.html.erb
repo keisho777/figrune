@@ -13,4 +13,7 @@
     <% else %>
       <span><%= t(".no_data_available") %></span>
     <% end %>
+    <div class="mt-4">
+      <%= paginate @figures %>
+    </div>
   </div>

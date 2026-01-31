@@ -67,3 +67,5 @@ gem "ransack"
 gem "enum_help"
 
 gem "resend"
+
+gem "kaminari"

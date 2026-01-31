@@ -3,7 +3,7 @@ class FiguresController < ApplicationController
 
   def index
     @q = current_user.figures.ransack(params[:q])
-    @figures = @q.result(distinct: true).order("created_at desc")
+    @figures = @q.result(distinct: true).order("created_at desc").page(params[:page])
   end
 
   def new

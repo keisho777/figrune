@@ -8,7 +8,6 @@ ja:
       last: <i class="fas fa-angle-double-right"></i>
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
-      truncate: "..."
   defaults:
     search_word: 検索内容を入力
     scheduled_for_release: 発売予定

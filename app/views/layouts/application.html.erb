@@ -20,22 +20,20 @@
 
   <body>
     <%= render 'shared/header' %>
-
-    <% flash.each do |key, message| %>
-      <% if key == 'notice' %>
-        <div role="alert" class="border-2 bg-green-100 p-4 text-green-500">
-          <div class="flex items-start gap-3">    
-            <div class="block flex-1 leading-tight font-semibold"><%= message %></div>
+    
+    <div class="w-full max-w-4xl mx-auto px-4">
+      <% flash.each do |key, message| %>
+        <% if key == 'notice' %>
+          <div role="status" class="border-2 bg-green-100 p-4 text-green-500">  
+            <div class="font-semibold"><%= message %></div>
           </div>
-        </div>
-      <% else %>
-        <div role="alert" class="border-2 bg-red-100 p-4 text-red-500">
-          <div class="flex items-start gap-3">    
-            <div class="block flex-1 leading-tight font-semibold"><%= message %></div>
+        <% else %>
+          <div role="alert" class="border-2 bg-red-100 p-4 text-red-500">
+            <div class="font-semibold"><%= message %></div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 
     <%= yield %>
     <%= render 'shared/footer' %>

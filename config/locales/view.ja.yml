@@ -76,7 +76,7 @@ ja:
         login: ログイン
   figures:
     index:
-      title: ホーム
+      title: 一覧
       no_data_available: 表示できるデータがありません。
     new:
       title: 登録

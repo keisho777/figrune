@@ -1,5 +1,8 @@
 <% content_for(:title, t('.title')) %>
   <div class="flex flex-col max-w-4xl mx-auto items-center p-4">
+    <h2 class="text-xl font-bold">
+      <%= t(".title") %>
+    </h2>
     <div class="w-full">
       <%= render 'search', q: @q, url: figures_path %>
     </div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/home", to: "home#index"
   resources :figures, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
     get :autocomplete, on: :collection
     get :autocomplete_work, on: :collection

@@ -38,8 +38,8 @@
       <% if user_signed_in? %>
         <ul class="flex w-full max-w-4xl mx-auto text-center">
           <li class="w-full">
-            <%= link_to t("header.home"), figures_path, class: "block p-2 border-b-2 transition
-                #{current_page?('#') ?
+            <%= link_to t("header.home"), home_path, class: "block p-2 border-b-2 transition
+                #{current_page?(home_path) ?
                 'border-gray-900 text-gray-900 font-medium' :
                 'border-transparent text-gray-600 rounded hover:bg-gray-200'}" %>
           </li>

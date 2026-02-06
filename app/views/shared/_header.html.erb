@@ -3,7 +3,7 @@
     <div class="w-full max-w-5xl mx-auto px-4">
       <div class="flex items-center justify-between h-15">
         <!-- ロゴ -->
-        <%= link_to 'Figrune', (user_signed_in? ? figures_path : root_path), class: "text-xl font-semibold" %>
+        <%= link_to 'Figrune', (user_signed_in? ? home_path : root_path), class: "text-xl font-semibold" %>
         <ul class="flex items-center space-x-5">
           <!-- アカウント設定、ログアウト -->
           <% if user_signed_in? %>

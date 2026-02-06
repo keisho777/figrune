@@ -36,7 +36,7 @@ ja:
     login: ログイン
     home: ホーム
     create: 登録
-    graph: グラフ
+    list: 一覧
   hooter:
     terms_of_service: 利用規約
     privacy_policy: プライバシーポリシー
@@ -76,7 +76,7 @@ ja:
         login: ログイン
   figures:
     index:
-      title: ホーム
+      title: 一覧
       no_data_available: 表示できるデータがありません。
     new:
       title: 登録

@@ -1,0 +1,26 @@
+<%= form_with url: url, method: :get, data: { controller: "date-range" } do |f| %>
+  <div class="row mb-3">
+    <div class="col-md-5">
+    <%= f.label :from, "開始月", class: "form-label" %>
+    <%= f.month_field :from,
+        value: params[:from] || Date.current.strftime("%Y-%m"), 
+        class: "form-control",
+        required: true,
+        data: { 
+            date_range_target: "from",
+            action: "change->date-range#updateFromDate"
+        } %>
+    </div>
+    <div class="col-md-5">
+    <%= f.label :to, "終了月", class: "form-label" %>
+    <%= f.month_field :to, 
+        value: params[:to] || (Date.current + 11.months).strftime("%Y-%m"), 
+        class: "form-control",
+        required: true,
+        data: { date_range_target: "to" } %>
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+      <%= f.submit "表示", class: "btn btn-primary w-100" %>
+    </div>
+  </div>
+<% end %>

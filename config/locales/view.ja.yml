@@ -74,6 +74,9 @@ ja:
         description: 将来の支払いとコレクションを、今から管理しませんか？
         create: 無料で始める
         login: ログイン
+  home:
+    index:
+      title: ホーム
   figures:
     index:
       title: 一覧

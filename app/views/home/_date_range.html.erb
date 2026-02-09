@@ -1,26 +1,28 @@
 <%= form_with url: url, method: :get, data: { controller: "date-range" } do |f| %>
-  <div class="row mb-3">
-    <div class="col-md-5">
-    <%= f.label :from, "開始月", class: "form-label" %>
-    <%= f.month_field :from,
-        value: params[:from] || Date.current.strftime("%Y-%m"), 
-        class: "form-control",
-        required: true,
-        data: { 
-            date_range_target: "from",
-            action: "change->date-range#updateFromDate"
-        } %>
+  <div class="flex">
+    <div class="flex border rounded divide-x">
+      <!-- 開始月 -->
+      <div class="flex flex-col py-1 px-2 focus-within:ring-2 focus-within:rounded">
+        <%= f.label :from, t("home.date_range.from"), class: "text-xs text-gray-500" %>
+        <%= f.month_field :from,
+            value: params[:from] || Date.current.strftime("%Y-%m"),
+            class: "w-27 focus:outline-none leading-none h-6",
+            required: true,
+            data: { date_range_target: "from", action: "change->date-range#updateFromDate" } %>
+      </div>
+      <!-- 終了月 -->
+      <div class="flex flex-col py-1 px-2 focus-within:ring-2 focus-within:rounded">
+        <%= f.label :to, t("home.date_range.to"), class: "text-xs text-gray-500" %>
+        <%= f.month_field :to, 
+            value: params[:to] || (Date.current + 11.months).strftime("%Y-%m"), 
+            class: "w-27 focus:outline-none leading-none h-6",
+            required: true,
+            data: { date_range_target: "to" } %>
+      </div>
     </div>
-    <div class="col-md-5">
-    <%= f.label :to, "終了月", class: "form-label" %>
-    <%= f.month_field :to, 
-        value: params[:to] || (Date.current + 11.months).strftime("%Y-%m"), 
-        class: "form-control",
-        required: true,
-        data: { date_range_target: "to" } %>
-    </div>
-    <div class="col-md-2 d-flex align-items-end">
-      <%= f.submit "表示", class: "btn btn-primary w-100" %>
+    <!--表示ボタン-->
+    <div>
+      <%= f.submit "表示", class: "border rounded px-6 py-3 hover:bg-gray-200" %>
     </div>
   </div>
 <% end %>

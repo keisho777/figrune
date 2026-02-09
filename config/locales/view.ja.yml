@@ -80,6 +80,9 @@ ja:
       selected_month: 選択中の月
       total_unpaid: 未払いの合計
       no_data_available: 表示できるデータはありません。
+    date_range:
+      from: 開始月
+      to: 終了月
     month_selector:
       year_label: "%{year}年"
   figures:

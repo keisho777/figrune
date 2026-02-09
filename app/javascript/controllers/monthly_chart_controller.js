@@ -8,32 +8,34 @@ export default class extends Controller {
   connect() {
     const isMobile = window.innerWidth < 768
     this.chart = new Chart(this.element, {
+      // 棒グラフの指定
       type: "bar",
       data: {
         labels: this.labelsValue,
         datasets: [{
+          label: '未払いの合計',
           data: this.dataValue
         }]
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false, // ← canvas の CSS 高さに従わせる
+        // canvasのCSSの高さに従わせる
+        maintainAspectRatio: false, 
         scales: {
          x: {
             ticks: {
-            font: { size: isMobile ? 6 : 12 } // スマホなら小さく、PCは大きく
+            font: { size: isMobile ? 8 : 12 }
             }
         },
         y: {
             ticks: {
-            font: { size: isMobile ? 8 : 14 }
+            font: { size: isMobile ? 8 : 12 }
             }
         }
-        },
+        }
       }
     })
   }
-  disconnect() {
-    this.chart.destroy()
-  }
+  // disconnect() {
+  //   this.chart.destroy()
+  // }
 }

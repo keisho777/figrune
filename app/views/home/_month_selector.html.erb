@@ -1,5 +1,5 @@
 <% months.group_by(&:year).each do |year, months| %>
-  <div class="mb-3">
+  <div class="my-4">
     <!-- 年ラベル -->
     <div class="font-semibold text-gray-600 mb-1">
       <%= t("home.month_selector.year_label", year: year) %>
@@ -10,7 +10,7 @@
         <%= link_to month.strftime("%m月"),
             home_path(selected_month: month.strftime("%Y-%m")),
             data: { turbo_frame: "figures" },
-            class: "px-2 py-1 rounded border text-sm text-gray-500 hover:bg-gray-100" %>
+            class: "px-2 py-1 rounded border text-sm text-gray-500 hover:bg-gray-200" %>
       <% end %>
     </div>
   </div>

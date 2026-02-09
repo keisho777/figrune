@@ -13,6 +13,19 @@ def index
                            .where(release_month: @from..@to)
                            .group(:release_month)
                            .sum(:total_price)
+  @selected_month =
+    if params[:selected_month].present?
+      Date.strptime(params[:selected_month], "%Y-%m").beginning_of_month
+    else
+      @from
+    end
+  @figures =
+    if @selected_month
+      current_user.figures.where(release_month: @selected_month)
+    else
+      current_user.figures.where(release_month: @from..@to)
+    end
+  @months = months
   @labels = months.each_with_index.map do |d, i|
     if i == 0 || d.month == 1
       # [d.strftime("%m月"), d.strftime("%Y年")] # ← 改行される
@@ -22,5 +35,9 @@ def index
     end
   end
   @data = months.map { |d| chart_data[d.beginning_of_month] || 0 }
+@unpaid_total =
+  @figures
+    .where(payment_status: 0)
+    .sum(:total_price)
  end
 end

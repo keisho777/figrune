@@ -77,10 +77,15 @@ ja:
   home:
     index:
       title: ホーム
+      selected_month: 選択中の月
+      total_unpaid: 未払いの合計
+      no_data_available: 表示できるデータはありません。
+    month_selector:
+      year_label: "%{year}年"
   figures:
     index:
       title: 一覧
-      no_data_available: 表示できるデータがありません。
+      no_data_available: 表示できるデータはありません。
     new:
       title: 登録
     show:

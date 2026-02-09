@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import Chart from "chart.js/auto"
+
 export default class extends Controller {
   static values = {
     labels: Array,
@@ -35,7 +36,4 @@ export default class extends Controller {
       }
     })
   }
-  // disconnect() {
-  //   this.chart.destroy()
-  // }
 }

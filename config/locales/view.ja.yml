@@ -74,10 +74,21 @@ ja:
         description: 将来の支払いとコレクションを、今から管理しませんか？
         create: 無料で始める
         login: ログイン
+  home:
+    index:
+      title: ホーム
+      selected_month: 選択中の月
+      total_unpaid: 未払いの合計
+      no_data_available: 表示できるデータはありません。
+    date_range:
+      from: 開始月
+      to: 終了月
+    month_selector:
+      year_label: "%{year}年"
   figures:
     index:
       title: 一覧
-      no_data_available: 表示できるデータがありません。
+      no_data_available: 表示できるデータはありません。
     new:
       title: 登録
     show:

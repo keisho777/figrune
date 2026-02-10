@@ -1,0 +1,24 @@
+<!-- 一覧画面で表示されるフィギュア -->
+<div class="flex flex-col gap-1 w-full px-3 py-2">
+  <div class="flex justify-between">
+    <!-- XXXX年XX月 発売予定 -->
+    <span>
+      <%= l(figure.release_month, format: :default) %>
+      <%= t("defaults.scheduled_for_release") %>
+    </span>
+    <!-- 支払いステータス -->
+    <span>
+      <%= figure.payment_status_i18n %>
+    </span>
+  </div>
+  <!-- 商品名（クリックで詳細画面へ） -->
+  <div class="text-xl font-bold hover:underline">
+    <%= link_to figure.name, figure_path(figure), data: { turbo: false } %>
+  </div>
+  <!-- 金額（1個あたり）× 個数 ⇒ 合計金額 -->
+  <div>
+    <%= number_to_currency(figure.price, unit: "¥", format: "%u%n") %>
+    <%= "× #{figure.quantity}個 ⇒" %>
+    <%= display_total_price(figure) %>
+  </div>
+</div>

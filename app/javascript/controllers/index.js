@@ -6,3 +6,7 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+import MonthlyChartController from "./monthly_chart_controller"
+application.register("monthly-chart", MonthlyChartController)
+import DateRangeController from "./date_range_controller"
+application.register("date-range", DateRangeController)

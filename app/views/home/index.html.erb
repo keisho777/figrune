@@ -1,0 +1,52 @@
+<% content_for(:title, t('.title')) %>
+  <div class="flex flex-col max-w-4xl mx-auto items-center p-4 mb-10">
+    <div class="w-full">
+      <!-- 範囲指定UI -->
+      <%= render 'date_range', url: home_path %>
+      <!-- 範囲指定内の月選択UI -->
+      <%= render "month_selector", months: @months %>
+      <!-- 棒グラフ(chart.js) -->
+      <div class="w-full h-[260px] md:h-[420px]">
+        <canvas
+            data-controller="monthly-chart"
+            data-monthly-chart-labels-value="<%= @labels.to_json %>"
+            data-monthly-chart-data-value="<%= @data.to_json %>">
+        </canvas>
+      </div>
+    </div>
+    <%= turbo_frame_tag "figures" , class: "w-full" do %>
+      <!-- 月別サマリー -->
+      <div class="mt-8 p-4 rounded-lg border bg-gray-100">
+        <!-- <div class="w-full my-8 p-4 border-b-2 "> -->
+        <div class="flex justify-between">
+          <!-- 選択中の月 -->
+          <div>
+            <div class="text-xs text-gray-500">
+              <%= t(".selected_month") %>
+            </div>
+            <div class="text-xl font-bold">
+              <%= l(@selected_month, format: :default) %>
+            </div>
+          </div>
+          <!-- 未払い合計 -->
+          <div class="text-right">
+            <div class="text-xs text-gray-500">
+              <%= t(".total_unpaid") %>
+            </div>
+            <div class="text-xl font-semibold text-red-600">
+              <%= number_to_currency(@unpaid_total, unit: "¥", format: "%u%n") %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% if @figures.present? %>
+        <!-- 選択中の月のフィギュア一覧 -->
+        <div class="border rounded-lg divide-y">
+          <%= render partial: "home/figure", collection: @figures %>
+        </div>
+      <% else %>
+        <!-- 表示するデータがない時 -->
+        <span class="block my-8 text-center"><%= t(".no_data_available") %></span>
+      <% end %>
+    <% end %>
+  </div>

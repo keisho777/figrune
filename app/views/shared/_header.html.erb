@@ -3,7 +3,7 @@
     <div class="w-full max-w-5xl mx-auto px-4">
       <div class="flex items-center justify-between h-15">
         <!-- ロゴ -->
-        <%= link_to 'Figrune', (user_signed_in? ? figures_path : root_path), class: "text-xl font-semibold" %>
+        <%= link_to 'Figrune', (user_signed_in? ? home_path : root_path), class: "text-xl font-semibold" %>
         <ul class="flex items-center space-x-5">
           <!-- アカウント設定、ログアウト -->
           <% if user_signed_in? %>
@@ -38,8 +38,8 @@
       <% if user_signed_in? %>
         <ul class="flex w-full max-w-4xl mx-auto text-center">
           <li class="w-full">
-            <%= link_to t("header.home"), figures_path, class: "block p-2 border-b-2 transition
-                #{current_page?(figures_path) ?
+            <%= link_to t("header.home"), home_path, class: "block p-2 border-b-2 transition
+                #{current_page?(home_path) ?
                 'border-gray-900 text-gray-900 font-medium' :
                 'border-transparent text-gray-600 rounded hover:bg-gray-200'}" %>
           </li>
@@ -50,8 +50,8 @@
                 'border-transparent text-gray-600 rounded hover:bg-gray-200'}" %>
           </li>
           <li class="w-full">   
-            <%= link_to t("header.graph"), '#', class: "block p-2 border-b-2 transition
-                #{current_page?('#') ?
+            <%= link_to t("header.list"), figures_path, class: "block p-2 border-b-2 transition
+                #{current_page?(figures_path) ?
                 'border-gray-900 text-gray-900 font-medium' :
                 'border-transparent text-gray-600 rounded hover:bg-gray-200'}" %>
           </li>

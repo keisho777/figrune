@@ -10,6 +10,8 @@ ja:
         password_hint: "※%{min}文字以上"
         submit: 登録する
         already_have_account: すでにアカウントをお持ちの方はこちら
+        or: または
+        line_sign_up: LINEで登録
     sessions:
       new:
         title: ログイン
@@ -29,5 +31,3 @@ ja:
         title: パスワード再設定
         password_hint: "※%{min}文字以上"
         submit: 変更する
-        or: または
-        line_sign_up: LINEで登録

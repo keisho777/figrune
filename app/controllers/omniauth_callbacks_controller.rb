@@ -6,32 +6,33 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def basic_action
-    # 認証情報を取得
     @omniauth = request.env["omniauth.auth"]
-    # 認証情報が存在している場合
-    if @omniauth.present?
-      # 認証情報のproviderとuidを元に、ユーザーを発見もしくは初期化
-      @authentication = Authentication.find_or_initialize_by(provider: @omniauth["provider"], uid: @omniauth["uid"])
-      # user_idが空の場合
-      if @authentication.user.blank?
-        # 認証情報の[info][email]が存在する場合その値を代入　そうでない場合認証情報の中身を使って、一意のダミーemailアドレスを作っている
-        email = @omniauth["info"]["email"] ? @omniauth["info"]["email"] : "#{@omniauth["uid"]}-#{@omniauth["provider"]}@example.com"
-        # current_userが存在するならそのまま代入、しないならその場で認証情報から新しいユーザーを作成している。
-        user = current_user || User.create!(email: email, password: Devise.friendly_token[0, 20])
-        @authentication.user = user
-        @authentication.save!
-      end
-      # ログイン動作を実施する
-      sign_in(:user, @authentication.user)
-    end
-    # ログイン後のflash messageとリダイレクト先を設定
-    flash[:notice] = "ログインしました"
-    # ここのリダイレクト先は後で自分のルーティングに応じて変更する
-    redirect_to home_path
-  end
+    
+    # 認証情報の確認
+    return redirect_to new_user_session_path, alert: "認証に失敗しました" if @omniauth.blank?
 
-  # ダミーのemailアドレスを作成するメソッド
-  def fake_email(uid, provider)
-    "#{auth.uid}-#{auth.provider}@example.com"
+    # 認証情報の検索・紐付け
+    @authentication = Authentication.find_or_initialize_by(provider: @omniauth["provider"], uid: @omniauth["uid"])
+
+    # すでに連携済みならログイン、新規登録ならUserとAuthenticationを登録
+    if @authentication.user.blank?
+      # emailの取得ができなかった場合はダミーのメールアドレスを使用
+      email = @omniauth["info"]["email"] ? @omniauth["info"]["email"] : "#{@omniauth["uid"]}-#{@omniauth["provider"]}@example.com"
+      user = User.new(email: email, password: Devise.friendly_token[0, 20], has_email: @omniauth["info"]["email"].present?, has_password: false)
+      
+      # 認証メールのスキップ
+      user.skip_confirmation!
+      unless user.save
+        return redirect_to new_user_session_path, alert: t("defaults.flash_message.omniauth_callback.email_taken")
+      end
+      @authentication.user = user
+      unless @authentication.save
+        return redirect_to new_user_session_path, alert: t("defaults.flash_message.omniauth_callback.auth_save_failure")
+      end
+    end
+
+    # ログイン処理
+    sign_in(:user, @authentication.user)
+    redirect_to home_path, notice: t("devise.sessions.signed_in")
   end
 end

@@ -16,6 +16,8 @@ ja:
         submit: ログイン
         dont_have_account: まだアカウントをお持ちでない方はこちら
         forgot_password: パスワードをお忘れの方はこちら
+        or: または
+        line_login: LINEでログイン
     passwords:
       no_token: パスワード再設定リンクが無効か期限切れです。新しいメールを送信してください。
       new:
@@ -27,3 +29,5 @@ ja:
         title: パスワード再設定
         password_hint: "※%{min}文字以上"
         submit: 変更する
+        or: または
+        line_sign_up: LINEで登録

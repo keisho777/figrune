@@ -24,6 +24,9 @@ ja:
         not_updated: 変更できませんでした
         updated: 確認メールを送信しました
         password_updated: パスワードを変更しました
+      omniauth_callback:
+        email_taken: "メールアドレスは既に存在します"
+        auth_save_failure: "認証情報の保存に失敗しました"
   helpers:
     submit:
       create: 登録する

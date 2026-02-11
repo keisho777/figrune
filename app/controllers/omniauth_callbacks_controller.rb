@@ -7,7 +7,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def basic_action
     @omniauth = request.env["omniauth.auth"]
-    
+
     # 認証情報の確認
     return redirect_to new_user_session_path, alert: "認証に失敗しました" if @omniauth.blank?
 
@@ -19,7 +19,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # emailの取得ができなかった場合はダミーのメールアドレスを使用
       email = @omniauth["info"]["email"] ? @omniauth["info"]["email"] : "#{@omniauth["uid"]}-#{@omniauth["provider"]}@example.com"
       user = User.new(email: email, password: Devise.friendly_token[0, 20], has_email: @omniauth["info"]["email"].present?, has_password: false)
-      
+
       # 認証メールのスキップ
       user.skip_confirmation!
       unless user.save

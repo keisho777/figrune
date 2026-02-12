@@ -22,12 +22,18 @@ ja:
       deleted: 削除しました
       account_setting:
         not_updated: 変更できませんでした
+        not_setting: 設定できませんでした
         updated: 確認メールを送信しました
         password_updated: パスワードを変更しました
+        password_setting: パスワードを設定しました
       omniauth_callback:
         email_taken: メールアドレスは既に存在します
         auth_save_failure: 認証情報の保存に失敗しました
         invalid_credential: 認証に失敗しました
+    error_message:
+      blank: を入力してください
+      short: "は%{min}文字以上で入力してください"
+      confirmation: と新しいパスワードの入力が一致しません
   helpers:
     submit:
       create: 登録する
@@ -126,9 +132,10 @@ ja:
     show:
       title: アカウント設定
       personal_information_setting: 個人情報設定
-      change_email: メールアドレス変更
-      change_password: パスワード変更
+      email: メールアドレス
+      password: パスワード
       change: 変更
+      setting: 設定
       notification_setting: 通知設定
       email_notification: メール通知
       back: 戻る
@@ -139,8 +146,13 @@ ja:
       description: 入力したメールアドレス宛に確認メールを送信します。メール内のURLをクリックすると、メールアドレスの変更が完了します。
       submit: 変更する
     edit_password:
-      title: パスワード変更
+      title_change: パスワード変更
+      title_setting: パスワード設定
       new_password: 新しいパスワード
+      password: パスワード
       new_password_confirmation: 新しいパスワード（確認）
+      password_confirmation: パスワード（確認）
       password_hint: "※%{min}文字以上"
-      submit: 変更する
+      change: 変更する
+      setting: 設定する
+

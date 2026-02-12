@@ -5,6 +5,8 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード（確認）"
+        new_password: 新しいパスワード
+        new_password_confirmation: 新しいパスワード（確認）
       figure:
         name: 商品名
         release_month: 発売月

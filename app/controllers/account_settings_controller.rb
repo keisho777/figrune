@@ -25,22 +25,43 @@ class AccountSettingsController < ApplicationController
 
   def update_password
     @user = current_user
-    if password_params[:current_password].blank?
-        @user.errors.add(:current_password, :blank)
-        return render :edit_password, status: :unprocessable_entity
-    end
+    # パスワードを設定している人は現在のパスワードも確認する
+    if @user.has_password
+      # 現在のパスワードが空の場合のバリデーション
+      if change_password_params[:current_password].blank?
+        @user.errors.add(:current_password, t("defaults.error_message.blank"))
+      end
+      # 新しいパスワードが空の場合のバリデーション
+      if change_password_params[:password].blank?
+        @user.errors.add(:new_password, t("defaults.error_message.blank"))
+      end
+      # 新しいパスワードが6文字未満の場合のバリデーション
+      if change_password_params[:password].present? && change_password_params[:password].length < User.password_length.min
+        @user.errors.add(:new_password, t("defaults.error_message.short", min: User.password_length.min))
+      end
+      # 新しいパスワード（確認）と新しいパスワードの値が一致してない場合のバリデーション
+      if change_password_params[:password] != change_password_params[:password_confirmation]
+        @user.errors.add(:new_password_confirmation, t("defaults.error_message.confirmation"))
+      end
+      # エラーがあれば表示
+      return render :edit_password, status: :unprocessable_entity if @user.errors.present?
 
-    if password_params[:password].blank?
-        @user.errors.add(:password, :blank)
-        return render :edit_password, status: :unprocessable_entity
-    end
-
-    if @user.update_with_password(password_params)
-      bypass_sign_in(@user)
-      redirect_to account_setting_path, notice: t("defaults.flash_message.account_setting.password_updated")
+      if @user.update_with_password(change_password_params)
+        bypass_sign_in(@user)
+        redirect_to account_setting_path, notice: t("defaults.flash_message.account_setting.password_updated")
+      else
+        flash.now[:alert] = t("defaults.flash_message.account_setting.not_updated")
+        render :edit_password, status: :unprocessable_entity
+      end
+    # パスワードを設定してない人向け（外部サービスでログインした人）
     else
-      flash.now[:alert] = t("defaults.flash_message.account_setting.not_updated")
-      render :edit_password, status: :unprocessable_entity
+      if @user.update(setting_password_params.merge(has_password: true))
+        bypass_sign_in(@user)
+        redirect_to account_setting_path, notice: t("defaults.flash_message.account_setting.password_setting")
+      else
+        flash.now[:alert] = t("defaults.flash_message.account_setting.not_setting")
+        render :edit_password, status: :unprocessable_entity
+      end
     end
   end
 
@@ -60,8 +81,12 @@ class AccountSettingsController < ApplicationController
     params.require(:user).permit(:email)
   end
 
-  def password_params
+  def change_password_params
     params.require(:user).permit(:current_password, :password, :password_confirmation)
+  end
+
+  def setting_password_params
+    params.require(:user).permit(:password, :password_confirmation)
   end
 
   def email_notification_timing_params

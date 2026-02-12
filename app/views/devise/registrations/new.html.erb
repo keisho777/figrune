@@ -48,9 +48,28 @@
     <% end %>
 
     <!-- 「すでにアカウントをお持ちの方はこちら」のリンク -->
-    <div class="mt-6 text-center text-sm text-gray-600">
+    <div class="my-6 text-center text-sm text-gray-600">
       <%= link_to t(".already_have_account"), new_session_path(resource_name),
         class: "text-blue-500 hover:underline font-medium" %>
+    </div>
+
+    <!-- または -->
+    <div class="flex items-center gap-2 mb-6">
+      <div class="flex-1 border-t border-gray-300"></div>
+        <span class="text-gray-500 text-sm"><%= t(".or") %></span>
+      <div class="flex-1 border-t border-gray-300"></div>
+    </div>
+
+    <!-- LINEで登録 -->
+    <div class="relative hover:opacity-90">
+      <% resource_class.omniauth_providers.each do |provider| %>
+        <%= button_to omniauth_authorize_path(resource_name, provider),
+                      class: "flex items-center w-full bg-[#06C755] text-white font-semibold rounded-lg px-1 py-2.5",
+                      data: { turbo: false } do %>
+          <span class="w-full text-center"><%= t(".line_sign_up") %></span>
+          <%= image_tag "btn_base.png", alt: "LINE", class: "absolute h-10" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -34,4 +34,17 @@ class User < ApplicationRecord
     has_email_in_database ? I18n.t("defaults.account_setting.update") : I18n.t("defaults.account_setting.setup")
   end
 
+  # メール認証をクリックしたときの処理
+  # has_emailで万が一、更新に失敗したときはロールバックする。
+  def confirm(arg = {})
+    ActiveRecord::Base.transaction do
+      result = super  # Devise の元の confirm メソッドを呼ぶ
+      update!(has_email: true) if result
+      result
+    end
+    rescue => e
+      Rails.logger.error(I18n.t("defaults.confirm_error_log", error: e.message))
+      errors.add(:base, I18n.t("defaults.confirm_error"))
+      false
+  end
 end

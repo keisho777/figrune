@@ -29,4 +29,9 @@ class User < ApplicationRecord
       nil
     end
   end
+
+  def email_action_word
+    has_email_in_database ? I18n.t("defaults.account_setting.update") : I18n.t("defaults.account_setting.setup")
+  end
+
 end

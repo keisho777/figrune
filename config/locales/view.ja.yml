@@ -21,7 +21,7 @@ ja:
       not_updated: 更新できませんでした
       deleted: 削除しました
       account_setting:
-        not_updated: 変更できませんでした
+        failured: "%{action_word}できませんでした"
         not_setting: 設定できませんでした
         updated: 確認メールを送信しました
         password_updated: パスワードを変更しました
@@ -30,6 +30,9 @@ ja:
         email_taken: メールアドレスは既に存在します
         auth_save_failure: 認証情報の保存に失敗しました
         invalid_credential: 認証に失敗しました
+    account_setting:
+      update: 変更
+      setup: 設定
     error_message:
       blank: を入力してください
       short: "は%{min}文字以上で入力してください"
@@ -37,8 +40,8 @@ ja:
   helpers:
     submit:
       create: 登録する
-      submit: 保存
       update: 更新する
+
   header:
     account_setting: アカウント設定
     logout: ログアウト
@@ -140,11 +143,12 @@ ja:
       email_notification: メール通知
       back: 戻る
     edit_email:
-      title: メールアドレス変更
+      title: "メールアドレス%{action_word}"
       current_email: 現在のメールアドレス
       new_email: 新しいメールアドレス
-      description: 入力したメールアドレス宛に確認メールを送信します。メール内のURLをクリックすると、メールアドレスの変更が完了します。
-      submit: 変更する
+      email: メールアドレス
+      description: "入力したメールアドレス宛に確認メールを送信します。メール内のURLをクリックすると、メールアドレスの%{action_word}が完了します。"
+      submit: "%{action_word}する"
     edit_password:
       title_change: パスワード変更
       title_setting: パスワード設定

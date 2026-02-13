@@ -18,7 +18,7 @@ class AccountSettingsController < ApplicationController
     if @user.update_without_password(email_params)
       redirect_to account_setting_path, notice: t("defaults.flash_message.account_setting.updated")
     else
-      flash.now[:alert] = t("defaults.flash_message.account_setting.not_updated")
+      flash.now[:alert] = t("defaults.flash_message.account_setting.failured", action_word: @user.email_action_word)
       render :edit_email, status: :unprocessable_entity
     end
   end

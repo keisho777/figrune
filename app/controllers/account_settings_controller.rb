@@ -64,7 +64,7 @@ class AccountSettingsController < ApplicationController
       end
     end
   end
-  
+
   # メール通知のセレクトボックスが変化したら実行
   def update_email_notification_timing
     @user = current_user
@@ -86,6 +86,7 @@ class AccountSettingsController < ApplicationController
       render :show, status: :unprocessable_entity
     end
   end
+
   private
 
   def email_params

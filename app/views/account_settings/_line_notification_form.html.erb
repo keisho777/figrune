@@ -1,0 +1,12 @@
+<%= form_with model: @user, 
+              url: update_line_notification_timing_account_setting_path, 
+              method: :patch do |f| %>
+  
+  <div class="form-group">
+    <%= f.select :line_notification_timing,
+                  User.line_notification_timings_i18n.map { |k, v| [v, k] },
+                  {}, 
+                  { class: "p-1 border",
+                  onchange: "this.form.submit();" } %>
+  </div>
+<% end %>

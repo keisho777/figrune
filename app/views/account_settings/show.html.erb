@@ -32,6 +32,13 @@
         <%= render 'account_settings/email_notification_form' %>
       </dd>
     </div>
+    <!-- LINE通知 -->
+    <div class="grid grid-cols-2 py-3 items-center sm:grid-cols-3">
+      <dt class="font-bold"><%= t(".line_notification") %></dt>
+      <dd class="text-gray-700 sm:col-span-2">
+        <%= render 'account_settings/line_notification_form' %>
+      </dd>
+    </div>
   </dl>
   <div class="max-w-sm mx-auto flex flex-col">
     <!-- 戻るボタン -->

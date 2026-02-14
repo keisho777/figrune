@@ -44,7 +44,6 @@ ja:
     submit:
       create: 登録する
       update: 更新する
-
   header:
     account_setting: アカウント設定
     logout: ログアウト
@@ -144,6 +143,7 @@ ja:
       setting: 設定
       notification_setting: 通知設定
       email_notification: メール通知
+      line_notification: LINE通知
       back: 戻る
     edit_email:
       title: "メールアドレス%{action_word}"

@@ -64,7 +64,8 @@ class AccountSettingsController < ApplicationController
       end
     end
   end
-
+  
+  # メール通知のセレクトボックスが変化したら実行
   def update_email_notification_timing
     @user = current_user
     if @user.update(email_notification_timing_params)
@@ -75,6 +76,16 @@ class AccountSettingsController < ApplicationController
     end
   end
 
+  # LINE通知のセレクトボックスが変化したら実行
+  def update_line_notification_timing
+    @user = current_user
+    if @user.update(line_notification_timing_params)
+      redirect_to account_setting_path
+    else
+      flash.now[:alert] = t("defaults.flash_message.account_setting.not_updated")
+      render :show, status: :unprocessable_entity
+    end
+  end
   private
 
   def email_params
@@ -91,5 +102,9 @@ class AccountSettingsController < ApplicationController
 
   def email_notification_timing_params
     params.require(:user).permit(:email_notification_timing)
+  end
+
+  def line_notification_timing_params
+    params.require(:user).permit(:line_notification_timing)
   end
 end

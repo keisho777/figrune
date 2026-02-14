@@ -24,6 +24,7 @@ ja:
       deleted: 削除しました
       account_setting:
         failured: "%{action_word}できませんでした"
+        update_failured: 予期せぬエラーで変更できませんでした
         not_updated: 更新できませんでした
         not_setting: 設定できませんでした
         updated: 確認メールを送信しました

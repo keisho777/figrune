@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "static_pages#top"
   get "/home", to: "home#index"
   resources :figures, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
     get :autocomplete, on: :collection
@@ -12,13 +13,13 @@ Rails.application.routes.draw do
     get   :edit_password
     patch :update_password
     patch :update_email_notification_timing
+    patch :update_line_notification_timing
   end
   devise_for :users, controllers: {
     registrations: "users/registrations",
     confirmations: "users/confirmations",
     omniauth_callbacks: "omniauth_callbacks"
   }
-  root "static_pages#top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

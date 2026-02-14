@@ -29,6 +29,13 @@ ja:
         three_week_before: 3週間前
         one_month_before: 1ヶ月前
         two_month_before: 2ヶ月前
+      line_notification_timing:
+        disabled: 通知なし
+        one_week_before: 1週間前
+        two_week_before: 2週間前
+        three_week_before: 3週間前
+        one_month_before: 1ヶ月前
+        two_month_before: 2ヶ月前
     figure:
       payment_status:
         unpaid: 未払い

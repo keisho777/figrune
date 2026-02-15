@@ -1,4 +1,4 @@
-name: figure_payment_notification
+name: update_payment_status
 
 on:
   schedule:

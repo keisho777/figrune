@@ -1,6 +1,6 @@
 namespace :reminders do
   desc "フィギュアの月別支払い合計額をメール通知"
-  task figure_payment_notification: :environment do
+  task figure_payment_email_notification: :environment do
     today = Date.current
 
     User.includes(:figures).find_each do |user|
@@ -10,12 +10,16 @@ namespace :reminders do
       figures_grouped_by_release_month = upcoming_figures.group_by(&:release_month)
       figures_grouped_by_release_month.each do |release_month, figures|
         # 今日が通知タイミングか確かめる
-        next unless user.notification_date_for(release_month) == today
+        next unless user.notification_date_for(release_month, "email") == today
+
         # 未払いのフィギュアだけをフィルタリング
         unpaid_figures = figures.select(&:unpaid?)
+
         # 未払いのフィギュアの金額合計
-        total_price = unpaid_figures.sum { |figure| figure.price * figure.quantity }
-        FigureMailer.monthly_payment_summary(user, figures, release_month, total_price).deliver_now
+        unpaid_total_price = unpaid_figures.sum(&:total_price)
+
+        # メール送信
+        FigureMailer.monthly_payment_summary(user, figures, release_month, unpaid_total_price).deliver_now
       end
     end
   end

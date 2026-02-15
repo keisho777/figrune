@@ -1,10 +1,9 @@
-# app/mailers/notification_mailer.rb
 class FigureMailer < ApplicationMailer
-  def monthly_payment_summary(user, figures, release_month, total_price)
+  def monthly_payment_summary(user, figures, release_month, unpaid_total_price)
     @user = user
     @figures = figures
     @month_date = release_month
-    @total_price = total_price
+    @unpaid_total_price = unpaid_total_price
 
     mail(
       to: user.email,

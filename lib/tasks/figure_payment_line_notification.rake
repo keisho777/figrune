@@ -22,7 +22,7 @@ namespace :reminders do
         unpaid_total_price = unpaid_figures.sum(&:total_price)
 
         info = "#{release_month.strftime("%Y年%-m月")}発売予定のフィギュアのお知らせです。\n\n"
-        total = "▼お支払予定の合計金額\n￥#{unpaid_total_price.to_formatted_s(:delimited)}\n\n"
+        total = "▼お支払予定の合計金額\n   #{unpaid_total_price.to_formatted_s(:delimited)}円\n\n"
         list = "▼発売予定リスト\n#{figures.map { |f| "・#{f.name}" }.join("\n")}"
 
         # メッセージ内容

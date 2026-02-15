@@ -73,3 +73,5 @@ gem "kaminari"
 gem "omniauth-line"
 
 gem "omniauth-rails_csrf_protection"
+
+gem "line-bot-api"

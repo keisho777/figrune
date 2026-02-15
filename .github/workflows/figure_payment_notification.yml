@@ -16,6 +16,9 @@ jobs:
       RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
       MAIL_FROM: ${{ secrets.MAIL_FROM }}
       SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+      LINE_KEY: ${{ secrets.LINE_KEY }}
+      LINE_SECRET: ${{ secrets.LINE_SECRET }}
+      LINE_CHANNEL_TOKEN: ${{ secrets.LINE_CHANNEL_TOKEN }}
     
     steps:
       # GithubActionsの仮想環境用のディレクトリにリポジトリのクローン
@@ -34,5 +37,8 @@ jobs:
         run: bundle install
 
       # rakeタスクの実行   
-      - name: Run Rake Task
-        run: bundle exec rake reminders:figure_payment_notification
+      - name: Run Email Notification
+        run: bundle exec rake reminders:figure_payment_email_notification
+
+      - name: Run LINE Notification
+        run: bundle exec rake reminders:figure_payment_line_notification

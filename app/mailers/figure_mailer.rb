@@ -7,7 +7,7 @@ class FigureMailer < ApplicationMailer
 
     mail(
       to: user.email,
-      subject: "【Figrune】#{release_month.strftime('%Y年%-m月')}の発売予定フィギュア"
+      subject: "【Figrune】#{release_month.strftime('%Y年%-m月')}発売予定のフィギュア"
     )
   end
 end

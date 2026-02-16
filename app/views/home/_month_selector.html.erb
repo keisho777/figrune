@@ -7,11 +7,10 @@
     <!-- 月のボタン -->
     <div class="flex flex-wrap gap-2">
       <% months.each do |month| %>
-        <% selected = params[:selected_month] == month.strftime("%Y-%m") %>
+        <% selected = selected_month == month %>
         <%= link_to month.strftime("%m月"),
-            home_path(selected_month: month.strftime("%Y-%m")),
-            data: { turbo_frame: "figures" },
-            class: "px-2 py-1 rounded border text-sm text-gray-500 hover:bg-gray-200" %>
+            home_path(from: params[:from], to: params[:to], selected_month: month.strftime("%Y-%m")),
+            class: "px-2 py-1 rounded border text-sm #{selected ? 'bg-black text-white' : 'text-gray-500 hover:bg-gray-200'}" %>
       <% end %>
     </div>
   </div>

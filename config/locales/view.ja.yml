@@ -126,6 +126,9 @@ ja:
     edit:
       title: 編集
       delete: 削除する
+    figure:
+      upcoming: 発売予定
+      released: 発売済み
     sort:
       sort: 並び替え
       created_at_desc: 登録日（新しい順）

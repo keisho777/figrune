@@ -4,7 +4,7 @@
       <!-- 範囲指定UI -->
       <%= render 'date_range', url: home_path %>
       <!-- 範囲指定内の月選択UI -->
-      <%= render "month_selector", months: @months %>
+      <%= render "month_selector", months: @months, selected_month: @selected_month %>
       <!-- 棒グラフ(chart.js) -->
       <div class="w-full h-[260px] md:h-[420px]">
         <canvas
@@ -14,7 +14,7 @@
         </canvas>
       </div>
     </div>
-    <%= turbo_frame_tag "figures" , class: "w-full" do %>
+    <div class="w-full">
       <!-- 月別サマリー -->
       <div class="mt-8 p-4 rounded-lg border bg-gray-100">
         <!-- <div class="w-full my-8 p-4 border-b-2 "> -->
@@ -42,11 +42,11 @@
       <% if @figures.present? %>
         <!-- 選択中の月のフィギュア一覧 -->
         <div class="border rounded-lg divide-y">
-          <%= render partial: "home/figure", collection: @figures %>
+          <%= render @figures %>
         </div>
       <% else %>
         <!-- 表示するデータがない時 -->
         <span class="block my-8 text-center"><%= t(".no_data_available") %></span>
       <% end %>
-    <% end %>
+    </div>
   </div>

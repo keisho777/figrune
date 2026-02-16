@@ -5,4 +5,12 @@ module FiguresHelper
 
     content_tag(:span, total_price, class: css_class)
   end
+
+  def release_label(figure)
+    if figure.release_month < Date.current
+      t(".released")
+    else
+      t(".upcoming")
+    end
+  end
 end

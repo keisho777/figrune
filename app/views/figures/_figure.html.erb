@@ -4,7 +4,7 @@
     <!-- XXXX年XX月 発売予定 -->
     <span>
       <%= l(figure.release_month, format: :default) %>
-      <%= t("defaults.scheduled_for_release") %>
+      <%= release_label(figure) %>
     </span>
     <!-- 支払いステータス -->
     <span>

@@ -6,6 +6,7 @@ class Figure < ApplicationRecord
   validates :payment_status, presence: true
   validates :size_mm, numericality: { greater_than_or_equal_to: 1, allow_blank: true }
   validates :note, length: { maximum: 65_535 }
+  validate :size_type_and_mm_consistency
 
   belongs_to :user
   belongs_to :manufacturer, optional: true
@@ -91,5 +92,17 @@ class Figure < ApplicationRecord
     shop_name.present? ||
     manufacturer_name.present? ||
     note.present?
+  end
+
+  private
+
+  def size_type_and_mm_consistency
+    if size_type.present? ^ size_mm.present?
+      if size_type.present?
+        errors.add(:size_mm, I18n.t("errors.messages.blank"))
+      elsif size_mm.present?
+        errors.add(:size_type, I18n.t("errors.messages.blank"))
+      end
+    end
   end
 end

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root "static_pages#top"
   get "/home", to: "home#index"
+  get "/privacy_policy", to: "static_pages#privacy_policy"
+  get "/terms_of_service", to: "static_pages#terms_of_service"
+  get "/contact", to: "static_pages#contact"
   resources :figures, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
     get :autocomplete, on: :collection
     get :autocomplete_work, on: :collection

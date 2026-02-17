@@ -3,7 +3,14 @@
 ja:
   devise:
     mailer:
-      subject: メールアドレス変更手続きのお知らせ
+      confirmation_instructions:
+        subject: メールアドレス変更手続きのお知らせ
+    confirmations:
+      send_instructions: 確認メールを送信しました
+      new:
+        title: 確認メールの再送信
+        description_html: 確認メールの有効期限が切れているか、無効になっています。<br>もう一度メールアドレスを入力し、メールを送信してください。<br>もしくは、メールアドレス変更画面から再度メールを送信してください。
+        submit: 送信する
     registrations:
       new:
         title: アカウント登録

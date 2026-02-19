@@ -16,6 +16,9 @@ ja:
     delete_confirm: 本当に削除してよろしいですか？
     confirm_error_log: "メール認証エラー：%{error}"
     confirm_error: メール認証中にエラーが発生しました。再度確認メールを送信をしてください。
+    omniauth_error_log: "SNSアカウント登録エラー Class：%{error_class}, Message：%{error_message}"
+    omniauth_unexpected_error_log: "SNSアカウント登録での予期せぬエラー Class：%{error_class}, Message：%{error_message}"
+    unexpected_error: アカウント登録中にエラーが発生しました。時間をおいてから再度、登録をお試しください。
     flash_message:
       created: 登録しました
       not_created: 登録できませんでした

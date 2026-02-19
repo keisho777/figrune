@@ -31,7 +31,7 @@
     <%= favicon_link_tag('favicon.ico') %>    
   </head>
 
-  <body>
+  <body class="flex flex-col min-h-screen">
     <%= render 'shared/header' %>
     
     <div class="w-full max-w-4xl mx-auto px-4">
@@ -47,8 +47,9 @@
         <% end %>
       <% end %>
     </div>
-
-    <%= yield %>
+    <div class="flex-grow">
+      <%= yield %>
+    </div>
     <%= render 'shared/footer' %>
   </body>
 </html>

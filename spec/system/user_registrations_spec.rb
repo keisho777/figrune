@@ -3,12 +3,14 @@ require 'rails_helper'
 RSpec.describe "UserRegistrations", type: :system do
   describe 'ユーザー新規登録' do
     let(:user) { build(:user) }
+    let(:password) { 'password' }
+
     context '入力値が正常' do
       it 'ユーザーの新規登録が成功する' do
         visit new_user_registration_path
         fill_in 'メールアドレス', with: user.email
-        fill_in 'パスワード', with: user.password
-        fill_in 'パスワード（確認）', with: user.password_confirmation
+        fill_in 'パスワード', with: password
+        fill_in 'パスワード（確認）', with: password
         click_button '登録する'
         expect(page).to have_content 'アカウント登録が完了しました。'
         expect(page).to have_current_path(home_path)
@@ -19,8 +21,8 @@ RSpec.describe "UserRegistrations", type: :system do
       it '新規登録が失敗する' do
         visit new_user_registration_path
         fill_in 'メールアドレス', with: ''
-        fill_in 'パスワード', with: user.password
-        fill_in 'パスワード（確認）', with: user.password_confirmation
+        fill_in 'パスワード', with: password
+        fill_in 'パスワード（確認）', with: password
         click_button '登録する'
         expect(page).to have_content 'メールアドレスを入力してください'
         expect(page).to have_current_path(new_user_registration_path)
@@ -32,8 +34,8 @@ RSpec.describe "UserRegistrations", type: :system do
       it '新規登録が失敗する' do
         visit new_user_registration_path
         fill_in 'メールアドレス', with: exising_user.email
-        fill_in 'パスワード', with: exising_user.password
-        fill_in 'パスワード（確認）', with: exising_user.password_confirmation
+        fill_in 'パスワード', with: password
+        fill_in 'パスワード（確認）', with: password
         click_button '登録する'
         expect(page).to have_content 'メールアドレスはすでに存在します'
         expect(page).to have_current_path(new_user_registration_path)

@@ -2,13 +2,14 @@ require 'rails_helper'
 
 RSpec.describe "UserSessions", type: :system do
   let(:user) { create(:user) }
+  let(:password) { 'password' }
 
   describe 'ログイン前' do
     context '入力値が正常' do
       it 'ログイン処理が成功する' do
         visit new_user_session_path
         fill_in 'メールアドレス', with: user.email
-        fill_in 'パスワード', with: 'password'
+        fill_in 'パスワード', with: password
         click_button 'ログイン'
         expect(page).to have_content 'ログインしました'
         expect(page).to have_current_path(home_path)
@@ -19,7 +20,7 @@ RSpec.describe "UserSessions", type: :system do
       it 'ログイン処理が失敗する' do
         visit new_user_session_path
         fill_in 'メールアドレス', with: ''
-        fill_in 'パスワード', with: 'password'
+        fill_in 'パスワード', with: password
         click_button 'ログイン'
         expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
         expect(page).to have_current_path(new_user_session_path)

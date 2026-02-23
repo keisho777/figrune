@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Layouts", type: :system do
+  let(:user) { create(:user) }
   describe 'ログイン前' do
     before { visit root_path }
     context 'ヘッダー' do

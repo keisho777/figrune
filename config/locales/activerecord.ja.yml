@@ -21,6 +21,7 @@ ja:
         shop: 予約/購入店舗
         manufacturer: メーカー
         note: 備考
+        work_name: 作品名
   enums:
     user:
       email_notification_timing:

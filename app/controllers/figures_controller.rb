@@ -29,7 +29,7 @@ class FiguresController < ApplicationController
   end
 
   def show
-    @figure = Figure.find(params[:id])
+    @figure = current_user.figures.find(params[:id])
   end
 
   def edit

@@ -111,6 +111,17 @@ RSpec.describe Figure, type: :model do
       expect(Work.count).to eq(1)
     end
 
+    it '作品名が100文字以内の場合、バリデーションエラーが起きないこと' do
+      figure.work_name = 'a' * 100
+      expect(figure).to be_valid
+    end
+
+    it '作品名が101文字以上の場合、バリデーションエラーが発生すること' do
+      figure.work_name = 'a' * 101
+      expect(figure).to be_invalid
+      expect(figure.errors[:work_name]).to eq [ "は100文字以内で入力してください" ]
+    end
+
     it '予約/購入店舗が未登録の場合、Shopテーブルに登録されること' do
       expect(Shop.count).to eq(0)
       figure.assign_shop_by_name("shop")
@@ -125,6 +136,17 @@ RSpec.describe Figure, type: :model do
       expect(Shop.count).to eq(1)
     end
 
+    it '予約/購入店舗が100文字以内の場合、バリデーションエラーが起きないこと' do
+      figure.shop_name = 'a' * 100
+      expect(figure).to be_valid
+    end
+
+    it '予約/購入店舗が101文字以上の場合、バリデーションエラーが発生すること' do
+      figure.shop_name = 'a' * 101
+      expect(figure).to be_invalid
+      expect(figure.errors[:shop_name]).to eq [ "は100文字以内で入力してください" ]
+    end
+
     it 'メーカーが未登録の場合、Manufacturerテーブルに登録されること' do
       expect(Manufacturer.count).to eq(0)
       figure.assign_manufacturer_by_name("manufacturer")
@@ -137,6 +159,17 @@ RSpec.describe Figure, type: :model do
       expect(Manufacturer.count).to eq(1)
       figure.assign_manufacturer_by_name("manufacturer")
       expect(Manufacturer.count).to eq(1)
+    end
+
+    it 'メーカーが100文字以内の場合、バリデーションエラーが起きないこと' do
+      figure.manufacturer_name = 'a' * 100
+      expect(figure).to be_valid
+    end
+
+    it 'メーカーが101文字以上の場合、バリデーションエラーが発生すること' do
+      figure.manufacturer_name = 'a' * 101
+      expect(figure).to be_invalid
+      expect(figure.errors[:manufacturer_name]).to eq [ "は100文字以内で入力してください" ]
     end
   end
 end

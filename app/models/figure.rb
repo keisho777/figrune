@@ -7,6 +7,7 @@ class Figure < ApplicationRecord
   validates :size_mm, numericality: { greater_than_or_equal_to: 1, allow_blank: true }
   validates :note, length: { maximum: 65_535 }
   validates :work_name, length: { maximum: 100 }
+  validates :shop_name, length: { maximum: 100 }
   validate :size_type_and_mm_consistency
 
   belongs_to :user

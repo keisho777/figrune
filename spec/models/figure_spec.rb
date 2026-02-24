@@ -160,5 +160,16 @@ RSpec.describe Figure, type: :model do
       figure.assign_manufacturer_by_name("manufacturer")
       expect(Manufacturer.count).to eq(1)
     end
+
+    it 'メーカーが100文字以内の場合、バリデーションエラーが起きないこと' do
+      figure.manufacturer_name = 'a' * 100
+      expect(figure).to be_valid
+    end
+
+    it 'メーカーが101文字以上の場合、バリデーションエラーが発生すること' do
+      figure.manufacturer_name = 'a' * 101
+      expect(figure).to be_invalid
+      expect(figure.errors[:manufacturer_name]).to eq [ "は100文字以内で入力してください" ]
+    end
   end
 end

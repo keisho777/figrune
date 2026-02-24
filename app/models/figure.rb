@@ -6,6 +6,7 @@ class Figure < ApplicationRecord
   validates :payment_status, presence: true
   validates :size_mm, numericality: { greater_than_or_equal_to: 1, allow_blank: true }
   validates :note, length: { maximum: 65_535 }
+  validates :work_name, length: { maximum: 100 }
   validate :size_type_and_mm_consistency
 
   belongs_to :user

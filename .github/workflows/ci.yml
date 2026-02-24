@@ -50,6 +50,12 @@ jobs:
           - 5432:5432
         options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
 
+      chrome:
+        image: selenium/standalone-chrome:latest
+        ports:
+          - 4444:4444
+        options: --shm-size=2gb
+
       # redis:
       #   image: redis
       #   ports:
@@ -69,12 +75,26 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      # - name: Run tests
-      #   env:
-      #     RAILS_ENV: test
-      #     DATABASE_URL: postgres://postgres:postgres@localhost:5432
-      #     # REDIS_URL: redis://localhost:6379/0
-      #   run: bin/rails db:test:prepare test test:system
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build assets
+        run: bin/rails assets:precompile
+        env:
+          RAILS_ENV: test
+
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432
+          # REDIS_URL: redis://localhost:6379/0
+        run: bin/rails db:test:prepare && bundle exec rspec
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4

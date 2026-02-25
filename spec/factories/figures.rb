@@ -5,6 +5,7 @@ FactoryBot.define do
     quantity { 1 }
     price { 1000 }
     payment_status { :unpaid }
+    total_price { calculate_total_price }
     association :user
   end
 end

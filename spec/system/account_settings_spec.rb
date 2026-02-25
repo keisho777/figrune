@@ -54,7 +54,7 @@ RSpec.describe "AccountSettings", type: :system do
           expect(page).to have_current_path(edit_email_account_setting_path)
         end
       end
-      
+
       context 'パスワード登録済み' do
         it 'パスワード変更画面にアクセスできる' do
           within('.grid', text: 'パスワード') do

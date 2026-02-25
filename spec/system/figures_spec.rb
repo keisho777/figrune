@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Figures", type: :system do
-  let(:user) { create(:user) }
-  let(:figure) { create(:figure) }
+  let!(:user) { create(:user) }
+  let(:figure) { create(:figure, user: user) }
   describe 'ログイン前' do
     describe 'ページ遷移確認' do
       context 'フィギュアの登録ページにアクセス' do
@@ -196,8 +196,24 @@ RSpec.describe "Figures", type: :system do
       end
     end
 
+    describe 'フィギュア詳細' do
+      let!(:figure) { create(:figure, user: user) }
+      before { visit figures_path }
+
+      it 'フィギュアの詳細が表示される' do
+        click_link figure.name
+        expect(page).to have_content 'TEST'
+        expect(page).to have_content '未払い'
+        expect(page).to have_content '2026年02月'
+        expect(page).to have_content '1'
+        expect(page).to have_content '¥1,000'
+        expect(page).to have_content '¥1,000'
+        expect(current_path).to eq figure_path(figure)
+      end
+    end
+
     describe 'フィギュア編集' do
-      let(:figure) { create(:figure, user: user) }
+      let!(:figure) { create(:figure, user: user) }
       before { visit edit_figure_path(figure) }
 
       context '入力値が正常' do
@@ -320,7 +336,7 @@ RSpec.describe "Figures", type: :system do
     end
 
     describe 'フィギュア削除' do
-      let(:figure) { create(:figure, user: user) }
+      let!(:figure) { create(:figure, user: user) }
       before { visit edit_figure_path(figure) }
 
       it 'タスクの削除が成功する' do
@@ -329,6 +345,87 @@ RSpec.describe "Figures", type: :system do
         expect(page).to have_content '削除しました'
         expect(current_path).to eq figures_path
         expect(page).not_to have_content figure.name
+      end
+    end
+
+    describe 'フィギュア一覧' do
+      context 'フィギュアを1件も登録していない' do
+        before { visit figures_path }
+        it '表示できるデータがない旨のメッセージが表示される' do
+          expect(page).to have_content '表示できるデータはありません。'
+          expect(page).not_to have_content '並び替え'
+        end
+      end
+      context '検索' do
+        let!(:figure) { create(:figure, user: user) }
+        let!(:figure1) { create(:figure, user: user, name: 'abcd', release_month: '2027-02', quantity: 2, price: 2000) }
+        let!(:figure2) { create(:figure, user: user, name: '1234', release_month: '2028-02', quantity: 3, price: 3000) }
+        before { visit figures_path }
+
+        it '商品名で検索ができる' do
+          page.save_screenshot('final_check.png')
+          fill_in 'q_name_cont', with: 'a'
+          click_button '検索'
+          expect(page).to have_content 'abcd'
+          expect(page).not_to have_content '1234'
+        end
+      end
+
+      context '並び替え' do
+        let!(:figure) { create(:figure, user: user) }
+        let!(:figure1) { create(:figure, user: user, name: 'abcd', release_month: '2027-02', quantity: 2, price: 2000) }
+        let!(:figure2) { create(:figure, user: user, name: '1234', release_month: '2028-02', quantity: 3, price: 3000) }
+        before { visit figures_path }
+
+        it '登録日（新しい順）' do
+          select '登録日（新しい順）', from: 'q_s'
+          expect(page.text).to match %r{#{figure2.name}.*#{figure1.name}.*#{figure.name}}
+        end
+
+        it '登録日（古い順）' do
+          select '登録日（古い順）', from: 'q_s'
+          expect(page.text).to match %r{#{figure.name}.*#{figure1.name}.*#{figure2.name}}
+        end
+
+        it '発売月（早い順）' do
+          select '発売月（早い順）', from: 'q_s'
+          expect(page.text).to match %r{#{figure.name}.*#{figure1.name}.*#{figure2.name}}
+        end
+
+        it '発売月（遅い順）' do
+          select '発売月（遅い順）', from: 'q_s'
+          expect(page.text).to match %r{#{figure2.name}.*#{figure1.name}.*#{figure.name}}
+        end
+
+        it '合計金額（安い順）' do
+          select '合計金額（安い順）', from: 'q_s'
+          expect(page.text).to match %r{#{figure.name}.*#{figure1.name}.*#{figure2.name}}
+        end
+
+        it '合計金額（高い順）' do
+          select '合計金額（高い順）', from: 'q_s'
+          expect(page.text).to match %r{#{figure2.name}.*#{figure1.name}.*#{figure.name}}
+        end
+      end
+
+      context 'ページネーション' do
+        context '10件以下' do
+          let!(:figures) { create_list(:figure, 10, user: user) }
+
+          it 'ページネーションが表示されないこと' do
+            visit figures_path
+            expect(page).not_to have_selector('.pagination')
+          end
+        end
+
+        context '11件以上' do
+          let!(:figures) { create_list(:figure, 11, user: user) }
+
+          it 'ページネーションが表示されること' do
+            visit figures_path
+            expect(page).to have_selector('.pagination')
+          end
+        end
       end
     end
   end

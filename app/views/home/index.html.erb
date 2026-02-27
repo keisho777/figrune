@@ -28,13 +28,24 @@
               <%= l(@selected_month, format: :default) %>
             </div>
           </div>
-          <!-- 未払い合計 -->
-          <div class="text-right">
-            <div class="text-xs text-gray-500">
-              <%= t(".total_unpaid") %>
+          <div class="flex gap-4 md:gap-8">
+            <!-- 個数（選択した月の合計個数） -->
+            <div class="text-left">
+              <div class="text-xs text-gray-500">
+                <%= t(".quantity") %>
+              </div>
+              <div class="text-xl font-semibold text-red-600">
+                <%= "#{ @figures.sum(&:quantity) }個" %>
+              </div>
             </div>
-            <div class="text-xl font-semibold text-red-600">
-              <%= number_to_currency(@unpaid_total, unit: "¥", format: "%u%n") %>
+            <!-- 未払い合計 -->
+            <div class="text-left">
+              <div class="text-xs text-gray-500">
+                <%= t(".total_unpaid") %>
+              </div>
+              <div class="text-xl font-semibold text-red-600">
+                <%= number_to_currency(@unpaid_total, unit: "¥", format: "%u%n") %>
+              </div>
             </div>
           </div>
         </div>

@@ -4,7 +4,8 @@ import Chart from "chart.js/auto"
 export default class extends Controller {
   static values = {
     labels: Array,
-    data: Array
+    unpaidData: Array,
+    quantityData: Array
   }
   connect() {
     const isMobile = window.innerWidth < 768
@@ -14,24 +15,50 @@ export default class extends Controller {
       data: {
         labels: this.labelsValue,
         datasets: [{
-          label: '未払いの合計',
-          data: this.dataValue
+          label: "未払いの合計",
+          data: this.unpaidDataValue,
+          yAxisID: "y1"
+        },
+        {
+          label: "個数",
+          data: this.quantityDataValue,
+          yAxisID: "y2"
         }]
       },
       options: {
         // canvasのCSSの高さに従わせる
         maintainAspectRatio: false, 
+        animation: false,
         scales: {
-         x: {
+          // 下：月ラベル
+          x: {
             ticks: {
-            font: { size: isMobile ? 8 : 12 }
+              // ラベルの文字の大きさの調整
+              font: { size: isMobile ? 8 : 12 }
             }
-        },
-        y: {
+          },
+          // 左：金額ラベル
+          y1: {
             ticks: {
-            font: { size: isMobile ? 8 : 12 }
+              // ラベルの文字の大きさの調整
+              font: { size: isMobile ? 8 : 12 }
             }
-        }
+          },
+          // 右：個数ラベル
+          y2: {
+            ticks: {
+              // ラベルの文字の大きさの調整
+              font: { size: isMobile ? 8 : 12 },
+              // 整数刻みにする
+              stepSize: 1
+            },
+            // ラベルをグラフの右に配置
+            position: "right",
+            // 個数のY軸グラフの横線を表示しない
+            grid: {
+              drawOnChartArea: false
+            }
+          }
         }
       }
     })

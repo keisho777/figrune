@@ -8,10 +8,14 @@ def index
   @to = params[:to].present? ? Date.strptime(params[:to], "%Y-%m").end_of_month : @from + MAX_MONTHS.months - 1
 
   @months = (@from.to_date..@to.to_date).select { |d| d.day == 1 }
-  chart_data = current_user.figures.where(payment_status: :unpaid)
-                           .where(release_month: @from..@to)
-                           .group(:release_month)
-                           .sum(:total_price)
+  chart_data_unpaid_total = current_user.figures
+                              .unpaid
+                              .where(release_month: @from..@to)
+                              .group(:release_month)
+                              .sum(:total_price)
+  chart_data_quantity = current_user.figures.where(release_month: @from..@to)
+                          .group(:release_month)
+                          .sum(:quantity)
 
   @selected_month =
     if params[:selected_month].present?
@@ -19,6 +23,9 @@ def index
     else
       @from
     end
+  # 今月以降のフィギュアの未払い総額と予約総数
+  # @total_upcoming_unpaid = current_user.figures.where("release_month >= ?", today.beginning_of_month).unpaid.sum(:total_price)
+  # @upcoming_figures = current_user.figures.where("release_month >= ?", today.beginning_of_month).sum(:quantity)
 
   @figures =
     if @selected_month
@@ -36,6 +43,7 @@ def index
       d.strftime("%m月") # 月だけ（1行）
     end
   end
-  @data = @months.map { |d| chart_data[d.beginning_of_month] || 0 }
+  @unpaid_total_data = @months.map { |d| chart_data_unpaid_total[d.beginning_of_month] || 0 }
+  @quantity_data = @months.map { |d| chart_data_quantity[d.beginning_of_month] || 0 }
  end
 end

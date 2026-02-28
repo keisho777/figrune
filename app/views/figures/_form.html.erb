@@ -62,7 +62,7 @@
         </div>
         <!-- 作品名 -->
         <div data-controller="autocomplete" data-autocomplete-url-value="/figures/autocomplete_work" role="combobox">
-          <%= f.label :work, class: "font-bold"  %>
+          <%= f.label :work_name, class: "font-bold"  %>
           <%= f.text_field :work_name,
               data: { autocomplete_target: 'input' },
               class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
@@ -75,7 +75,7 @@
         </div>
         <!-- 予約/購入店舗 -->
         <div data-controller="autocomplete" data-autocomplete-url-value="/figures/autocomplete_shop" role="combobox">
-          <%= f.label :shop, class: "font-bold"  %>
+          <%= f.label :shop_name, class: "font-bold"  %>
           <%= f.text_field :shop_name,
               data: { autocomplete_target: 'input' },
               class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
@@ -88,7 +88,7 @@
         </div>
         <!-- メーカー -->
         <div data-controller="autocomplete" data-autocomplete-url-value="/figures/autocomplete_manufacturer" role="combobox">
-          <%= f.label :manufacturer, class: "font-bold"  %>
+          <%= f.label :manufacturer_name, class: "font-bold"  %>
           <%= f.text_field :manufacturer_name,
               data: { autocomplete_target: 'input' },
               class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>

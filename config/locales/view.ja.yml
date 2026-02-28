@@ -97,6 +97,7 @@ ja:
     index:
       title: ホーム
       selected_month: 選択中の月
+      quantity: 個数
       total_unpaid: 未払いの合計
       no_data_available: 表示できるデータはありません。
     date_range:

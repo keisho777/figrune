@@ -12,6 +12,13 @@
     </script>
 
     <title><%= page_title(yield(:title)) %></title>
+    
+    <!-- OGP設定 -->
+    <meta property="og:title" content="Figrune" />
+    <meta property="og:description" content="将来の支払い・発売時期を一括管理し、フィギュアの予約・購入をより快適にします。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://figrune-app.com" />
+    <meta property="og:image" content="<%= image_url('OGP.png') %>" />
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">

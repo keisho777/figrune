@@ -10,7 +10,8 @@
         <canvas
             data-controller="monthly-chart"
             data-monthly-chart-labels-value="<%= @labels.to_json %>"
-            data-monthly-chart-data-value="<%= @data.to_json %>">
+            data-monthly-chart-unpaid-data-value="<%= @unpaid_total_data.to_json %>"
+            data-monthly-chart-quantity-data-value="<%= @quantity_data.to_json %>">
         </canvas>
       </div>
     </div>

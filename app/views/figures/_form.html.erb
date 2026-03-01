@@ -1,6 +1,8 @@
 <%= form_with model: figure do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="flex flex-col gap-3">
+    <!-- show.html.erbの編集ボタンで渡した遷移元のURLを保持しておく -->
+    <%= hidden_field_tag :back_to, safe_back_path(params[:back_to]) %>
     <!-- 商品名 -->
     <div>
       <%= f.label :name, class: "font-bold" %>

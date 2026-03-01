@@ -7,7 +7,7 @@ module FiguresHelper
   end
 
   def release_label(figure)
-    if figure.release_month < Date.current
+    if figure.release_month < Date.current.beginning_of_month
       t(".released")
     else
       t(".upcoming")

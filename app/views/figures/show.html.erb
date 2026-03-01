@@ -86,12 +86,13 @@
     初めて詳細に来た時、request.refererで一覧orホームのpathが変数に入り、
     編集（更新）をして詳細に戻ってきても、戻るを押すと遷移元（一覧orホーム）に戻ることができる -->
     <% origin_path = params[:back_to] || request.referer || home_path %>
+    <% safe_origin_path = safe_back_path(origin_path)%>
     <!-- 編集するボタン -->
     <!-- パスに遷移元のURLを渡しておく -->
-    <%= link_to t(".edit"), edit_figure_path(@figure, back_to: origin_path),
+    <%= link_to t(".edit"), edit_figure_path(@figure, back_to: safe_origin_path),
         class: "mt-3 mb-3 px-18 py-2 text-center rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition" %>
     <!-- 戻るボタン -->
-    <%= link_to t(".back"), origin_path,
+    <%= link_to t(".back"), safe_origin_path,
         class: "mt-3 mb-10 px-18 py-2 text-center rounded-lg bg-gray-500 text-white font-semibold hover:bg-gray-600 transition" %>
   </div>
 </div>

@@ -52,7 +52,8 @@ class FiguresController < ApplicationController
     @figure.assign_shop_by_name(@figure.shop_name)
     @figure.assign_manufacturer_by_name(@figure.manufacturer_name)
     if @figure.save
-      redirect_to figure_path(@figure), notice: t("defaults.flash_message.updated")
+      # _form.html.erbで保持していた遷移元のURLを詳細画面に渡す
+      redirect_to figure_path(@figure, back_to: params[:back_to]), notice: t("defaults.flash_message.updated")
     else
       flash.now[:alert] = t("defaults.flash_message.not_updated")
       render :edit, status: :unprocessable_entity

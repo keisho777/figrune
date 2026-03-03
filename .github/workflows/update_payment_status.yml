@@ -23,7 +23,7 @@ jobs:
     steps:
       # GithubActionsの仮想環境用のディレクトリにリポジトリのクローン
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Rubyのセットアップ
       - name: Set up Ruby

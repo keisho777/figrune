@@ -13,7 +13,12 @@ jobs:
     env:
       RAILS_ENV: production
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      MAIL_FROM: ${{ secrets.MAIL_FROM }}
       SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+      LINE_KEY: ${{ secrets.LINE_KEY }}
+      LINE_SECRET: ${{ secrets.LINE_SECRET }}
+      LINE_CHANNEL_TOKEN: ${{ secrets.LINE_CHANNEL_TOKEN }}
     
     steps:
       # GithubActionsの仮想環境用のディレクトリにリポジトリのクローン

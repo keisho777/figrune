@@ -65,6 +65,181 @@ A.多くの家計簿アプリは「未来の支払い」を前提に作られて
 また、まだ支払っていないのに赤字みたいな状況になったり、何を予約したのかという細かいところがわかりません。
 本サービスは未来の支払いを管理するために作られているので、前述のような違和感はありませんし、何を予約したかの検索も可能です。
 
+## 機能一覧
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">
+      <b>新規登録</b>
+    </td>
+    <td width="50%" align="center">
+      <b>ログイン</b>
+    </td>
+  </tr>
+  <tr></tr>
+  <tr>
+    <td width="50%">
+      <img width="2160" height="1884" alt="image" src="https://github.com/user-attachments/assets/fd9deb33-35b4-49d5-af42-0db5a14d62bd" />
+    </td>
+    <td width="50%">
+      <img width="2160" height="1884" alt="image" src="https://github.com/user-attachments/assets/fbdf62d5-8927-4fb0-9eae-026b7fd1f176" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left">
+      メールアドレス、パスワードを入力することで新規登録ができます。<br>
+      他にLINEアカウントを使用して新規登録を行うことも可能です。<br>
+      その後、作成したアカウントでメールアドレス＆パスワードでのログイン、もしくはLINEログインができます。
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td colspan="2" align="center">
+      <b>登録画面：フィギュア登録機能（一部項目にオートコンプリート機能あり）</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <b>画像①</b>
+    </td>
+    <td width="50%" align="center">
+      <b>画像②</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img width="2160" height="1884" alt="image" src="https://github.com/user-attachments/assets/f72c5a83-6188-486a-a769-169857f1a1d0" />
+    </td>
+    <td width="50%">
+      <img width="2160" height="1884" alt="image" src="https://github.com/user-attachments/assets/4a812642-33aa-4bda-8375-54a37c6686f2" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left">
+      ここで「商品名」、「発売月」、「個数」、「金額」、「支払いステータス」を入力することでフィギュアを登録することができます。<br>
+      画像①の赤枠の「詳細情報を入力（任意）」をクリックすることで、画像②のように「サイズ種別」、「サイズ（mm）」、「作品名」、「予約/購入店舗」、「メーカー」、「備考」が表示されます。「作品名」、「予約/購入店舗」、「メーカー」についてはオートコンプリート機能が備わっており、入力中の文字に連動して登録済みのデータが候補として表示されます。<br>
+      ディスクロージャーを取り入れていることで、特にスマホから登録する時、必須項目のみならスクロールなしで登録することができます。
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td colspan="2" align="center">
+      <b>ホーム画面：期間指定機能</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <b>画像①</b>
+    </td>
+    <td width="50%" align="center">
+      <b>画像②</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img width="2160" height="1884" alt="image" src="https://github.com/user-attachments/assets/e584ae25-498f-4326-8e92-d1403ed8954c" />
+    </td>
+    <td width="50%">
+      <img width="2160" height="1884" alt="image" src="https://github.com/user-attachments/assets/8b2e4d4d-add3-4446-855b-4bba066ae2bb" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left">
+      画像①の赤枠内で期間を指定し、「表示」をクリックすることで画像②の緑枠内の表示が指定した期間のものに更新されます。<br>
+      最大表示可能期間は12ヶ月です。
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td colspan="2" align="center">
+      <b>ホーム画面：月ごとのフィギュア一覧表示機能</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <b>画像①</b>
+    </td>
+    <td width="50%" align="center">
+      <b>画像②</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img width="2160" height="1884" alt="image" src="https://github.com/user-attachments/assets/699deda3-7f02-49d0-b376-d80856a69d8c" />
+    </td>
+    <td width="50%">
+      <img width="2160" height="1884" alt="image" src="https://github.com/user-attachments/assets/fd791031-2950-4795-ab16-546ca323dfc5" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left">
+      画像①の赤枠内の月のボタンをクリックすることで、画像②の緑枠内が選択した月のフィギュア一覧に更新されます。<br>
+      選択中の月は対象のボタンの背景が黒になるようにしており、どの月を選択しているのかわかりやすくしています。
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td colspan="2" align="center">
+      <b>一覧画面：検索機能（オートコンプリート機能あり）</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <b>画像①</b>
+    </td>
+    <td width="50%" align="center">
+      <b>画像②</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img width="2160" height="1884" alt="image" src="https://github.com/user-attachments/assets/24d1bdc8-483b-448f-822a-40f10efa94ca" />
+    </td>
+    <td width="50%">
+      <img width="2160" height="1884" alt="image" src="https://github.com/user-attachments/assets/0778ca16-0103-468a-91d1-5209fd5fb038" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left">
+      画像①の赤枠内の検索フィールドに文字を入力することでオートコンプリート機能によって、入力中の文字に連動して黄枠に登録済みの商品名が候補として表示されます。<br>
+      画像②の緑枠の検索ボタンをクリックすると、ピンク枠内に検索キーワードを含む商品が一覧で表示されます。
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td colspan="2" align="center">
+      <b>一覧画面：並び替え機能</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <b>画像①</b>
+    </td>
+    <td width="50%" align="center">
+      <b>画像②</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img width="2160" height="1884" alt="image" src="https://github.com/user-attachments/assets/c1932a51-13fe-4d25-aa6a-32cdae5967d3" />
+    </td>
+    <td width="50%">
+      <img width="2160" height="1888" alt="image" src="https://github.com/user-attachments/assets/969a254e-2c94-4fff-8513-2fe83d4d2683" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left">
+      画像①の赤枠内の並び替えのセレクトボックスをクリックすることで、「登録日の新しい順/古い順」、「発売月の早い順/遅い順」、「合計金額の安い順/高い順」の
+      どれかを選択することができます。<br>
+      画像②は「発売月の遅い順」を選択した結果で緑枠が発売月の遅い順になります。
+    </td>
+  </tr>
+</table>
+
 ## 機能候補
 - MVP機能
   - ログイン機能（メールアドレス＆パスワード、LINEログイン）

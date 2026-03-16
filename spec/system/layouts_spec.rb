@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Layouts", type: :system do
+RSpec.describe 'Layouts', type: :system do
   let(:user) { create(:user) }
   describe 'ログイン前' do
     before { visit root_path }
@@ -23,6 +23,11 @@ RSpec.describe "Layouts", type: :system do
     end
 
     context 'フッター' do
+      it '使い方画面に遷移する' do
+        click_link '使い方'
+        expect(page).to have_current_path(how_to_use_path)
+      end
+
       it '利用規約画面に遷移する' do
         click_link '利用規約'
         expect(page).to have_current_path(terms_of_service_path)
@@ -45,6 +50,7 @@ RSpec.describe "Layouts", type: :system do
       login_as(user, scope: :user)
       visit home_path
     end
+
     context 'ヘッダー' do
       it 'ロゴクリックでホーム画面に遷移する' do
         click_link 'Figrune'
@@ -73,6 +79,11 @@ RSpec.describe "Layouts", type: :system do
     end
 
     context 'フッター' do
+      it '使い方画面に遷移する' do
+        click_link '使い方'
+        expect(page).to have_current_path(how_to_use_path)
+      end
+
       it '利用規約画面に遷移する' do
         click_link '利用規約'
         expect(page).to have_current_path(terms_of_service_path)

@@ -56,7 +56,8 @@ ja:
     home: ホーム
     create: 登録
     list: 一覧
-  hooter:
+  footer:
+    how_to_use: 使い方
     terms_of_service: 利用規約
     privacy_policy: プライバシーポリシー
     contact: お問い合わせ

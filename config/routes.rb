@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/privacy_policy", to: "static_pages#privacy_policy"
   get "/terms_of_service", to: "static_pages#terms_of_service"
   get "/contact", to: "static_pages#contact"
+  get "/how-to-use", to: "static_pages#how_to_use"
   resources :figures, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
     get :autocomplete, on: :collection
     get :autocomplete_work, on: :collection

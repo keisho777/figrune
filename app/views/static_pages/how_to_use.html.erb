@@ -1,0 +1,144 @@
+<div class="max-w-4xl mx-auto px-4 py-10">
+
+  <!-- タイトル -->
+  <div class="mb-6 border-b">
+    <h1 class="text-3xl text-center font-bold mb-6">
+      Figruneの使い方
+    </h1>
+  </div>
+
+  <!-- 詳細説明 -->
+  <div class="space-y-16">
+
+    <!-- 1.フィギュアを登録 -->
+    <section class="pb-16 border-b md:flex gap-10 justify-between">
+      <div class="text-gray-700 space-y-3 mb-3">
+        <h2 class="text-2xl font-bold">
+          1. フィギュアを登録
+        </h2>
+        <div class="flex gap-2">
+          <span>①</span>
+          <p>「登録」をクリックするとフィギュア登録画面が表示されます。</p>
+        </div>
+        <div class="flex gap-2">
+          <span>②</span>
+          <p>「詳細情報を入力（任意）」をクリックするとより詳細な情報を入力して登録することも可能です。</p>
+        </div>
+        <div class="flex gap-2">
+          <span>③</span>
+          <p>下記5つの必須項目を入力後、「登録する」ボタンをクリックで登録が完了します。</p>
+        </div>
+        <ul class="list-disc pl-6">
+          <li>商品名</li>
+          <li>発売月</li>
+          <li>個数</li>
+          <li>金額（1個あたり）</li>
+          <li>支払いステータス</li>
+        </ul>
+      </div>
+      <div>
+        <%= image_tag "figure_register3.png", class: "mx-auto rounded-lg shadow max-w-xs" %>
+      </div>
+    </section>
+
+    <!-- 2.通知設定 -->
+    <section class="pb-16 border-b md:flex gap-10 justify-between">
+      <div class="text-gray-700 space-y-3 mb-3">
+        <h2 class="text-2xl font-bold">
+          2. 通知設定
+        </h2>
+        <div class="flex gap-2">
+          <span>①</span>
+          <p>アカウント設定画面で通知設定をすることができます。</p>
+        </div>
+        <div class="flex gap-2">
+          <span>②</span>
+          <p>通知はメール通知とLINE通知の2種類があり、発売月の1日を基準に、設定した期間のタイミングで送信されます。設定できる期間は下記の5つです。</p>
+        </div>
+        <ul class="list-disc pl-6">
+          <li>1週間前</li>
+          <li>2週間前</li>
+          <li>3週間前</li>
+          <li>1ヶ月前</li>
+          <li>2ヵ月前</li>
+        </ul>
+        <p>
+          ※ メール通知はメールアドレスを登録している方が利用可能です。
+        </p>
+        <p>
+          ※ LINE通知はLINEで登録した方が利用可能です。
+        </p>
+      </div>
+      <div>
+        <%= image_tag "notification.png", class: "mx-auto rounded-lg shadow max-w-xs" %>
+      </div>
+    </section>
+
+    <!-- 3.予約状況を確認 -->
+    <section class="pb-16 border-b md:flex gap-10 justify-between">
+      <div class="text-gray-700 space-y-3 mb-3">
+        <h2 class="text-2xl font-bold">
+          3. 予約状況を確認
+        </h2>
+        <div class="flex gap-2">
+          <span>①</span>
+          <p>ホーム画面にて現在のフィギュアの予約状況がわかります。</p>
+        </div>
+        <div class="flex gap-2">
+          <span>②</span>
+          <p>表示する期間を指定できます。最大表示期間は12ヶ月です。</p>
+        </div>
+        <div class="flex gap-2">
+          <span>③</span>
+          <p>月ボタンをクリックすることで、その月に発売予定の商品名、個数、未払いの合計がわかります。</p>
+        </div>
+        <div class="flex gap-2">
+          <span>④</span>
+          <p>商品名をクリックすることで、詳細を確認できます。</p>
+        </div>
+      </div>
+      <div>
+        <%= image_tag "home.png", class: "mx-auto rounded-lg shadow max-w-xs" %>
+      </div>
+    </section>
+
+    <!-- 4.特定のフィギュアを探す -->
+    <section class="md:flex gap-10 justify-between">
+      <div class="text-gray-700 space-y-3 mb-3">
+        <h2 class="text-2xl font-bold">
+          4. 特定のフィギュアを探す
+        </h2>
+        <div class="flex gap-2">
+          <span>①</span>
+          <p>一覧画面がフィギュアを探すことに便利です。</p>
+        </div>
+        <div class="flex gap-2">
+          <span>②</span>
+          <p>商品名を入力することで探したいフィギュアの検索ができます。</p>
+        </div>
+        <div class="flex gap-2">
+          <span>③</span>
+          <p>並び替えができます。下記6つの順で並び替えができます。</p>
+        </div>
+        <ul class="list-disc pl-6">
+          <li>登録日（新しい順）</li>
+          <li>登録日（古い順）</li>
+          <li>発売月（早い順）</li>
+          <li>発売月（遅い順）</li>
+          <li>合計金額（安い順）</li>
+          <li>合計金額（高い順）</li>
+        </ul>
+        <div class="flex gap-2">
+          <span>④</span>
+          <p>商品名をクリックすることで、詳細を確認できます。</p>
+        </div>
+      </div>
+      <div>
+        <%= image_tag "index.png", class: "mx-auto rounded-lg shadow max-w-xs" %>
+      </div>
+    </section>
+    <div class="text-center mt-10">
+      <%= link_to "↑ ページ上部に戻る", "#", class: "text-blue-600 hover:underline" %>
+    </div>
+  </div>
+</div>

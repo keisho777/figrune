@@ -1,24 +1,18 @@
 class AccountSettingsController < ApplicationController
-  before_action :authenticate_user!
-  def show
-    @user = current_user
-  end
+  before_action :authenticate_user!, :set_user
+  def show; end
 
   def edit_email
-    @user = current_user
     @user.email = ""
   end
 
-  def edit_password
-    @user = current_user
-  end
+  def edit_password; end
 
   def update_email
-    @user = current_user
     if @user.update_without_password(email_params)
-      redirect_to account_setting_path, notice: t("defaults.flash_message.account_setting.updated")
+      redirect_to account_setting_path, notice: t(".success")
     else
-      flash.now[:alert] = t("defaults.flash_message.account_setting.failured", action_word: @user.email_action_word)
+      flash.now[:alert] = t(".failure")
       render :edit_email, status: :unprocessable_entity
     end
   end
@@ -88,6 +82,10 @@ class AccountSettingsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
 
   def email_params
     params.require(:user).permit(:email)

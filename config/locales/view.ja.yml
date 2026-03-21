@@ -171,4 +171,7 @@ ja:
       password_hint: "※%{min}文字以上"
       change: 変更する
       setting: 設定する
+    update_email:
+      success: 確認メールを送信しました
+      failure: 確認メールを送信できませんでした
 

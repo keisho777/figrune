@@ -21,18 +21,19 @@ class AccountSettingsController < ApplicationController
     action_word = @user.has_password_in_database ? t("account_settings.update") : t("account_settings.setup")
 
     # result = @user.has_password_in_database ? @user.update_with_password(change_password_params) : @user.update(setting_password_params.merge(has_password: true))
-    result = if @user.has_password_in_database
-               @user.errors.add(:password, :blank) if change_password_params[:password].blank?
-               @user.errors.add(:current_password, :blank) if change_password_params[:current_password].blank?
+    result =
+      if @user.has_password_in_database
+        @user.errors.add(:password, :blank) if change_password_params[:password].blank?
+        @user.errors.add(:current_password, :blank) if change_password_params[:current_password].blank?
 
-               if @user.errors.any?
-                 false
-               else
-                 @user.update_with_password(change_password_params)
-               end
-             else
-               @user.update(setting_password_params.merge(has_password: true))
-             end
+        if @user.errors.any?
+          false
+        else
+          @user.update_with_password(change_password_params)
+        end
+      else
+        @user.update(setting_password_params.merge(has_password: true))
+      end
 
     if result
       bypass_sign_in(@user)

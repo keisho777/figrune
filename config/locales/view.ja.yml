@@ -25,8 +25,6 @@ ja:
       updated: 更新しました
       not_updated: 更新できませんでした
       deleted: 削除しました
-      account_setting:
-        update_failured: 予期せぬエラーで変更できませんでした
       omniauth_callback:
         email_taken: メールアドレスは既に存在します
         auth_save_failure: 認証情報の保存に失敗しました
@@ -164,4 +162,9 @@ ja:
     update_password:
       success: "%{action_word}しました"
       failure: "%{action_word}できませんでした"
+    update_email_notification_timing:
+      failure: 予期せぬエラーで通知設定を変更できませんでした
+    update_line_notification_timing:
+      failure: 予期せぬエラーで通知設定を変更できませんでした
+      
 

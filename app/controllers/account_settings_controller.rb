@@ -49,7 +49,7 @@ class AccountSettingsController < ApplicationController
     if @user.update(email_notification_timing_params)
       redirect_to account_setting_path
     else
-      flash.now[:alert] = t("defaults.flash_message.account_setting.update_failured")
+      flash.now[:alert] = t(".failure")
       render :show, status: :unprocessable_entity
     end
   end
@@ -60,7 +60,7 @@ class AccountSettingsController < ApplicationController
     if @user.update(line_notification_timing_params)
       redirect_to account_setting_path
     else
-      flash.now[:alert] = t("defaults.flash_message.account_setting.update_failured")
+      flash.now[:alert] = t(".failure")
       render :show, status: :unprocessable_entity
     end
   end

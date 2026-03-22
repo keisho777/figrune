@@ -4,7 +4,7 @@
       <% object.errors.each do |error| %>
         <li>
           <% if object.respond_to?(:has_password) && object.has_password_in_database && error.attribute != :current_password %>
-            <%= error.full_message.gsub('パスワード', '新しいパスワード')%>
+            <%= error.full_message.gsub(User.human_attribute_name(:password), User.human_attribute_name(:new_password))%>
           <% else %>
             <%= error.full_message %>
           <% end %>

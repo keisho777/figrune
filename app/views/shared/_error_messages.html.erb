@@ -2,7 +2,13 @@
   <div class="text-red-600">
     <ul>
       <% object.errors.each do |error| %>
-        <li><%= error.full_message %></li>
+        <li>
+          <% if object.respond_to?(:has_password) && object.has_password_in_database && error.attribute != :current_password %>
+            <%= error.full_message.gsub('パスワード', '新しいパスワード')%>
+          <% else %>
+            <%= error.full_message %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>

@@ -143,6 +143,8 @@ ja:
       total_price_asc: 合計金額（安い順）
       total_price_desc: 合計金額（高い順）
   account_settings:
+    update: 変更
+    setup: 設定
     show:
       title: アカウント設定
       personal_information_setting: 個人情報設定
@@ -174,4 +176,7 @@ ja:
     update_email:
       success: 確認メールを送信しました
       failure: 確認メールを送信できませんでした
+    update_password:
+      success: "%{action_word}しました"
+      failure: "%{action_word}できませんでした"
 

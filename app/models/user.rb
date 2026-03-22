@@ -5,8 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable,
          :omniauthable, omniauth_providers: %i[line]
 
-  attr_accessor :new_password
-  attr_accessor :new_password_confirmation
   has_many :figures, dependent: :destroy
   has_many :authentications, dependent: :destroy
 

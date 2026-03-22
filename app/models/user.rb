@@ -32,8 +32,13 @@ class User < ApplicationRecord
     end
   end
 
-  def email_action_word
-    has_email_in_database ? I18n.t("defaults.account_setting.update") : I18n.t("defaults.account_setting.setup")
+  def action_word(type)
+    # email か password 以外は受け付けないようホワイトリストを設定
+    allowed = %w[email password]
+    raise ArgumentError unless allowed.include?(type.to_s)
+
+    # private、protected メソッドを間違って呼ばないよう public を付与
+    public_send("has_#{type}_in_database") ? I18n.t("account_settings.update") : I18n.t("account_settings.setup")
   end
 
   # メール認証をクリックしたときの処理

@@ -1,16 +1,17 @@
-<% content_for(:title, t(".title", action_word: @user.email_action_word)) %>
+<% action_word = @user.action_word("email") %>
+<% content_for(:title, t(".title", action_word: action_word)) %>
 <div class="min-h-screen flex items-center justify-center px-4">
   <div class="w-full max-w-md bg-gray-100 rounded-2xl shadow-md p-8">
     <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">
-      <%= t(".title", action_word: @user.email_action_word) %>
+      <%= t(".title", action_word: action_word) %>
     </h2>
 
     <%= form_with model: @user, url: update_email_account_setting_path, html: { method: :patch, class: "space-y-6" } do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+      <%= render "shared/error_messages", object: f.object %>
 
       <!-- 説明 -->
       <div class="text-sm">
-        <%= t(".description", action_word: @user.email_action_word) %>
+        <%= t(".description", action_word: action_word) %>
       </div>
       
       <% if @user.has_email_in_database %>
@@ -35,7 +36,7 @@
 
       <!-- 「変更する」/「設定する」ボタン -->
       <div>
-        <%= f.submit t(".submit", action_word: @user.email_action_word),
+        <%= f.submit t(".submit", action_word: action_word),
           class: "w-full py-2.5 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition" %>
       </div>
     <% end %>

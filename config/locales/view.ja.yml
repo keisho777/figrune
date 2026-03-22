@@ -164,15 +164,13 @@ ja:
       description: "入力したメールアドレス宛に確認メールを送信します。メール内のURLをクリックすると、メールアドレスの%{action_word}が完了します。"
       submit: "%{action_word}する"
     edit_password:
-      title_change: パスワード変更
-      title_setting: パスワード設定
+      title: "パスワード%{action_word}"
       new_password: 新しいパスワード
       password: パスワード
       new_password_confirmation: 新しいパスワード（確認）
       password_confirmation: パスワード（確認）
       password_hint: "※%{min}文字以上"
-      change: 変更する
-      setting: 設定する
+      submit: "%{action_word}する"
     update_email:
       success: 確認メールを送信しました
       failure: 確認メールを送信できませんでした

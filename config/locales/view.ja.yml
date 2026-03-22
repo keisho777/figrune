@@ -26,24 +26,11 @@ ja:
       not_updated: 更新できませんでした
       deleted: 削除しました
       account_setting:
-        failured: "%{action_word}できませんでした"
         update_failured: 予期せぬエラーで変更できませんでした
-        not_updated: 更新できませんでした
-        not_setting: 設定できませんでした
-        updated: 確認メールを送信しました
-        password_updated: パスワードを変更しました
-        password_setting: パスワードを設定しました
       omniauth_callback:
         email_taken: メールアドレスは既に存在します
         auth_save_failure: 認証情報の保存に失敗しました
         invalid_credential: 認証に失敗しました
-    account_setting:
-      update: 変更
-      setup: 設定
-    error_message:
-      blank: を入力してください
-      short: "は%{min}文字以上で入力してください"
-      confirmation: と新しいパスワードの入力が一致しません
   helpers:
     submit:
       create: 登録する

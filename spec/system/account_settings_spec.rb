@@ -101,8 +101,8 @@ RSpec.describe "AccountSettings", type: :system do
           expect(page).to have_content(user.email)
           fill_in '新しいメールアドレス', with: ''
           click_button '変更する'
-          expect(page).to have_content('メールアドレスを入力してください')
-          expect(page).to have_content('変更できませんでした')
+          expect(page).to have_content('新しいメールアドレスを入力してください')
+          expect(page).to have_content('確認メールを送信できませんでした')
           expect(page).to have_current_path(edit_email_account_setting_path)
         end
       end
@@ -116,7 +116,7 @@ RSpec.describe "AccountSettings", type: :system do
           fill_in '新しいメールアドレス', with: 'user2@example.com'
           click_button '変更する'
           expect(page).to have_content('メールアドレスはすでに存在します')
-          expect(page).to have_content('変更できませんでした')
+          expect(page).to have_content('確認メールを送信できませんでした')
           expect(page).to have_current_path(edit_email_account_setting_path)
         end
       end
@@ -145,7 +145,7 @@ RSpec.describe "AccountSettings", type: :system do
           fill_in 'メールアドレス', with: ''
           click_button '設定する'
           expect(page).to have_content('メールアドレスを入力してください')
-          expect(page).to have_content('設定できませんでした')
+          expect(page).to have_content('確認メールを送信できませんでした')
           expect(page).to have_current_path(edit_email_account_setting_path)
         end
       end
@@ -158,7 +158,7 @@ RSpec.describe "AccountSettings", type: :system do
           fill_in 'メールアドレス', with: 'user2@example.com'
           click_button '設定する'
           expect(page).to have_content('メールアドレスはすでに存在します')
-          expect(page).to have_content('設定できませんでした')
+          expect(page).to have_content('確認メールを送信できませんでした')
           expect(page).to have_current_path(edit_email_account_setting_path)
         end
       end

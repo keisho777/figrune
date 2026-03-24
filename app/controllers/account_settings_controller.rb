@@ -1,67 +1,46 @@
 class AccountSettingsController < ApplicationController
-  before_action :authenticate_user!
-  def show
-    @user = current_user
-  end
+  before_action :authenticate_user!, :set_user
+  def show; end
 
   def edit_email
-    @user = current_user
     @user.email = ""
   end
 
-  def edit_password
-    @user = current_user
-  end
+  def edit_password; end
 
   def update_email
-    @user = current_user
     if @user.update_without_password(email_params)
-      redirect_to account_setting_path, notice: t("defaults.flash_message.account_setting.updated")
+      redirect_to account_setting_path, notice: t(".success")
     else
-      flash.now[:alert] = t("defaults.flash_message.account_setting.failured", action_word: @user.email_action_word)
+      flash.now[:alert] = t(".failure")
       render :edit_email, status: :unprocessable_entity
     end
   end
 
   def update_password
-    @user = current_user
-    # パスワードを設定している人は現在のパスワードも確認する
-    if @user.has_password
-      # 現在のパスワードが空の場合のバリデーション
-      if change_password_params[:current_password].blank?
-        @user.errors.add(:current_password, t("defaults.error_message.blank"))
-      end
-      # 新しいパスワードが空の場合のバリデーション
-      if change_password_params[:password].blank?
-        @user.errors.add(:new_password, t("defaults.error_message.blank"))
-      end
-      # 新しいパスワードが6文字未満の場合のバリデーション
-      if change_password_params[:password].present? && change_password_params[:password].length < User.password_length.min
-        @user.errors.add(:new_password, t("defaults.error_message.short", min: User.password_length.min))
-      end
-      # 新しいパスワード（確認）と新しいパスワードの値が一致してない場合のバリデーション
-      if change_password_params[:password] != change_password_params[:password_confirmation]
-        @user.errors.add(:new_password_confirmation, t("defaults.error_message.confirmation"))
-      end
-      # エラーがあれば表示
-      return render :edit_password, status: :unprocessable_entity if @user.errors.present?
+    action_word = @user.has_password_in_database ? t("account_settings.update") : t("account_settings.setup")
 
-      if @user.update_with_password(change_password_params)
-        bypass_sign_in(@user)
-        redirect_to account_setting_path, notice: t("defaults.flash_message.account_setting.password_updated")
+    # result = @user.has_password_in_database ? @user.update_with_password(change_password_params) : @user.update(setting_password_params.merge(has_password: true))
+    result =
+      if @user.has_password_in_database
+        @user.errors.add(:password, :blank) if change_password_params[:password].blank?
+        @user.errors.add(:current_password, :blank) if change_password_params[:current_password].blank?
+
+        if @user.errors.any?
+          false
+        else
+          @user.update_with_password(change_password_params)
+        end
       else
-        flash.now[:alert] = t("defaults.flash_message.account_setting.not_updated")
-        render :edit_password, status: :unprocessable_entity
+        @user.update(setting_password_params.merge(has_password: true))
       end
-    # パスワードを設定してない人向け（外部サービスでログインした人）
+
+    if result
+      bypass_sign_in(@user)
+      redirect_to account_setting_path, notice: t(".success", action_word: action_word)
     else
-      if @user.update(setting_password_params.merge(has_password: true))
-        bypass_sign_in(@user)
-        redirect_to account_setting_path, notice: t("defaults.flash_message.account_setting.password_setting")
-      else
-        flash.now[:alert] = t("defaults.flash_message.account_setting.not_setting")
-        render :edit_password, status: :unprocessable_entity
-      end
+      flash.now[:alert] = t(".failure", action_word: action_word)
+      render :edit_password, status: :unprocessable_entity
     end
   end
 
@@ -71,7 +50,7 @@ class AccountSettingsController < ApplicationController
     if @user.update(email_notification_timing_params)
       redirect_to account_setting_path
     else
-      flash.now[:alert] = t("defaults.flash_message.account_setting.update_failured")
+      flash.now[:alert] = t(".failure")
       render :show, status: :unprocessable_entity
     end
   end
@@ -82,12 +61,16 @@ class AccountSettingsController < ApplicationController
     if @user.update(line_notification_timing_params)
       redirect_to account_setting_path
     else
-      flash.now[:alert] = t("defaults.flash_message.account_setting.update_failured")
+      flash.now[:alert] = t(".failure")
       render :show, status: :unprocessable_entity
     end
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
 
   def email_params
     params.require(:user).permit(:email)

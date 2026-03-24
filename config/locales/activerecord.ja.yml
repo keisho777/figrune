@@ -2,9 +2,10 @@ ja:
   activerecord:
     attributes:
       user:
-        email: "メールアドレス"
-        password: "パスワード"
-        password_confirmation: "パスワード（確認）"
+        email: メールアドレス
+        new_email: 新しいメールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
         new_password: 新しいパスワード
         new_password_confirmation: 新しいパスワード（確認）
         confirmation_token: 確認メールのトークン

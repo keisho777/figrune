@@ -1,30 +1,41 @@
-<% content_for(:title, t('.title')) %>
+<% content_for(:title, t(".title")) %>
 <div class="max-w-4xl mx-auto p-4">
+
   <!-- アカウント設定（タイトル） -->
-  <h2 class="text-xl font-bold text-center"><%= t('.title') %></h2>
+  <h2 class="text-xl font-bold text-center"><%= t(".title") %></h2>
+
   <!-- 個人情報設定 -->
   <h3 class="text-xl font-bold border-b-2 pb-1 mt-3">
     <%= t(".personal_information_setting") %>
   </h3>
+  
   <dl class="my-3 divide-y divide-gray-400">
+  
     <!-- メールアドレス変更 / 設定 -->
     <div class="grid grid-cols-2 py-3 sm:grid-cols-3">
       <dt class="font-bold"><%= t(".email") %></dt>
-      <dd class="text-gray-700 sm:col-span-2"><%= link_to @user.email_action_word, edit_email_account_setting_path, class: "text-blue-500 hover:underline font-medium"%></dd>
+      <dd class="text-gray-700 sm:col-span-2">
+        <%= link_to @user.action_word("email"), edit_email_account_setting_path, class: "text-blue-500 hover:underline font-medium"%>
+      </dd>
     </div>
+  
     <!-- パスワード変更 / 設定 -->
     <div class="grid grid-cols-2 py-3 sm:grid-cols-3">
       <dt class="font-bold"><%= t(".password") %></dt>
       <dd class="text-gray-700 sm:col-span-2">
-        <%= link_to current_user.has_password ? t('.change') : t('.setting'), edit_password_account_setting_path, class: "text-blue-500 hover:underline font-medium"%>
+        <%= link_to @user.action_word("password"), edit_password_account_setting_path, class: "text-blue-500 hover:underline font-medium"%>
       </dd>
     </div>
+  
   </dl>
+  
   <!-- 通知設定 -->
   <h3 class="text-xl font-bold border-b-2 pb-1 mt-12">
     <%= t(".notification_setting") %>
   </h3>
+  
   <dl class="my-3 divide-y divide-gray-400">
+  
     <!-- メール通知 -->
     <div class="grid grid-cols-2 py-3 items-center sm:grid-cols-3">
       <dt class="font-bold"><%= t(".email_notification") %></dt>
@@ -32,6 +43,7 @@
         <%= render 'account_settings/email_notification_form' %>
       </dd>
     </div>
+  
     <!-- LINE通知 -->
     <div class="grid grid-cols-2 py-3 items-center sm:grid-cols-3">
       <dt class="font-bold"><%= t(".line_notification") %></dt>
@@ -39,5 +51,6 @@
         <%= render 'account_settings/line_notification_form' %>
       </dd>
     </div>
+  
   </dl>
 </div>

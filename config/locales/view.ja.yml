@@ -25,25 +25,10 @@ ja:
       updated: 更新しました
       not_updated: 更新できませんでした
       deleted: 削除しました
-      account_setting:
-        failured: "%{action_word}できませんでした"
-        update_failured: 予期せぬエラーで変更できませんでした
-        not_updated: 更新できませんでした
-        not_setting: 設定できませんでした
-        updated: 確認メールを送信しました
-        password_updated: パスワードを変更しました
-        password_setting: パスワードを設定しました
       omniauth_callback:
         email_taken: メールアドレスは既に存在します
         auth_save_failure: 認証情報の保存に失敗しました
         invalid_credential: 認証に失敗しました
-    account_setting:
-      update: 変更
-      setup: 設定
-    error_message:
-      blank: を入力してください
-      short: "は%{min}文字以上で入力してください"
-      confirmation: と新しいパスワードの入力が一致しません
   helpers:
     submit:
       create: 登録する
@@ -143,6 +128,8 @@ ja:
       total_price_asc: 合計金額（安い順）
       total_price_desc: 合計金額（高い順）
   account_settings:
+    update: 変更
+    setup: 設定
     show:
       title: アカウント設定
       personal_information_setting: 個人情報設定
@@ -162,13 +149,22 @@ ja:
       description: "入力したメールアドレス宛に確認メールを送信します。メール内のURLをクリックすると、メールアドレスの%{action_word}が完了します。"
       submit: "%{action_word}する"
     edit_password:
-      title_change: パスワード変更
-      title_setting: パスワード設定
+      title: "パスワード%{action_word}"
       new_password: 新しいパスワード
       password: パスワード
       new_password_confirmation: 新しいパスワード（確認）
       password_confirmation: パスワード（確認）
       password_hint: "※%{min}文字以上"
-      change: 変更する
-      setting: 設定する
+      submit: "%{action_word}する"
+    update_email:
+      success: 確認メールを送信しました
+      failure: 確認メールを送信できませんでした
+    update_password:
+      success: "%{action_word}しました"
+      failure: "%{action_word}できませんでした"
+    update_email_notification_timing:
+      failure: 予期せぬエラーで通知設定を変更できませんでした
+    update_line_notification_timing:
+      failure: 予期せぬエラーで通知設定を変更できませんでした
+      
 

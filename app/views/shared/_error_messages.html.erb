@@ -3,8 +3,10 @@
     <ul>
       <% object.errors.each do |error| %>
         <li>
-          <% if object.respond_to?(:has_password) && object.has_password_in_database && error.attribute != :current_password %>
+          <% if object.respond_to?(:has_password) && object.has_password_in_database && error.attribute != :current_password && [:password, :password_confirmation].include?(error.attribute) %>
             <%= error.full_message.gsub(User.human_attribute_name(:password), User.human_attribute_name(:new_password))%>
+          <% elsif object.respond_to?(:has_email) && object.has_email_in_database && error.attribute == :email %>
+            <%= error.full_message.gsub(User.human_attribute_name(:email), User.human_attribute_name(:new_email))%>
           <% else %>
             <%= error.full_message %>
           <% end %>

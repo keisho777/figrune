@@ -46,7 +46,6 @@ class AccountSettingsController < ApplicationController
 
   # メール通知のセレクトボックスが変化したら実行
   def update_email_notification_timing
-    @user = current_user
     if @user.update(email_notification_timing_params)
       redirect_to account_setting_path
     else
@@ -57,7 +56,6 @@ class AccountSettingsController < ApplicationController
 
   # LINE通知のセレクトボックスが変化したら実行
   def update_line_notification_timing
-    @user = current_user
     if @user.update(line_notification_timing_params)
       redirect_to account_setting_path
     else

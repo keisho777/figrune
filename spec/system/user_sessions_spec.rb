@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "UserSessions", type: :system do
-  let(:user) { create(:user) }
-  let(:password) { 'password' }
+  let!(:user) { create(:user) }
+  let!(:password) { 'password' }
+  let!(:authentication) { create(:authentication, user: user) }
 
   describe 'ログイン前' do
     context '入力値が正常' do
@@ -24,6 +25,39 @@ RSpec.describe "UserSessions", type: :system do
         click_button 'ログイン'
         expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
         expect(page).to have_current_path(new_user_session_path)
+      end
+    end
+
+    context 'LINEログイン' do
+      context '認証成功' do
+        before do
+          line_mock
+        end
+        it 'ログイン処理が成功する' do
+          visit new_user_session_path
+          click_button 'LINEでログイン'
+          expect(page).to have_content 'ログインしました'
+          expect(page).to have_current_path(home_path)
+          auth = Authentication.last
+          expect(auth.provider).to eq 'line'
+          expect(auth.uid).to eq '123456'
+          expect(User.count).to eq 1
+          expect(Authentication.count).to eq 1
+        end
+      end
+
+      context '認証失敗' do
+        before do
+          line_invalid_mock
+        end
+        it 'ログイン処理が失敗する' do
+          visit new_user_session_path
+          click_button 'LINEでログイン'
+          expect(page).to have_content 'Line アカウントによる認証に失敗しました。理由：（Invalid credentails）'
+          expect(page).to have_current_path(new_user_session_path)
+          expect(Authentication.count).to eq 1
+          expect(User.count).to eq 1
+        end
       end
     end
   end

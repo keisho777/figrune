@@ -79,17 +79,48 @@ RSpec.describe "UserRegistrations", type: :system do
     end
 
     context 'LINEログイン' do
-      before do
-        line_mock
+      context '認証成功' do
+        before do
+          line_mock
+        end
+        it '新規登録が成功する' do
+          visit new_user_registration_path
+          click_button 'LINEで登録'
+          expect(page).to have_content 'アカウント登録が完了しました。'
+          expect(page).to have_current_path(home_path)
+          auth = Authentication.last
+          expect(auth.provider).to eq 'line'
+          expect(auth.uid).to eq '123456'
+        end
       end
-      it '新規登録が成功する' do
-        visit new_user_registration_path
-        click_button 'LINEで登録'
-        expect(page).to have_content 'アカウント登録が完了しました。'
-        expect(page).to have_current_path(home_path)
-        auth = Authentication.last
-        expect(auth.provider).to eq 'line'
-        expect(auth.uid).to eq '123456'
+
+      context '認証失敗' do
+        before do
+          line_invalid_mock
+        end
+        it '新規登録が失敗する' do
+          visit new_user_registration_path
+          click_button 'LINEで登録'
+          expect(page).to have_content 'Line アカウントによる認証に失敗しました。理由：（Invalid credentails）'
+          expect(page).to have_current_path(new_user_session_path)
+          expect(Authentication.count).to eq 0
+          expect(User.count).to eq 0
+        end
+      end
+
+      context '既存アカウントとのメールアドレス重複' do
+        let!(:user) { create(:user, email: '123456-line@example.com') }
+        before do
+          line_mock
+        end
+        it '新規登録が失敗する' do
+          visit new_user_registration_path
+          click_button 'LINEで登録'
+          expect(page).to have_content 'バリデーションに失敗しました: メールアドレスはすでに存在します'
+          expect(page).to have_current_path(new_user_registration_path)
+          expect(Authentication.count).to eq 0
+          expect(User.count).to eq 1
+        end
       end
     end
   end

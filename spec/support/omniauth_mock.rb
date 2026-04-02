@@ -13,4 +13,8 @@ module OmniauthMocks
       }
     })
   end
+
+  def line_invalid_mock
+    OmniAuth.config.mock_auth[:line] = :invalid_credentails
+  end
 end

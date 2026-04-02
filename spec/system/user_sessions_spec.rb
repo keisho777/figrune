@@ -29,19 +29,35 @@ RSpec.describe "UserSessions", type: :system do
     end
 
     context 'LINEログイン' do
-      before do
-        line_mock
+      context '認証成功' do
+        before do
+          line_mock
+        end
+        it 'ログイン処理が成功する' do
+          visit new_user_session_path
+          click_button 'LINEでログイン'
+          expect(page).to have_content 'ログインしました'
+          expect(page).to have_current_path(home_path)
+          auth = Authentication.last
+          expect(auth.provider).to eq 'line'
+          expect(auth.uid).to eq '123456'
+          expect(User.count).to eq 1
+          expect(Authentication.count).to eq 1
+        end
       end
-      it 'ログイン処理が成功する' do
-        visit new_user_session_path
-        click_button 'LINEでログイン'
-        expect(page).to have_content 'ログインしました'
-        expect(page).to have_current_path(home_path)
-        auth = Authentication.last
-        expect(auth.provider).to eq 'line'
-        expect(auth.uid).to eq '123456'
-        expect(User.count).to eq 1
-        expect(Authentication.count).to eq 1
+
+      context '認証失敗' do
+        before do
+          line_invalid_mock
+        end
+        it 'ログイン処理が失敗する' do
+          visit new_user_session_path
+          click_button 'LINEでログイン'
+          expect(page).to have_content 'Line アカウントによる認証に失敗しました。理由：（Invalid credentails）'
+          expect(page).to have_current_path(new_user_session_path)
+          expect(Authentication.count).to eq 1
+          expect(User.count).to eq 1
+        end
       end
     end
   end

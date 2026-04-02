@@ -4,8 +4,7 @@ module OmniauthMocks
       "provider" => "line",
       "uid" => "123456",
       "info" => {
-        "name" => "Mock User",
-        # "image" => "http://mock_image_url.com"
+        "name" => "Mock User"
       },
       "credentials" => {
         "token" => "mock_credentails_token",

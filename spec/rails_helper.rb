@@ -81,4 +81,10 @@ RSpec.configure do |config|
   end
   # Devise公式ヘルパーを使うことでテストが早くなる（login_asを使用）
   config.include Warden::Test::Helpers
+
+  OmniAuth.config.test_mode = true
+
+  # spec/support/omniauth_mock.rb で作成したmockを直接呼び出せるようにする
+  # OmniauthMocks.line_mock と呼ぶところ。line_mock だけでいい
+  config.include OmniauthMocks
 end

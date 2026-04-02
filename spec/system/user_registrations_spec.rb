@@ -77,6 +77,21 @@ RSpec.describe "UserRegistrations", type: :system do
         expect(page).to have_current_path(new_user_registration_path)
       end
     end
+
+    context 'LINEログイン' do
+      before do
+        line_mock
+      end
+      it '新規登録が成功する' do
+        visit new_user_registration_path
+        click_button 'LINEで登録'
+        expect(page).to have_content 'アカウント登録が完了しました。'
+        expect(page).to have_current_path(home_path)
+        auth = Authentication.last
+        expect(auth.provider).to eq 'line'
+        expect(auth.uid).to eq '123456'
+      end
+    end
   end
   describe '画面遷移の確認' do
     it 'ログインページへ遷移する' do

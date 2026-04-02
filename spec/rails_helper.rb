@@ -87,4 +87,6 @@ RSpec.configure do |config|
   # spec/support/omniauth_mock.rb で作成したmockを直接呼び出せるようにする
   # OmniauthMocks.line_mock と呼ぶところ。line_mock だけでいい
   config.include OmniauthMocks
+
+  config.include ActiveSupport::Testing::TimeHelpers
 end

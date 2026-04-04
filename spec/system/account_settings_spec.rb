@@ -22,6 +22,12 @@ RSpec.describe "AccountSettings", type: :system do
         expect(page).to have_content('ログインもしくはアカウント登録してください。')
         expect(current_path).to eq new_user_session_path
       end
+
+      it 'アカウント削除画面へのアクセスに失敗する' do
+        visit confirm_destroy_account_setting_path
+        expect(page).to have_content('ログインもしくはアカウント登録してください。')
+        expect(current_path).to eq new_user_session_path
+      end
     end
   end
 
@@ -77,6 +83,12 @@ RSpec.describe "AccountSettings", type: :system do
           expect(page).to have_content('パスワード設定')
           expect(page).to have_current_path(edit_password_account_setting_path)
         end
+      end
+
+      it 'アカウント削除画面にアクセスできる' do
+        click_link '削除手続き'
+        expect(page).to have_content('アカウント削除')
+        expect(page).to have_current_path(confirm_destroy_account_setting_path)
       end
     end
 
@@ -313,6 +325,23 @@ RSpec.describe "AccountSettings", type: :system do
         expect(page).to have_content('1週間前')
         user.reload
         expect(user.line_notification_timing).to eq 'one_week_before'
+      end
+    end
+
+    context '管理' do
+      before do
+        visit confirm_destroy_account_setting_path
+      end
+      it 'アカウント削除ができること' do
+        check '上記の内容を理解しました'
+        click_button '削除する'
+        expect(page.accept_confirm).to eq 'アカウントを削除してよろしいですか？'
+        expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております。'
+        expect(current_path).to eq root_path
+      end
+
+      it 'アカウント削除ができないこと' do
+        expect(page).to have_button('削除する', disabled: true)
       end
     end
   end

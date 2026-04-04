@@ -5,21 +5,26 @@
       <%= t(".title") %>
     </h2>
 
-    <div class="space-y-6">
+    <div class="space-y-6" data-controller="account-delete">
 
-    <!-- 説明 -->
-    <div class="text-sm">
-      <%= t(".description") %>
-    </div>
+      <!-- 説明 -->
+      <div class="text-sm">
+        <%= t(".description") %>
+      </div>
 
-      <%= check_box_tag :test1 %>
-      <%= label_tag :test1, "上記内容を理解しました" %>
+      <!-- 上記の内容を理解しましたチェックボックス -->
+      <div>
+        <!-- ここの「１」に意味はない。しかし、削除すると引数のずれが発生するため削除は非推奨 -->
+        <%= check_box_tag :confirm, "1", false, data: { account_delete_target: "checkbox", action: "change->account-delete#toggleButton" } %>
+        <%= label_tag :confirm, t(".confirm_understanding") %>
+      </div>
 
-    <!-- 削除ボタン -->
-    <div>
-      <%= button_to "アカウント削除", registration_path(@user), data: { confirm: t(".confirm"), turbo_confirm: t(".confirm") },
-         method: :delete, class: "w-full py-2.5 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 transition" %>
-    </div>
+      <!-- 削除ボタン -->
+      <%= button_to t(".delete"), registration_path(@user), data: { confirm: t(".delete_confirm"), turbo_confirm: t(".delete_confirm"), account_delete_target: "button" },
+          method: :delete,
+          disabled: true,
+          class: "w-full py-2.5 rounded-lg font-semibold transition bg-red-600 text-white hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed" %>
+
     </div>
   </div>
 </div>

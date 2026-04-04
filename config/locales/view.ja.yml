@@ -171,4 +171,6 @@ ja:
     confirm_destroy:
       title: アカウント削除
       description: アカウントを削除すると、登録したデータはすべて削除されます。問題ない方は下記のチェックボックスにチェックをして削除してください。
-      confirm: 本当に削除しますか？
+      confirm_understanding: 上記の内容を理解しました
+      delete_confirm: アカウントを削除してよろしいですか？
+      delete: 削除する

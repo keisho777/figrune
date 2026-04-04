@@ -17,6 +17,7 @@ RSpec.describe "Homes", type: :system do
     let!(:user) { create(:user) }
     let!(:figure) { create(:figure, user: user) }
     before do
+      travel_to Time.zone.local(2026, 3, 1)
       login_as(user, scope: :user)
       visit home_path
     end
@@ -58,7 +59,7 @@ RSpec.describe "Homes", type: :system do
           page.execute_script("document.getElementById('from').value = '2026-01'")
           page.execute_script("document.getElementById('to').value = '2026-03'")
           click_button '表示'
-          click_link '02月'
+          click_link '02月', href: /selected_month=2026-02/
           expect(page).to have_content '2026年02月 発売済み'
           expect(page).to have_content 'TEST'
           expect(page).to have_content '¥1,000 × 1個 ⇒ ¥1,000'

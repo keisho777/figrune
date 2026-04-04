@@ -1,0 +1,30 @@
+<% content_for(:title, t(".title")) %>
+<div class="min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-md bg-gray-100 rounded-2xl shadow-md p-8">
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">
+      <%= t(".title") %>
+    </h2>
+
+    <div class="space-y-6" data-controller="account-delete">
+
+      <!-- 説明 -->
+      <div class="text-sm">
+        <%= t(".description") %>
+      </div>
+
+      <!-- 上記の内容を理解しましたチェックボックス -->
+      <div>
+        <!-- ここの「１」に意味はない。しかし、削除すると引数のずれが発生するため削除は非推奨 -->
+        <%= check_box_tag :confirm, "1", false, data: { account_delete_target: "checkbox", action: "change->account-delete#toggleButton" } %>
+        <%= label_tag :confirm, t(".confirm_understanding") %>
+      </div>
+
+      <!-- 削除ボタン -->
+      <%= button_to t(".delete"), registration_path(@user), data: { confirm: t(".delete_confirm"), turbo_confirm: t(".delete_confirm"), account_delete_target: "button" },
+          method: :delete,
+          disabled: true,
+          class: "w-full py-2.5 rounded-lg font-semibold transition bg-red-600 text-white hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed" %>
+
+    </div>
+  </div>
+</div>

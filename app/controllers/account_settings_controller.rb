@@ -64,6 +64,8 @@ class AccountSettingsController < ApplicationController
     end
   end
 
+  def confirm_destroy; end
+
   private
 
   def set_user

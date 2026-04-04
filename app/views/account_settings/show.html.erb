@@ -53,4 +53,21 @@
     </div>
   
   </dl>
+
+  <!-- 管理 -->
+  <h3 class="text-xl font-bold border-b-2 pb-1 mt-12">
+    <%= t(".management") %>
+  </h3>
+  
+  <dl class="my-3 divide-y divide-gray-400">
+  
+    <!-- アカウント削除 -->
+    <div class="grid grid-cols-2 py-3 sm:grid-cols-3">
+      <dt class="font-bold"><%= t(".delete_account") %></dt>
+      <dd class="text-gray-700 sm:col-span-2">
+        <%= link_to t(".confirm_destroy"), confirm_destroy_account_setting_path, class: "text-red-500 hover:underline font-medium"%>
+      </dd>
+    </div>
+  
+  </dl>
 </div>

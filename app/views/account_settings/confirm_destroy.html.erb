@@ -1,0 +1,25 @@
+<% content_for(:title, t(".title")) %>
+<div class="min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-md bg-gray-100 rounded-2xl shadow-md p-8">
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">
+      <%= t(".title") %>
+    </h2>
+
+    <div class="space-y-6">
+
+    <!-- 説明 -->
+    <div class="text-sm">
+      <%= t(".description") %>
+    </div>
+
+      <%= check_box_tag :test1 %>
+      <%= label_tag :test1, "上記内容を理解しました" %>
+
+    <!-- 削除ボタン -->
+    <div>
+      <%= button_to "アカウント削除", registration_path(@user), data: { confirm: t(".confirm"), turbo_confirm: t(".confirm") },
+         method: :delete, class: "w-full py-2.5 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 transition" %>
+    </div>
+    </div>
+  </div>
+</div>

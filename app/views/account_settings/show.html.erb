@@ -54,6 +54,35 @@
   
   </dl>
 
+  <!-- 連携 -->
+  <h3 class="text-xl font-bold border-b-2 pb-1 mt-12">
+    <%= t(".link") %>
+  </h3>
+
+  <dl class="my-3 divide-y divide-gray-400">
+  
+    <!-- LINE連携 -->
+    <div class="grid grid-cols-2 py-3 items-center sm:grid-cols-3">
+      <dt class="font-bold"><%= t(".line_link") %></dt>
+      <dd class="text-gray-700 sm:col-span-2">
+      <% if current_user.line_linked? %>
+        <span>
+          <%= t(".line_link_cancel") %>
+        </span>
+      <% else %>
+        <%= button_to user_line_omniauth_authorize_path,
+                      class: "text-[#06C755] hover:underline font-medium",
+                      data: { turbo: false } do %>
+          <span>
+            <%= t(".line_link") %>
+          </span>
+        <% end %>
+      <% end %>
+      </dd>
+    </div>
+  
+  </dl>
+
   <!-- 管理 -->
   <h3 class="text-xl font-bold border-b-2 pb-1 mt-12">
     <%= t(".management") %>

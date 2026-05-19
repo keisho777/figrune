@@ -143,6 +143,9 @@ ja:
       management: 管理
       delete_account: アカウント削除
       confirm_destroy: 削除手続き
+      link: 連携
+      line_link: LINE連携
+      line_link_cancel: LINE連携解除
     edit_email:
       title: "メールアドレス%{action_word}"
       current_email: 現在のメールアドレス

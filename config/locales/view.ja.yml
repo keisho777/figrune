@@ -144,8 +144,10 @@ ja:
       delete_account: アカウント削除
       confirm_destroy: 削除手続き
       link: 連携
+      line: LINE
       line_link: LINE連携
-      line_link_cancel: LINE連携解除
+      line_unlink: LINE連携解除
+      unlink_confirm: LINE連携を解除してよろしいですか？
     edit_email:
       title: "メールアドレス%{action_word}"
       current_email: 現在のメールアドレス
@@ -177,6 +179,9 @@ ja:
       confirm_understanding: 上記の内容を理解しました
       delete_confirm: アカウントを削除してよろしいですか？
       delete: 削除する
+    line_unlink:
+      unlinked: LINE連携を解除しました
+      failure: LINEでログイン中のため解除できません
   omniauth_callbacks:
     link_account:
       success: LINE連携が完了しました

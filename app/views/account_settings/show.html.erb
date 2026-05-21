@@ -63,12 +63,11 @@
   
     <!-- LINE連携 -->
     <div class="grid grid-cols-2 py-3 items-center sm:grid-cols-3">
-      <dt class="font-bold"><%= t(".line_link") %></dt>
+      <dt class="font-bold"><%= t(".line") %></dt>
       <dd class="text-gray-700 sm:col-span-2">
       <% if current_user.line_linked? %>
-        <span>
-          <%= t(".line_link_cancel") %>
-        </span>
+        <%= link_to t(".line_unlink"), line_unlink_account_setting_path, data: { turbo_method: :delete, turbo_confirm: t(".unlink_confirm") },
+            class: "text-gray-500 hover:underline font-medium" %>
       <% else %>
         <%= button_to user_line_omniauth_authorize_path,
                       class: "text-[#06C755] hover:underline font-medium",

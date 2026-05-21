@@ -61,7 +61,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def link_account(authentication)
     # LINEアカウントがすでにほかのアカウントと紐づいている、またはアカウントとして存在している場合はフラッシュメッセージを表示
     return redirect_to account_setting_path, alert: t("omniauth_callbacks.link_account.exist_line_account") if authentication.user.present?
-    
+
     authentication.user = current_user
     if authentication.save
       redirect_to account_setting_path, notice: t("omniauth_callbacks.link_account.success")

@@ -369,7 +369,7 @@ RSpec.describe "AccountSettings", type: :system do
         click_button 'LINE連携'
         expect(current_path).to eq account_setting_path
       end
-      
+
       # ログイン手段がLINEしかない場合、解除できるとログインできなくなるため
       it 'LINE連携解除ができないこと' do
         logout

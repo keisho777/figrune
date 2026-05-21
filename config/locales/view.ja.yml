@@ -177,3 +177,8 @@ ja:
       confirm_understanding: 上記の内容を理解しました
       delete_confirm: アカウントを削除してよろしいですか？
       delete: 削除する
+  omniauth_callbacks:
+    link_account:
+      success: LINE連携が完了しました
+      failure: LINE連携中にエラーが発生しました、もう一度お試しください
+      exist_line_account: そのLINEアカウントはすでに存在しています

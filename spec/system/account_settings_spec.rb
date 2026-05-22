@@ -328,6 +328,72 @@ RSpec.describe "AccountSettings", type: :system do
       end
     end
 
+    context '連携' do
+      before do
+        login_as(user)
+        line_mock
+      end
+      it 'LINE連携ができること' do
+        visit account_setting_path
+        click_button 'LINE連携'
+        expect(page).to have_content 'LINE連携が完了しました'
+        expect(page).to have_content 'LINE連携解除'
+        expect(current_path).to eq account_setting_path
+        auth = Authentication.last
+        expect(auth.user).to eq user
+        expect(auth.provider).to eq 'line'
+        expect(auth.uid).to eq '123456'
+      end
+
+      it 'LINE連携解除ができること' do
+        visit account_setting_path
+        click_button 'LINE連携'
+        expect(page).to have_content 'LINE連携が完了しました'
+        auth = Authentication.last
+        expect(auth.user).to eq user
+        expect(auth.provider).to eq 'line'
+        expect(auth.uid).to eq '123456'
+        click_link 'LINE連携解除'
+        expect(page.accept_confirm).to eq 'LINE連携を解除してよろしいですか？'
+        expect(page).to have_content 'LINE連携を解除しました'
+        expect(current_path).to eq account_setting_path
+        expect(page).to have_content 'LINE連携'
+        expect(Authentication.count).to eq 0
+      end
+
+      it 'LINE連携ができないこと' do
+        other_user = create(:user, email: 'other@example.com')
+        create(:authentication, user: other_user, provider: 'line', uid: '123456')
+        visit account_setting_path
+        auth = Authentication.last
+        expect(auth.user).to eq other_user
+        click_button 'LINE連携'
+        expect(page).to have_content 'そのLINEアカウントはすでに存在しています'
+        auth = Authentication.last
+        expect(auth.user).to eq other_user
+        expect(page).to have_content 'LINE連携'
+        expect(current_path).to eq account_setting_path
+      end
+
+      # ログイン手段がLINEしかない場合、解除できるとログインできなくなるため
+      it 'LINE連携解除ができないこと' do
+        logout
+        visit new_user_registration_path
+        click_button 'LINEで登録'
+        user = User.last
+        visit account_setting_path
+        click_link 'LINE連携解除'
+        expect(page.accept_confirm).to eq 'LINE連携を解除してよろしいですか？'
+        expect(page).to have_content 'LINEでログイン中のため解除できません'
+        expect(current_path).to eq account_setting_path
+        expect(page).to have_content 'LINE連携解除'
+        auth = Authentication.last
+        expect(auth.user).to eq user
+        expect(auth.provider).to eq 'line'
+        expect(auth.uid).to eq '123456'
+      end
+    end
+
     context '管理' do
       before do
         visit confirm_destroy_account_setting_path

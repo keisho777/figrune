@@ -14,8 +14,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # 認証情報の検索
     @authentication = Authentication.find_or_initialize_by(provider: @omniauth["provider"], uid: @omniauth["uid"])
 
-    # 認証情報にuser_idがあればログイン、なければ新規登録
-    if @authentication.user.blank?
+    # ログイン済みなら連携、認証情報にuser_idがあればログイン、なければ新規登録
+    if user_signed_in?
+      link_account(@authentication)
+    elsif @authentication.user.blank?
       register_external_user(@omniauth, @authentication)
     else
       authenticate_external_user(@omniauth, @authentication)
@@ -53,5 +55,18 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def authenticate_external_user(omniauth, authentication)
     sign_in(:user, authentication.user)
     redirect_to home_path, notice: t("devise.sessions.signed_in")
+  end
+
+  # 連携用
+  def link_account(authentication)
+    # LINEアカウントがすでにほかのアカウントと紐づいている、またはアカウントとして存在している場合はフラッシュメッセージを表示
+    return redirect_to account_setting_path, alert: t("omniauth_callbacks.link_account.exist_line_account") if authentication.user.present?
+
+    authentication.user = current_user
+    if authentication.save
+      redirect_to account_setting_path, notice: t("omniauth_callbacks.link_account.success")
+    else
+      redirect_to account_setting_path, alert: t("omniauth_callbacks.link_account.failure")
+    end
   end
 end

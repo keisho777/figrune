@@ -64,7 +64,15 @@ class AccountSettingsController < ApplicationController
     end
   end
 
+  # アカウント削除時に実行
   def confirm_destroy; end
+
+  # LINE連携解除時に実行
+  def line_unlink
+    return redirect_to account_setting_path, alert: t(".failure") if @user.has_email == false || @user.has_password == false
+    @user.authentications.find_by(provider: "line")&.destroy
+    redirect_to account_setting_path, notice: t(".unlinked"), status: :see_other
+  end
 
   private
 

@@ -54,4 +54,8 @@ class User < ApplicationRecord
       errors.add(:base, I18n.t("defaults.confirm_error"))
       false
   end
+
+  def line_linked?
+    authentications.exists?(provider: "line")
+  end
 end

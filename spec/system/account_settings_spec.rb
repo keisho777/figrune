@@ -358,15 +358,20 @@ RSpec.describe "AccountSettings", type: :system do
         expect(page).to have_content 'LINE連携を解除しました'
         expect(current_path).to eq account_setting_path
         expect(page).to have_content 'LINE連携'
+        expect(Authentication.count).to eq 0
       end
 
       it 'LINE連携ができないこと' do
         other_user = create(:user, email: 'other@example.com')
         create(:authentication, user: other_user, provider: 'line', uid: '123456')
         visit account_setting_path
+        auth = Authentication.last
+        expect(auth.user).to eq other_user
         click_button 'LINE連携'
         expect(page).to have_content 'そのLINEアカウントはすでに存在しています'
-        click_button 'LINE連携'
+        auth = Authentication.last
+        expect(auth.user).to eq other_user
+        expect(page).to have_content 'LINE連携'
         expect(current_path).to eq account_setting_path
       end
 
@@ -375,12 +380,17 @@ RSpec.describe "AccountSettings", type: :system do
         logout
         visit new_user_registration_path
         click_button 'LINEで登録'
+        user = User.last
         visit account_setting_path
         click_link 'LINE連携解除'
         expect(page.accept_confirm).to eq 'LINE連携を解除してよろしいですか？'
         expect(page).to have_content 'LINEでログイン中のため解除できません'
         expect(current_path).to eq account_setting_path
-        click_link 'LINE連携解除'
+        expect(page).to have_content 'LINE連携解除'
+        auth = Authentication.last
+        expect(auth.user).to eq user
+        expect(auth.provider).to eq 'line'
+        expect(auth.uid).to eq '123456'
       end
     end
 

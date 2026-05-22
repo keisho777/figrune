@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     patch :update_email_notification_timing
     patch :update_line_notification_timing
     get   :confirm_destroy
+    delete :line_unlink
   end
   devise_for :users, controllers: {
     registrations: "users/registrations",

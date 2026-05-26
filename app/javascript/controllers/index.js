@@ -12,3 +12,5 @@ import DateRangeController from "./date_range_controller"
 application.register("date-range", DateRangeController)
 import AccountDeleteController from "./account_delete_controller"
 application.register("account-delete", AccountDeleteController)
+import FlatpickrController from "./flatpickr_controller";
+application.register("flatpickr", FlatpickrController);

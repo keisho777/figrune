@@ -13,9 +13,8 @@
     <!-- 発売月 -->
     <div>
       <%= f.label :release_month, class: "font-bold"  %>
-      <%= f.text_field :release_month,
-            class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400 cursor-pointer",
-            data: { controller: "figure-form-flatpickr" } %>
+      <%= f.month_field :release_month,
+            class: "w-full rounded-lg border border-gray-500 p-2 hover:border-gray-400" %>
     </div>
     <!-- 個数 -->
     <div>

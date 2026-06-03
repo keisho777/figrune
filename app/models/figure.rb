@@ -31,12 +31,6 @@ class Figure < ApplicationRecord
       [ "name", "release_month", "created_at", "total_price" ]
   end
 
-  # release_monthがXXXX-XXの形式だと保存できないためXXXX-XX-01にして回避するためのカスタムセッター
-  # Xは数値です
-  def release_month=(value)
-    super(value + "-01")
-  end
-
   # 以下3点の　assign_テーブル名_by_name　について
   # フォームで入力された名称をもとに、各関連モデルを取得（なければ作成）して Figure に紐付ける
   def assign_work_by_name(name)

@@ -7,16 +7,16 @@
         <%= f.label :from, t("home.date_range.from"), class: "text-xs text-gray-500" %>
         <%= f.text_field :from,
             value: params[:from] || Date.current.strftime("%Y-%m"),
-            class: "text-base w-27 focus:outline-none leading-none h-6",
+            class: "text-base w-27 focus:outline-none leading-none cursor-pointer",
             required: true,
-            data: { flatpickr_target: "from", action: "change->flatpickr#updateFromDate" } %>
+            data: { flatpickr_target: "from" } %>
       </div>
       <!-- 終了月 -->
       <div class="flex flex-col py-1 px-2 focus-within:ring-2 focus-within:rounded">
         <%= f.label :to, t("home.date_range.to"), class: "text-xs text-gray-500" %>
         <%= f.text_field :to, 
             value: params[:to] || (Date.current + 11.months).strftime("%Y-%m"), 
-            class: "w-27 focus:outline-none leading-none h-6",
+            class: "text-base w-27 focus:outline-none leading-none cursor-pointer",
             required: true,
             data: { flatpickr_target: "to" } %>
       </div>

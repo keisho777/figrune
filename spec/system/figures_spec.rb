@@ -52,7 +52,7 @@ RSpec.describe "Figures", type: :system do
             visit new_figure_path
             fill_in '商品名', with: 'figure_name'
             # JSで直接 value をセット
-            page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+            page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
             fill_in '個数', with: '1'
             fill_in '金額（1個あたり）', with: '1000'
             select '未払い', from: '支払いステータス'
@@ -70,7 +70,7 @@ RSpec.describe "Figures", type: :system do
             visit new_figure_path
             fill_in '商品名', with: 'figure_name'
             # JSで直接 value をセット
-            page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+            page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
             fill_in '個数', with: '1'
             fill_in '金額（1個あたり）', with: '1000'
             select '未払い', from: '支払いステータス'
@@ -96,7 +96,7 @@ RSpec.describe "Figures", type: :system do
           visit new_figure_path
           fill_in '商品名', with: ''
           # JSで直接 value をセット
-          page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+          page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
           fill_in '個数', with: '1'
           fill_in '金額（1個あたり）', with: '1000'
           select '未払い', from: '支払いステータス'
@@ -128,7 +128,7 @@ RSpec.describe "Figures", type: :system do
           visit new_figure_path
           fill_in '商品名', with: 'figure_name'
           # JSで直接 value をセット
-          page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+          page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
           fill_in '個数', with: ''
           fill_in '金額（1個あたり）', with: '1000'
           select '未払い', from: '支払いステータス'
@@ -145,7 +145,7 @@ RSpec.describe "Figures", type: :system do
           visit new_figure_path
           fill_in '商品名', with: 'figure_name'
           # JSで直接 value をセット
-          page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+          page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
           fill_in '個数', with: '1'
           fill_in '金額（1個あたり）', with: ''
           select '未払い', from: '支払いステータス'
@@ -162,7 +162,7 @@ RSpec.describe "Figures", type: :system do
           visit new_figure_path
           fill_in '商品名', with: 'figure_name'
           # JSで直接 value をセット
-          page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+          page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
           fill_in '個数', with: '1'
           fill_in '金額（1個あたり）', with: '1000'
           select '未払い', from: '支払いステータス'
@@ -181,7 +181,7 @@ RSpec.describe "Figures", type: :system do
           visit new_figure_path
           fill_in '商品名', with: 'figure_name'
           # JSで直接 value をセット
-          page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+          page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
           fill_in '個数', with: '1'
           fill_in '金額（1個あたり）', with: '1000'
           select '未払い', from: '支払いステータス'
@@ -220,7 +220,7 @@ RSpec.describe "Figures", type: :system do
         it 'フィギュアの編集が成功する' do
           fill_in '商品名', with: 'figure_name'
           # JSで直接 value をセット
-          page.execute_script("document.getElementById('figure_release_month').value = '2027-02'")
+          page.execute_script("document.getElementById('figure_release_month').value = '2027-02-01'")
           fill_in '個数', with: '2'
           fill_in '金額（1個あたり）', with: '2000'
           select '支払い済み', from: '支払いステータス'
@@ -240,7 +240,7 @@ RSpec.describe "Figures", type: :system do
         it 'フィギュアの編集が失敗する' do
           fill_in '商品名', with: ''
           # JSで直接 value をセット
-          page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+          page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
           fill_in '個数', with: '1'
           fill_in '金額（1個あたり）', with: '1000'
           select '未払い', from: '支払いステータス'
@@ -270,7 +270,7 @@ RSpec.describe "Figures", type: :system do
         it 'フィギュアの編集が失敗する' do
           fill_in '商品名', with: 'figure_name'
           # JSで直接 value をセット
-          page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+          page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
           fill_in '個数', with: ''
           fill_in '金額（1個あたり）', with: '1000'
           select '未払い', from: '支払いステータス'
@@ -286,7 +286,7 @@ RSpec.describe "Figures", type: :system do
         it 'フィギュアの編集が失敗する' do
           fill_in '商品名', with: 'figure_name'
           # JSで直接 value をセット
-          page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+          page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
           fill_in '個数', with: '1'
           fill_in '金額（1個あたり）', with: ''
           select '未払い', from: '支払いステータス'
@@ -302,7 +302,7 @@ RSpec.describe "Figures", type: :system do
         it 'フィギュアの編集が失敗する' do
           fill_in '商品名', with: 'figure_name'
           # JSで直接 value をセット
-          page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+          page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
           fill_in '個数', with: '1'
           fill_in '金額（1個あたり）', with: '1000'
           select '未払い', from: '支払いステータス'
@@ -320,7 +320,7 @@ RSpec.describe "Figures", type: :system do
         it 'フィギュアの編集が失敗する' do
           fill_in '商品名', with: 'figure_name'
           # JSで直接 value をセット
-          page.execute_script("document.getElementById('figure_release_month').value = '2026-02'")
+          page.execute_script("document.getElementById('figure_release_month').value = '2026-02-01'")
           fill_in '個数', with: '1'
           fill_in '金額（1個あたり）', with: '1000'
           select '未払い', from: '支払いステータス'
@@ -356,74 +356,92 @@ RSpec.describe "Figures", type: :system do
           expect(page).not_to have_content '並び替え'
         end
       end
-      context '検索' do
-        let!(:figure) { create(:figure, user: user) }
-        let!(:figure1) { create(:figure, user: user, name: 'abcd', release_month: '2027-02', quantity: 2, price: 2000) }
-        let!(:figure2) { create(:figure, user: user, name: '1234', release_month: '2028-02', quantity: 3, price: 3000) }
-        before { visit figures_path }
+      context 'フィギュアを1件以上登録している' do
+        context '一覧表示' do
+          # 日時固定なしだと「発売予定、発売済み」が変化してしまうため
+          before { travel_to Time.zone.local(2026, 3, 1) }
+          let!(:figure) { create(:figure, user: user) }
+          let!(:figure1) { create(:figure, user: user, name: 'abcd', release_month: '2027-02-01', quantity: 2, price: 2000) }
+          let!(:figure2) { create(:figure, user: user, name: '1234', release_month: '2028-02-01', quantity: 3, price: 3000) }
+          before { visit figures_path }
 
-        it '商品名で検索ができる' do
-          page.save_screenshot('final_check.png')
-          fill_in 'q_name_cont', with: 'a'
-          click_button '検索'
-          expect(page).to have_content 'abcd'
-          expect(page).not_to have_content '1234'
+          it '登録済みフィギュアが一覧表示される' do
+            expect(page).to have_content '2026年02月 発売済み'
+            expect(page).to have_content 'TEST'
+            expect(page).to have_content '¥1,000 × 1個 ⇒ ¥1,000'
+            expect(page).to have_content '2027年02月 発売予定'
+            expect(page).to have_content 'abcd'
+            expect(page).to have_content '¥2,000 × 2個 ⇒ ¥4,000'
+          end
         end
-      end
+        context '検索' do
+          let!(:figure) { create(:figure, user: user) }
+          let!(:figure1) { create(:figure, user: user, name: 'abcd', release_month: '2027-02-01', quantity: 2, price: 2000) }
+          let!(:figure2) { create(:figure, user: user, name: '1234', release_month: '2028-02-01', quantity: 3, price: 3000) }
+          before { visit figures_path }
 
-      context '並び替え' do
-        let!(:figure) { create(:figure, user: user) }
-        let!(:figure1) { create(:figure, user: user, name: 'abcd', release_month: '2027-02', quantity: 2, price: 2000) }
-        let!(:figure2) { create(:figure, user: user, name: '1234', release_month: '2028-02', quantity: 3, price: 3000) }
-        before { visit figures_path }
-
-        it '登録日（新しい順）' do
-          select '登録日（新しい順）', from: 'q_s'
-          expect(page.text).to match %r{#{figure2.name}.*#{figure1.name}.*#{figure.name}}
-        end
-
-        it '登録日（古い順）' do
-          select '登録日（古い順）', from: 'q_s'
-          expect(page.text).to match %r{#{figure.name}.*#{figure1.name}.*#{figure2.name}}
-        end
-
-        it '発売月（早い順）' do
-          select '発売月（早い順）', from: 'q_s'
-          expect(page.text).to match %r{#{figure.name}.*#{figure1.name}.*#{figure2.name}}
-        end
-
-        it '発売月（遅い順）' do
-          select '発売月（遅い順）', from: 'q_s'
-          expect(page.text).to match %r{#{figure2.name}.*#{figure1.name}.*#{figure.name}}
-        end
-
-        it '合計金額（安い順）' do
-          select '合計金額（安い順）', from: 'q_s'
-          expect(page.text).to match %r{#{figure.name}.*#{figure1.name}.*#{figure2.name}}
-        end
-
-        it '合計金額（高い順）' do
-          select '合計金額（高い順）', from: 'q_s'
-          expect(page.text).to match %r{#{figure2.name}.*#{figure1.name}.*#{figure.name}}
-        end
-      end
-
-      context 'ページネーション' do
-        context '10件以下' do
-          let!(:figures) { create_list(:figure, 10, user: user) }
-
-          it 'ページネーションが表示されないこと' do
-            visit figures_path
-            expect(page).not_to have_selector('.pagination')
+          it '商品名で検索ができる' do
+            fill_in 'q_name_cont', with: 'a'
+            click_button '検索'
+            expect(page).to have_content 'abcd'
+            expect(page).not_to have_content '1234'
           end
         end
 
-        context '11件以上' do
-          let!(:figures) { create_list(:figure, 11, user: user) }
+        context '並び替え' do
+          let!(:figure) { create(:figure, user: user) }
+          let!(:figure1) { create(:figure, user: user, name: 'abcd', release_month: '2027-02-01', quantity: 2, price: 2000) }
+          let!(:figure2) { create(:figure, user: user, name: '1234', release_month: '2028-02-01', quantity: 3, price: 3000) }
+          before { visit figures_path }
 
-          it 'ページネーションが表示されること' do
-            visit figures_path
-            expect(page).to have_selector('.pagination')
+          it '登録日（新しい順）' do
+            select '登録日（新しい順）', from: 'q_s'
+            expect(page.text).to match %r{#{figure2.name}.*#{figure1.name}.*#{figure.name}}
+          end
+
+          it '登録日（古い順）' do
+            select '登録日（古い順）', from: 'q_s'
+            expect(page.text).to match %r{#{figure.name}.*#{figure1.name}.*#{figure2.name}}
+          end
+
+          it '発売月（早い順）' do
+            select '発売月（早い順）', from: 'q_s'
+            expect(page.text).to match %r{#{figure.name}.*#{figure1.name}.*#{figure2.name}}
+          end
+
+          it '発売月（遅い順）' do
+            select '発売月（遅い順）', from: 'q_s'
+            expect(page.text).to match %r{#{figure2.name}.*#{figure1.name}.*#{figure.name}}
+          end
+
+          it '合計金額（安い順）' do
+            select '合計金額（安い順）', from: 'q_s'
+            expect(page.text).to match %r{#{figure.name}.*#{figure1.name}.*#{figure2.name}}
+          end
+
+          it '合計金額（高い順）' do
+            select '合計金額（高い順）', from: 'q_s'
+            expect(page.text).to match %r{#{figure2.name}.*#{figure1.name}.*#{figure.name}}
+          end
+        end
+
+        context 'ページネーション' do
+          context '10件以下' do
+            let!(:figures) { create_list(:figure, 10, user: user) }
+
+            it 'ページネーションが表示されないこと' do
+              visit figures_path
+              expect(page).not_to have_selector('.pagination')
+            end
+          end
+
+          context '11件以上' do
+            let!(:figures) { create_list(:figure, 11, user: user) }
+
+            it 'ページネーションが表示されること' do
+              visit figures_path
+              expect(page).to have_selector('.pagination')
+            end
           end
         end
       end

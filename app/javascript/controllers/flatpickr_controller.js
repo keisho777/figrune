@@ -99,4 +99,14 @@ export default class extends Controller {
       true
     );
   }
+
+  openFrom() {
+    this.fromPicker.altInput.focus();
+    this.fromPicker.open();
+  }
+
+  openTo() {
+    this.toPicker.altInput.focus();
+    this.toPicker.open();
+  }
 }

@@ -1,23 +1,23 @@
-<%= form_with url: url, method: :get, data: { controller: "date-range" } do |f| %>
+<%= form_with url: url, method: :get, data: { controller: "flatpickr" } do |f| %>
   <div class="flex">
     <div class="flex border rounded divide-x">
       <!-- 開始月 -->
-      <div class="flex flex-col py-1 px-2 focus-within:ring-2 focus-within:rounded">
-        <%= f.label :from, t("home.date_range.from"), class: "text-xs text-gray-500" %>
-        <%= f.month_field :from,
+      <div class="flex flex-col py-1 px-2 focus-within:ring-2 focus-within:rounded cursor-pointer" data-action="click->flatpickr#openFrom">
+        <%= f.label :from, t("home.date_range.from"), class: "text-xs text-gray-500 cursor-pointer" %>
+        <%= f.text_field :from,
             value: params[:from] || Date.current.strftime("%Y-%m"),
-            class: "w-27 focus:outline-none leading-none h-6",
+            class: "text-base w-27 focus:outline-none leading-none cursor-pointer",
             required: true,
-            data: { date_range_target: "from", action: "change->date-range#updateFromDate" } %>
+            data: { flatpickr_target: "from" } %>
       </div>
       <!-- 終了月 -->
-      <div class="flex flex-col py-1 px-2 focus-within:ring-2 focus-within:rounded">
-        <%= f.label :to, t("home.date_range.to"), class: "text-xs text-gray-500" %>
-        <%= f.month_field :to, 
+      <div class="flex flex-col py-1 px-2 focus-within:ring-2 focus-within:rounded cursor-pointer" data-action="click->flatpickr#openTo">
+        <%= f.label :to, t("home.date_range.to"), class: "text-xs text-gray-500 cursor-pointer" %>
+        <%= f.text_field :to, 
             value: params[:to] || (Date.current + 11.months).strftime("%Y-%m"), 
-            class: "w-27 focus:outline-none leading-none h-6",
+            class: "text-base w-27 focus:outline-none leading-none cursor-pointer",
             required: true,
-            data: { date_range_target: "to" } %>
+            data: { flatpickr_target: "to" } %>
       </div>
     </div>
     <!--表示ボタン-->
